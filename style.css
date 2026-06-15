@@ -216,3 +216,11 @@ th[scope="row"] { color: var(--navy); font-weight: 700; text-transform: none; le
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important; }
 }
+
+/* ===== Language toggle ===== */
+.gov-strip .wrap { gap: 10px; }
+.lang-toggle { margin-left: auto; background: transparent; border: 1px solid rgba(255,255,255,0.4);
+  color: #fff; font-family: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  padding: 5px 12px; border-radius: 4px; cursor: pointer; min-height: 26px; white-space: nowrap; }
+.lang-toggle:hover { background: rgba(255,255,255,0.14); }
+.lang-toggle:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
