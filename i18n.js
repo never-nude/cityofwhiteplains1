@@ -78,9 +78,9 @@
   var PHRASE_ES = {
     // Home — hero
     "Birthplace of the State of New York": "Cuna del Estado de Nueva York",
-    "A capital city in the heart of Westchester.": "Una ciudad capital en el corazón de Westchester.",
-    "Twenty-five miles north of Manhattan, two Metro-North stations, and the services of a city that has governed itself for over a century.":
-      "A cuarenta kilómetros al norte de Manhattan, con dos estaciones de Metro-North y los servicios de una ciudad que se gobierna a sí misma desde hace más de un siglo.",
+    "The business of White Plains, made easy.": "Los trámites de White Plains, más fáciles.",
+    "Westchester's county seat — services, meetings, and records, all in plain reach.":
+      "Sede del condado de Westchester: servicios, reuniones y registros, todo a su alcance.",
     // Home — tasks
     "What can we help you with?": "¿En qué podemos ayudarle?",
     "All services →": "Todos los servicios →",
