@@ -10,6 +10,7 @@
   --ink-dim: #51607a;
   --line: #d6dde7;
   --gold: #9a7b2e;
+  --gold-dark: #866a25;
   --gold-soft: #f5edda;
   --link: #1a4480;
   --link-hover: #0b2c5c;
@@ -197,4 +198,21 @@ body.nav-lock { overflow: hidden; }
   .tabbar .tab.active::before { content: ""; position: absolute; }
   body.has-tabbar { padding-bottom: 64px; }
   body.has-tabbar footer { margin-bottom: 0; }
+}
+
+/* ===== Accessibility (WCAG 2.1 AA) ===== */
+.vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.crumb .sep { color: var(--ink-dim); margin: 0 8px; }
+table caption { caption-side: top; text-align: left; font-size: 13px; font-weight: 700; color: var(--ink-dim);
+  text-transform: uppercase; letter-spacing: 0.03em; padding: 0 0 10px; }
+th[scope="row"] { color: var(--navy); font-weight: 700; text-transform: none; letter-spacing: 0; font-size: 15px; background: transparent; }
+/* white-on-gold fails AA (4.0:1) — use dark text on gold backgrounds */
+.alert .lbl { background: var(--gold-dark); color: #fff; }
+.ac-badge.ac-task, .ac-badge.ac-service,
+.r-badge.ac-task, .r-badge.ac-service { background: var(--gold-dark); color: #fff; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important; }
 }

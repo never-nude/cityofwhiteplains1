@@ -24,7 +24,7 @@
   .task p { font-size: 13px; color: var(--ink-dim); }
   .alert { background: var(--gold-soft); border-top: 3px solid var(--gold); }
   .alert .wrap { padding: 16px 28px; display: flex; gap: 14px; align-items: center; }
-  .alert .lbl { background: var(--gold); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; flex-shrink: 0; }
+  .alert .lbl { background: var(--gold-dark); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; flex-shrink: 0; }
   .alert p { font-size: 15px; color: #5c4a1f; }
   .alert a { color: var(--link-hover); font-weight: 600; }
   section.block { padding: 56px 0; }
@@ -59,14 +59,16 @@
 </head>
 <body>
   <a href="#main" class="skip">Skip to main content</a>
-  <div class="gov-strip"><div class="wrap"><span>🏛️</span><span>An official website of the <strong>City of White Plains, New York</strong></span></div></div>
+  <header class="site-header">
+  <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span>An official website of the <strong>City of White Plains, New York</strong></span></div></div>
   <div class="masthead"><div class="wrap">
-    <div class="ident"><div class="seal"><span>CITY<br>OF WP</span></div>
+    <div class="ident"><div class="seal" aria-hidden="true"><span>CITY<br>OF WP</span></div>
       <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag">Westchester County · Incorporated 1916</div></div></div>
     <form class="search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="Search permits, taxes, services…" aria-label="Search the city website" autocomplete="off"><button type="submit">Search</button></form>
   </div></div>
+  </header>
   <nav class="mainnav" aria-label="Primary"><div class="wrap">
-    <a href="index.html" class="active">Residents</a><a href="pay.html">Pay & Apply</a><a href="recreation.html">Recreation</a>
+    <a href="index.html" class="active" aria-current="page">Residents</a><a href="pay.html">Pay & Apply</a><a href="recreation.html">Recreation</a>
     <a href="departments.html">Departments</a><a href="news.html">News</a><a href="index.html">Government</a><a href="index.html">Contact</a>
   </div><button class="menu-btn" aria-label="Open menu">☰</button></nav>
 
@@ -80,14 +82,14 @@
     <div class="tasks"><div class="wrap">
       <div class="head"><h3>What can we help you with?</h3><a href="pay.html">All services →</a></div>
       <div class="grid8">
-        <a href="pay.html" class="task"><span class="ic">💳</span><h4>Pay Taxes & Bills</h4><p>Property tax, water, parking tickets</p></a>
-        <a href="pay.html" class="task"><span class="ic">📋</span><h4>Permits & Licenses</h4><p>Building, business, and parking</p></a>
-        <a href="recreation.html" class="task"><span class="ic">🗑️</span><h4>Trash & Recycling</h4><p>Collection schedules and rules</p></a>
-        <a href="recreation.html" class="task"><span class="ic">🏊</span><h4>Recreation & Parks</h4><p>Pools, programs, registration</p></a>
-        <a href="news.html" class="task"><span class="ic">📅</span><h4>Meetings & Agendas</h4><p>Council, planning, and zoning</p></a>
-        <a href="pay.html" class="task"><span class="ic">🚌</span><h4>Parking & Transit</h4><p>Garages, permits, Bee-Line</p></a>
-        <a href="pay.html" class="task"><span class="ic">⚠️</span><h4>Report a Problem</h4><p>Potholes, streetlights, and more</p></a>
-        <a href="pay.html" class="task"><span class="ic">📄</span><h4>Records & Forms</h4><p>FOIL requests and certificates</p></a>
+        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">💳</span><h4>Pay Taxes & Bills</h4><p>Property tax, water, parking tickets</p></a>
+        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">📋</span><h4>Permits & Licenses</h4><p>Building, business, and parking</p></a>
+        <a href="recreation.html" class="task"><span class="ic" aria-hidden="true">🗑️</span><h4>Trash & Recycling</h4><p>Collection schedules and rules</p></a>
+        <a href="recreation.html" class="task"><span class="ic" aria-hidden="true">🏊</span><h4>Recreation & Parks</h4><p>Pools, programs, registration</p></a>
+        <a href="news.html" class="task"><span class="ic" aria-hidden="true">📅</span><h4>Meetings & Agendas</h4><p>Council, planning, and zoning</p></a>
+        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">🚌</span><h4>Parking & Transit</h4><p>Garages, permits, Bee-Line</p></a>
+        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">⚠️</span><h4>Report a Problem</h4><p>Potholes, streetlights, and more</p></a>
+        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">📄</span><h4>Records & Forms</h4><p>FOIL requests and certificates</p></a>
       </div>
     </div></div>
 
@@ -107,15 +109,15 @@
     <section class="block alt"><div class="wrap">
       <div class="sec-head"><h3>Departments</h3><a href="departments.html">Full directory →</a></div>
       <div class="dept-grid">
-        <a href="departments.html" class="dept"><span class="di">🏛️</span><b>Mayor & Common Council<span class="meta">Governance and legislation</span></b></a>
-        <a href="departments.html" class="dept"><span class="di">👮</span><b>Public Safety<span class="meta">Police and Fire</span></b></a>
-        <a href="recreation.html" class="dept"><span class="di">🌳</span><b>Recreation & Parks<span class="meta">Programs and facilities</span></b></a>
-        <a href="departments.html" class="dept"><span class="di">🏗️</span><b>Building Department<span class="meta">Permits and inspections</span></b></a>
-        <a href="pay.html" class="dept"><span class="di">💰</span><b>Finance<span class="meta">Taxes and assessment</span></b></a>
-        <a href="departments.html" class="dept"><span class="di">📐</span><b>Planning<span class="meta">Zoning and development</span></b></a>
-        <a href="departments.html" class="dept"><span class="di">⚖️</span><b>City Court<span class="meta">Filings and appearances</span></b></a>
-        <a href="departments.html" class="dept"><span class="di">📚</span><b>Public Library<span class="meta">Hours and catalog</span></b></a>
-        <a href="departments.html" class="dept"><span class="di">🚧</span><b>Public Works<span class="meta">Streets and sanitation</span></b></a>
+        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">🏛️</span><b>Mayor & Common Council<span class="meta">Governance and legislation</span></b></a>
+        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">👮</span><b>Public Safety<span class="meta">Police and Fire</span></b></a>
+        <a href="recreation.html" class="dept"><span class="di" aria-hidden="true">🌳</span><b>Recreation & Parks<span class="meta">Programs and facilities</span></b></a>
+        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">🏗️</span><b>Building Department<span class="meta">Permits and inspections</span></b></a>
+        <a href="pay.html" class="dept"><span class="di" aria-hidden="true">💰</span><b>Finance<span class="meta">Taxes and assessment</span></b></a>
+        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">📐</span><b>Planning<span class="meta">Zoning and development</span></b></a>
+        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">⚖️</span><b>City Court<span class="meta">Filings and appearances</span></b></a>
+        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">📚</span><b>Public Library<span class="meta">Hours and catalog</span></b></a>
+        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">🚧</span><b>Public Works<span class="meta">Streets and sanitation</span></b></a>
       </div>
     </div></section>
 

@@ -59,7 +59,7 @@
     // clone primary nav links to keep them in sync per-page
     var list = document.createElement("nav");
     list.className = "drawer-links";
-    list.setAttribute("aria-label", "Primary");
+    list.setAttribute("aria-label", "Mobile");
     var links = nav.querySelectorAll(".wrap a");
     links.forEach(function (a) {
       var na = document.createElement("a");
