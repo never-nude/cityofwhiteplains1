@@ -68,7 +68,10 @@
     "Browse popular services": "Explorar servicios populares",
     "result": "resultado", "results": "resultados",
     "No results found. Try a simpler word like “tax,” “permit,” or “pool.”":
-      "No se encontraron resultados. Pruebe una palabra más simple como «impuesto», «permiso» o «piscina»."
+      "No se encontraron resultados. Pruebe una palabra más simple como «impuesto», «permiso» o «piscina».",
+    "Updated": "Actualizado", "Dismiss this alert": "Descartar esta alerta",
+    "No active alerts right now.": "No hay alertas activas en este momento.",
+    "Notice": "Aviso", "Warning": "Advertencia", "Emergency": "Emergencia"
   };
 
   /* ---- Body phrases (home + Pay & Apply), keyed by exact English text ---- */
