@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News & Announcements · City of White Plains</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .news-list { display: grid; gap: 0; }
+  .row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: start; }
+  .row .thumb { height: 90px; background: var(--paper-3); border: 1px solid var(--line); border-radius: 6px; display: grid; place-items: center; font-size: 34px; }
+  .row .cat { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); }
+  .row .date { font-size: 13px; color: var(--ink-dim); font-weight: 600; }
+  .row h4 { font-family: 'Source Serif 4', serif; font-size: 21px; color: var(--navy); margin: 5px 0 6px; font-weight: 600; }
+  .row:hover h4 { color: var(--link-hover); }
+  .row p { font-size: 15px; color: var(--ink-dim); }
+  .pager { display: flex; gap: 8px; margin-top: 32px; }
+  .pager a { padding: 9px 15px; border: 1px solid var(--line); border-radius: 6px; font-weight: 600; font-size: 14px; }
+  .pager a.on { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .pager a:hover { text-decoration: none; background: var(--paper-2); }
+  .pager a.on:hover { background: var(--navy-2); }
+  @media (max-width: 520px) { .row { grid-template-columns: 1fr; } .row .thumb { height: 140px; } }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to main content</a>
+  <div class="gov-strip"><div class="wrap"><span>🏛️</span><span>An official website of the <strong>City of White Plains, New York</strong></span></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" onsubmit="return false;"><input type="search" placeholder="Search permits, taxes, services…" aria-label="Search"><button>Search</button></form>
+  </div></div>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html">Residents</a><a href="pay.html">Pay & Apply</a><a href="recreation.html">Recreation</a>
+    <a href="departments.html">Departments</a><a href="news.html" class="active">News</a><a href="index.html">Government</a><a href="index.html">Contact</a>
+  </div><button class="menu-btn" aria-label="Open menu">☰</button></nav>
+
+  <div class="crumb"><div class="wrap"><a href="index.html">Home</a><span>›</span>News & Announcements</div></div>
+
+  <div class="page-hd"><div class="wrap">
+    <div class="kick">City Hall</div>
+    <h2>News & announcements</h2>
+    <p>Official updates from the City of White Plains — events, services, public notices, and meeting summaries.</p>
+  </div></div>
+
+  <main id="main"><div class="wrap"><div class="layout">
+    <div class="news-list">
+      <a href="news-soccerfest.html" class="row"><div class="thumb">⚽</div><div><span class="cat">Community</span> · <span class="date">June 13, 2026</span><h4>Downtown Soccer Fest returns for a three-week run</h4><p>The City transforms downtown into a celebration of the global game, with international matchups on large screens June 14, 27, and July 11.</p></div></a>
+      <a href="news-soccerfest.html" class="row"><div class="thumb">🏊</div><div><span class="cat">Recreation</span> · <span class="date">June 9, 2026</span><h4>Gardella and Kittrell pools open for the summer season</h4><p>Both city pools are now open. Kittrell features zero-depth entry and lap lanes. Resident season passes and registration are available online.</p></div></a>
+      <a href="news-soccerfest.html" class="row"><div class="thumb">🌅</div><div><span class="cat">Employment</span> · <span class="date">June 2, 2026</span><h4>City hiring summer camp counselors and lifeguards</h4><p>Applications are open for seasonal positions across Recreation & Parks for the 2026 summer season. Residents are encouraged to apply.</p></div></a>
+      <a href="news-soccerfest.html" class="row"><div class="thumb">📖</div><div><span class="cat">Library</span> · <span class="date">May 28, 2026</span><h4>New title posted along the StoryWalk trail</h4><p>A fresh children's book is now installed page by page along the Bryant–Mamaroneck StoryWalk for families to read on a stroll.</p></div></a>
+      <a href="news-soccerfest.html" class="row"><div class="thumb">🚌</div><div><span class="cat">Transit</span> · <span class="date">May 20, 2026</span><h4>Bee-Line bus now accepts tap-to-pay with OMNY</h4><p>Westchester County's Bee-Line system has adopted OMNY as its primary fare payment method, allowing riders to tap and ride.</p></div></a>
+      <a href="news-soccerfest.html" class="row"><div class="thumb">🏛️</div><div><span class="cat">Government</span> · <span class="date">May 14, 2026</span><h4>Proposed 2026–2027 City budget released for review</h4><p>The proposed municipal budget is now available for public review ahead of upcoming Common Council hearings.</p></div></a>
+      <a href="news-soccerfest.html" class="row"><div class="thumb">🎟️</div><div><span class="cat">Recreation</span> · <span class="date">May 6, 2026</span><h4>Spring/Summer City Guide now online</h4><p>The full guide to seasonal programs and activities is available, with online and in-person registration now open.</p></div></a>
+    </div>
+
+    <aside class="side">
+      <div class="side-box">
+        <h4>Categories</h4>
+        <a href="#">Community Events</a>
+        <a href="#">Recreation</a>
+        <a href="#">Public Safety</a>
+        <a href="#">Government & Meetings</a>
+        <a href="#">Transit & Parking</a>
+        <a href="#">Employment</a>
+      </div>
+      <div class="side-box">
+        <h4>Stay informed</h4>
+        <p style="font-size:14.5px;color:var(--ink-dim);margin-bottom:14px;">Get City news and emergency alerts by email.</p>
+        <a href="#" class="btn gold" style="width:100%;text-align:center;">Subscribe to alerts</a>
+      </div>
+    </aside>
+  </div>
+  <div class="wrap" style="padding-bottom:50px;">
+    <div class="pager"><a href="#" class="on">1</a><a href="#">2</a><a href="#">3</a><a href="#">Next →</a></div>
+  </div>
+  </div></main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br>Office hours: Monday–Friday, 9 a.m.–5 p.m.</p></div>
+      <div class="foot-col"><h5>Residents</h5><a href="pay.html">Pay Taxes</a><a href="pay.html">Permits</a><a href="recreation.html">Recreation</a><a href="pay.html">Report an Issue</a></div>
+      <div class="foot-col"><h5>Government</h5><a href="departments.html">Common Council</a><a href="news.html">Meetings</a><a href="index.html">Budget</a><a href="index.html">Municipal Code</a></div>
+      <div class="foot-col"><h5>Connect</h5><a href="index.html">Contact Us</a><a href="news.html">Newsletter</a><a href="index.html">Site Map</a><a href="index.html">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span>© 2026 City of White Plains, New York. All rights reserved.</span><span>Redesign concept — not an official city website.</span></div></div>
+  </footer>
+</body>
+</html>

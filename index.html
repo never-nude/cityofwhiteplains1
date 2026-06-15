@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City of White Plains, New York</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .hero { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+  .hero .wrap { padding: 56px 28px; position: relative; z-index: 2; }
+  .hero::after { content: '1776'; position: absolute; right: 2%; top: 50%; transform: translateY(-50%);
+    font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 220px; color: rgba(255,255,255,0.04); z-index: 1; line-height: 1; }
+  .hero .kick { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .hero h2 { font-family: 'Source Serif 4', serif; font-size: clamp(30px, 4.5vw, 48px); font-weight: 700; line-height: 1.08; letter-spacing: -0.015em; max-width: 18ch; }
+  .hero p { color: #c4d0e0; font-size: 18px; max-width: 50ch; margin-top: 18px; }
+  .tasks { background: var(--paper-2); border-bottom: 1px solid var(--line); }
+  .tasks .head { display: flex; align-items: baseline; justify-content: space-between; padding: 32px 0 18px; }
+  .tasks .head h3 { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dim); }
+  .grid8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding-bottom: 36px; }
+  .task { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; border-left: 4px solid var(--navy); transition: all .15s; }
+  .task:hover { text-decoration: none; border-left-color: var(--gold); box-shadow: 0 4px 14px rgba(17,36,63,0.1); transform: translateY(-2px); }
+  .task .ic { font-size: 22px; }
+  .task h4 { font-size: 16px; font-weight: 700; color: var(--navy); }
+  .task p { font-size: 13px; color: var(--ink-dim); }
+  .alert { background: var(--gold-soft); border-top: 3px solid var(--gold); }
+  .alert .wrap { padding: 16px 28px; display: flex; gap: 14px; align-items: center; }
+  .alert .lbl { background: var(--gold); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; flex-shrink: 0; }
+  .alert p { font-size: 15px; color: #5c4a1f; }
+  .alert a { color: var(--link-hover); font-weight: 600; }
+  section.block { padding: 56px 0; }
+  .block.alt { background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; border-bottom: 2px solid var(--navy); padding-bottom: 12px; }
+  .sec-head h3 { font-family: 'Source Serif 4', serif; font-size: 28px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+  .sec-head a { font-size: 14px; font-weight: 600; }
+  .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .story .ph { height: 170px; background: var(--paper-3); border-radius: 6px; position: relative; border: 1px solid var(--line); overflow: hidden;
+    display: grid; place-items: center; font-size: 46px; }
+  .story .ph .cat { position: absolute; bottom: 0; left: 0; background: var(--navy); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .story .date { font-size: 13px; color: var(--ink-dim); font-weight: 600; margin-top: 14px; }
+  .story h4 { font-family: 'Source Serif 4', serif; font-size: 19px; font-weight: 600; line-height: 1.25; margin-top: 6px; color: var(--navy); }
+  .story p { font-size: 14.5px; color: var(--ink-dim); margin-top: 8px; }
+  .story:hover h4 { color: var(--link-hover); }
+  .dept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper); }
+  .dept { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .dept:hover { background: var(--paper-2); text-decoration: none; }
+  .dept .di { font-size: 20px; width: 24px; text-align: center; }
+  .dept b { font-weight: 600; font-size: 15.5px; color: var(--navy); }
+  .dept .meta { display: block; font-size: 12.5px; color: var(--ink-dim); font-weight: 400; }
+  .history { background: var(--navy); color: #fff; }
+  .history .wrap { padding: 60px 28px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
+  .history .kick { color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .history h3 { font-family: 'Source Serif 4', serif; font-size: 32px; font-weight: 700; line-height: 1.15; }
+  .history p { color: #c4d0e0; font-size: 16px; margin-top: 16px; }
+  .bignum { font-family: 'Source Serif 4', serif; font-size: clamp(80px, 14vw, 150px); font-weight: 700; color: var(--gold); line-height: 0.85; text-align: center; }
+  .bignum small { display: block; font-family: 'Public Sans'; font-size: 15px; font-weight: 600; color: #c4d0e0; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 14px; }
+  @media (max-width: 920px) { .grid8 { grid-template-columns: repeat(2,1fr); } .news-grid { grid-template-columns: 1fr; } .dept-grid { grid-template-columns: 1fr; } .history .wrap { grid-template-columns: 1fr; gap: 30px; } }
+  @media (max-width: 520px) { .grid8 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to main content</a>
+  <div class="gov-strip"><div class="wrap"><span>🏛️</span><span>An official website of the <strong>City of White Plains, New York</strong></span></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" onsubmit="return false;"><input type="search" placeholder="Search permits, taxes, services…" aria-label="Search"><button>Search</button></form>
+  </div></div>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html" class="active">Residents</a><a href="pay.html">Pay & Apply</a><a href="recreation.html">Recreation</a>
+    <a href="departments.html">Departments</a><a href="news.html">News</a><a href="index.html">Government</a><a href="index.html">Contact</a>
+  </div><button class="menu-btn" aria-label="Open menu">☰</button></nav>
+
+  <main id="main">
+    <div class="hero"><div class="wrap">
+      <div class="kick">Birthplace of the State of New York</div>
+      <h2>A capital city in the heart of Westchester.</h2>
+      <p>Twenty-five miles north of Manhattan, two Metro-North stations, and the services of a city that has governed itself for over a century.</p>
+    </div></div>
+
+    <div class="tasks"><div class="wrap">
+      <div class="head"><h3>What can we help you with?</h3><a href="pay.html">All services →</a></div>
+      <div class="grid8">
+        <a href="pay.html" class="task"><span class="ic">💳</span><h4>Pay Taxes & Bills</h4><p>Property tax, water, parking tickets</p></a>
+        <a href="pay.html" class="task"><span class="ic">📋</span><h4>Permits & Licenses</h4><p>Building, business, and parking</p></a>
+        <a href="recreation.html" class="task"><span class="ic">🗑️</span><h4>Trash & Recycling</h4><p>Collection schedules and rules</p></a>
+        <a href="recreation.html" class="task"><span class="ic">🏊</span><h4>Recreation & Parks</h4><p>Pools, programs, registration</p></a>
+        <a href="news.html" class="task"><span class="ic">📅</span><h4>Meetings & Agendas</h4><p>Council, planning, and zoning</p></a>
+        <a href="pay.html" class="task"><span class="ic">🚌</span><h4>Parking & Transit</h4><p>Garages, permits, Bee-Line</p></a>
+        <a href="pay.html" class="task"><span class="ic">⚠️</span><h4>Report a Problem</h4><p>Potholes, streetlights, and more</p></a>
+        <a href="pay.html" class="task"><span class="ic">📄</span><h4>Records & Forms</h4><p>FOIL requests and certificates</p></a>
+      </div>
+    </div></div>
+
+    <div class="alert"><div class="wrap"><span class="lbl">Notice</span>
+      <p><strong>Soccer Fest street closures downtown</strong> this weekend. Free resident parking and watch parties June 14, 27 & July 11. <a href="news-soccerfest.html">Details →</a></p>
+    </div></div>
+
+    <section class="block"><div class="wrap">
+      <div class="sec-head"><h3>City News</h3><a href="news.html">View all announcements →</a></div>
+      <div class="news-grid">
+        <a href="news-soccerfest.html" class="story"><div class="ph">⚽<span class="cat">Community</span></div><div class="date">June 13, 2026</div><h4>Downtown Soccer Fest returns for a three-week run</h4><p>Watch international matchups on the big screen in the heart of downtown.</p></a>
+        <a href="news.html" class="story"><div class="ph">🏊<span class="cat">Recreation</span></div><div class="date">June 9, 2026</div><h4>Gardella and Kittrell pools open for the summer</h4><p>Kittrell features zero-depth entry and lap lanes. Registration is open.</p></a>
+        <a href="news.html" class="story"><div class="ph">🌅<span class="cat">Employment</span></div><div class="date">June 2, 2026</div><h4>Hiring summer camp counselors and lifeguards</h4><p>The City is staffing up for the 2026 season. Apply online today.</p></a>
+      </div>
+    </div></section>
+
+    <section class="block alt"><div class="wrap">
+      <div class="sec-head"><h3>Departments</h3><a href="departments.html">Full directory →</a></div>
+      <div class="dept-grid">
+        <a href="departments.html" class="dept"><span class="di">🏛️</span><b>Mayor & Common Council<span class="meta">Governance and legislation</span></b></a>
+        <a href="departments.html" class="dept"><span class="di">👮</span><b>Public Safety<span class="meta">Police and Fire</span></b></a>
+        <a href="recreation.html" class="dept"><span class="di">🌳</span><b>Recreation & Parks<span class="meta">Programs and facilities</span></b></a>
+        <a href="departments.html" class="dept"><span class="di">🏗️</span><b>Building Department<span class="meta">Permits and inspections</span></b></a>
+        <a href="pay.html" class="dept"><span class="di">💰</span><b>Finance<span class="meta">Taxes and assessment</span></b></a>
+        <a href="departments.html" class="dept"><span class="di">📐</span><b>Planning<span class="meta">Zoning and development</span></b></a>
+        <a href="departments.html" class="dept"><span class="di">⚖️</span><b>City Court<span class="meta">Filings and appearances</span></b></a>
+        <a href="departments.html" class="dept"><span class="di">📚</span><b>Public Library<span class="meta">Hours and catalog</span></b></a>
+        <a href="departments.html" class="dept"><span class="di">🚧</span><b>Public Works<span class="meta">Streets and sanitation</span></b></a>
+      </div>
+    </div></section>
+
+    <section class="history"><div class="wrap">
+      <div class="bignum">1776<small>July 9 · A capital is declared</small></div>
+      <div>
+        <div class="kick">Why we say "Birthplace of New York"</div>
+        <h3>The State of New York was born here.</h3>
+        <p>On July 9, 1776, the New York Provincial Congress met at the original County Court House in White Plains, adopted the Declaration of Independence, and declared New York an independent state. Two days later, the Declaration was read publicly here for the first time in New York. We've been governing ourselves ever since.</p>
+      </div>
+    </div></section>
+  </main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br>Office hours: Monday–Friday, 9 a.m.–5 p.m.</p></div>
+      <div class="foot-col"><h5>Residents</h5><a href="pay.html">Pay Taxes</a><a href="pay.html">Permits</a><a href="recreation.html">Recreation</a><a href="pay.html">Report an Issue</a></div>
+      <div class="foot-col"><h5>Government</h5><a href="departments.html">Common Council</a><a href="news.html">Meetings</a><a href="index.html">Budget</a><a href="index.html">Municipal Code</a></div>
+      <div class="foot-col"><h5>Connect</h5><a href="index.html">Contact Us</a><a href="news.html">Newsletter</a><a href="index.html">Site Map</a><a href="index.html">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span>© 2026 City of White Plains, New York. All rights reserved.</span><span>Redesign concept — not an official city website.</span></div></div>
+  </footer>
+</body>
+</html>
