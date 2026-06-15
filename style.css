@@ -280,3 +280,41 @@ fieldset.fld { border: 1px solid var(--line); border-radius: 8px; padding: 12px 
 .modal-success h3 { font-family: 'Source Serif 4', serif; color: var(--navy); font-size: 22px; margin-bottom: 8px; }
 .modal-success p { font-size: 14.5px; color: var(--ink-dim); margin-bottom: 16px; }
 @media (max-width: 520px) { .alertbar-inner, .alert-subrow-inner { padding-left: 18px; padding-right: 18px; } }
+
+/* ===== Inline forms (report a problem) ===== */
+.form-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px; padding: 22px; margin: 14px 0 8px; max-width: 620px; }
+.fld label { display: block; font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.fld input[type=text], .fld input[type=email], .fld input[type=tel], .fld select, .fld textarea {
+  width: 100%; border: 2px solid var(--line); border-radius: 6px; padding: 10px 12px; font: inherit; font-size: 15px; color: var(--ink); background: #fff; }
+.fld textarea { min-height: 96px; resize: vertical; }
+.fld input[aria-invalid=true], .fld textarea[aria-invalid=true] { border-color: #a11212; outline: 2px solid #a1121233; }
+.fld .hint { display: block; font-weight: 400; font-size: 12.5px; color: var(--ink-dim); margin-top: 5px; }
+.form-card .btn { margin-top: 4px; }
+.form-note { font-size: 12.5px; color: var(--ink-dim); margin-top: 10px; }
+.form-success { background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px; padding: 26px; text-align: center; max-width: 620px; margin: 14px 0; }
+.form-success h3 { font-family: 'Source Serif 4', serif; color: var(--navy); font-size: 22px; margin-bottom: 8px; }
+.form-success p { font-size: 14.5px; color: var(--ink-dim); }
+.form-success .ok-ic { width: 52px; height: 52px; margin: 0 auto 12px; border-radius: 50%; background: #e4efe7; color: #1c5235; display: grid; place-items: center; font-size: 26px; font-weight: 700; }
+.plain-list { list-style: none; margin: 0; padding: 0; font-size: 14.5px; color: var(--ink); line-height: 2; }
+
+/* ===== News category filters ===== */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.filters button { font: inherit; font-size: 13.5px; font-weight: 600; color: var(--navy); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px; cursor: pointer; min-height: 38px; }
+.filters button:hover { background: var(--paper-2); }
+.filters button.on { background: var(--navy); color: #fff; border-color: var(--navy); }
+.list-count { font-size: 13px; color: var(--ink-dim); font-weight: 600; margin: 2px 0 18px; }
+
+/* ===== Departments directory ===== */
+.dir-tools { display: flex; gap: 14px; align-items: center; margin-bottom: 18px; flex-wrap: wrap; }
+.dir-search { flex: 1; min-width: 220px; max-width: 420px; display: block; }
+.dir-search input { width: 100%; border: 2px solid var(--line); border-radius: 6px; padding: 11px 14px; font: inherit; font-size: 15px; }
+.dir-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.dir-card { background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--navy); border-radius: 8px; padding: 20px 22px; }
+.dir-card h3 { font-size: 18px; color: var(--navy); font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.dir-card h3 svg { width: 20px; height: 20px; color: var(--navy); flex-shrink: 0; }
+.dir-card .desc { font-size: 14px; color: var(--ink-dim); margin: 8px 0 12px; }
+.dir-card dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; font-size: 13.5px; margin: 0 0 12px; }
+.dir-card dt { color: var(--ink-dim); font-weight: 700; }
+.dir-card dd { margin: 0; color: var(--ink); }
+.dir-card .links a { font-size: 13.5px; font-weight: 600; margin-right: 14px; }
+@media (max-width: 760px) { .dir-grid { grid-template-columns: 1fr; } }

@@ -33,20 +33,20 @@
     <div class="prose">
       <h3>Make a payment</h3>
       <div class="tile-grid">
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">🏠</span><h4>Property Taxes</h4><p>Pay by parcel number or by your tax bill ID</p></a>
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">💧</span><h4>Water & Sewer</h4><p>Pay your quarterly utility statement</p></a>
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">🅿️</span><h4>Parking Tickets</h4><p>Pay or contest a citation by ticket number</p></a>
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">📜</span><h4>Permit Fees</h4><p>Settle outstanding building or business fees</p></a>
+        <a href="#" class="tile" data-demo="Property tax payment"><span class="ic" aria-hidden="true">🏠</span><h4>Property Taxes</h4><p>Pay by parcel number or by your tax bill ID</p></a>
+        <a href="#" class="tile" data-demo="Water & sewer payment"><span class="ic" aria-hidden="true">💧</span><h4>Water & Sewer</h4><p>Pay your quarterly utility statement</p></a>
+        <a href="#" class="tile" data-demo="Parking ticket payment"><span class="ic" aria-hidden="true">🅿️</span><h4>Parking Tickets</h4><p>Pay or contest a citation by ticket number</p></a>
+        <a href="#" class="tile" data-demo="Permit fee payment"><span class="ic" aria-hidden="true">📜</span><h4>Permit Fees</h4><p>Settle outstanding building or business fees</p></a>
       </div>
 
       <h3>Apply for a permit or license</h3>
       <div class="tile-grid">
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">🏗️</span><h4>Building Permit</h4><p>Renovations, additions, and new construction</p></a>
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">🏪</span><h4>Business License</h4><p>Open or renew a business in the City</p></a>
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">🚗</span><h4>Parking Permit</h4><p>Residential and overnight permits</p></a>
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">🎪</span><h4>Special Event</h4><p>Block parties, festivals, and park use</p></a>
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">🐕</span><h4>Dog License</h4><p>Required annually for all dogs in the City</p></a>
-        <a href="#" class="tile"><span class="ic" aria-hidden="true">♻️</span><h4>Bulk Pickup</h4><p>Schedule large-item or yard waste removal</p></a>
+        <a href="#" class="tile" data-demo="Building permit application"><span class="ic" aria-hidden="true">🏗️</span><h4>Building Permit</h4><p>Renovations, additions, and new construction</p></a>
+        <a href="#" class="tile" data-demo="Business license application"><span class="ic" aria-hidden="true">🏪</span><h4>Business License</h4><p>Open or renew a business in the City</p></a>
+        <a href="#" class="tile" data-demo="Parking permit application"><span class="ic" aria-hidden="true">🚗</span><h4>Parking Permit</h4><p>Residential and overnight permits</p></a>
+        <a href="#" class="tile" data-demo="Special event permit"><span class="ic" aria-hidden="true">🎪</span><h4>Special Event</h4><p>Block parties, festivals, and park use</p></a>
+        <a href="#" class="tile" data-demo="Dog license application"><span class="ic" aria-hidden="true">🐕</span><h4>Dog License</h4><p>Required annually for all dogs in the City</p></a>
+        <a href="#" class="tile" data-demo="Bulk pickup scheduling"><span class="ic" aria-hidden="true">♻️</span><h4>Bulk Pickup</h4><p>Schedule large-item or yard waste removal</p></a>
       </div>
 
       <h3>How online payment works</h3>
@@ -57,18 +57,37 @@
         <div class="step"><div><h4>Keep your receipt</h4><p>A receipt is emailed to you and saved to your account. Payments post to City records within one business day.</p></div></div>
       </div>
 
-      <h3>Report a problem instead</h3>
+      <h3 id="report">Report a problem</h3>
       <p>Need to flag a pothole, a broken streetlight, or a missed collection? You don't need an account — just tell us where and what, and the request routes to the right department.</p>
-      <a href="#" class="btn">Report a problem →</a>
+      <form id="report-form" class="form-card" novalidate>
+        <div class="fld"><label for="rp-cat">What's the issue?</label>
+          <select id="rp-cat" name="category">
+            <option>Pothole</option>
+            <option>Streetlight out</option>
+            <option>Missed trash or recycling pickup</option>
+            <option>Damaged sign or signal</option>
+            <option>Graffiti</option>
+            <option>Other</option>
+          </select></div>
+        <div class="fld"><label for="rp-loc">Location (address or nearest intersection)</label>
+          <input type="text" id="rp-loc" name="location" autocomplete="street-address"></div>
+        <div class="fld"><label for="rp-desc">Describe the problem</label>
+          <textarea id="rp-desc" name="description"></textarea></div>
+        <div class="fld"><label for="rp-email">Your email (optional)</label>
+          <input type="email" id="rp-email" name="email" autocomplete="email">
+          <span class="hint">We'll email you a confirmation and tracking number.</span></div>
+        <button type="submit" class="btn">Submit request</button>
+        <p class="form-note">No account needed. For emergencies, always call 911.</p>
+      </form>
     </div>
 
     <aside class="side">
       <div class="side-box">
         <h4>Need help paying?</h4>
-        <a href="#">Property tax exemptions</a>
-        <a href="#">Senior & veteran relief</a>
-        <a href="#">Payment plan options</a>
-        <a href="#">Dispute a charge</a>
+        <a href="#" data-demo="Property tax exemptions">Property tax exemptions</a>
+        <a href="#" data-demo="Senior & veteran relief">Senior & veteran relief</a>
+        <a href="#" data-demo="Payment plan options">Payment plan options</a>
+        <a href="#" data-demo="Dispute a charge">Dispute a charge</a>
       </div>
       <div class="side-box contact">
         <h4>Finance Department</h4>
@@ -76,10 +95,12 @@
       </div>
       <div class="side-box">
         <h4>Accepted payment</h4>
-        <a href="#">Bank transfer (ACH) — free</a>
-        <a href="#">Visa, Mastercard, Discover</a>
-        <a href="#">In person at City Hall</a>
-        <a href="#">By mail (check or money order)</a>
+        <ul class="plain-list">
+          <li>Bank transfer (ACH) — free</li>
+          <li>Visa, Mastercard, Discover</li>
+          <li>In person at City Hall</li>
+          <li>By mail (check or money order)</li>
+        </ul>
       </div>
     </aside>
   </div></div></main>
@@ -97,5 +118,6 @@
   <script src="search.js" defer></script>
   <script src="nav.js" defer></script>
   <script src="alerts.js" defer></script>
+  <script src="interactions.js" defer></script>
 </body>
 </html>

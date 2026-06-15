@@ -29,22 +29,86 @@
     <p>Every City department, what it handles, and how to reach it. Select a department for hours, staff, forms, and services.</p>
   </div></div>
 
-  <main id="main"><div class="wrap"><div class="layout solo" style="padding:50px 0;">
-    <div class="tile-grid">
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">🏛️</span><h4>Mayor & Common Council</h4><p>City governance, legislation, and the public meeting calendar</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">👮</span><h4>Public Safety</h4><p>Police and Fire departments, emergency services, and permits</p></a>
-      <a href="recreation.html" class="tile"><span class="ic" aria-hidden="true">🌳</span><h4>Recreation & Parks</h4><p>Pools, camps, programs, and the City's parks and fields</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">🏗️</span><h4>Building Department</h4><p>Construction permits, inspections, and code enforcement</p></a>
-      <a href="pay.html" class="tile"><span class="ic" aria-hidden="true">💰</span><h4>Finance</h4><p>Tax collection, assessment, and the City budget</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">📐</span><h4>Planning</h4><p>Zoning, land use, and development review</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">⚖️</span><h4>City Court</h4><p>Court filings, appearances, and traffic matters</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">📚</span><h4>Public Library</h4><p>Hours, catalog, programs, and meeting rooms</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">🚧</span><h4>Public Works</h4><p>Streets, sanitation, water, and sewer maintenance</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">🧑‍🤝‍🧑</span><h4>Youth Bureau</h4><p>Youth programs, scholarships, and community partnerships</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">🗳️</span><h4>City Clerk</h4><p>Records, FOIL requests, licenses, and public notices</p></a>
-      <a href="index.html" class="tile"><span class="ic" aria-hidden="true">🧾</span><h4>Assessor</h4><p>Property values, exemptions, and the assessment roll</p></a>
+  <main id="main"><div class="wrap" style="padding:44px 0;">
+    <div class="dir-tools">
+      <span class="dir-search"><label for="dept-search" class="vh">Filter departments by name</label><input type="search" id="dept-search" placeholder="Filter departments…" aria-label="Filter departments by name" autocomplete="off"></span>
+      <span id="dept-count" class="list-count" aria-live="polite"></span>
     </div>
-  </div></div></main>
+    <div class="dir-grid" id="dept-dir">
+      <article class="dir-card" data-name="Mayor &amp; Common Council" data-keywords="mayor council legislation governance brasch martin">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Mayor &amp; Common Council</h3>
+        <p class="desc">City governance, legislation, and the public meeting calendar.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>City Hall, 3rd Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="minutes.html">Agendas &amp; Minutes →</a><a href="index.html#government">Government →</a></p>
+      </article>
+      <article class="dir-card" data-name="Public Safety" data-keywords="police fire emergency 911">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Public Safety</h3>
+        <p class="desc">Police and Fire departments, emergency services, and permits.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>255 Main Street</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="#" data-demo="Police & Fire services">Police &amp; Fire info →</a></p>
+      </article>
+      <article class="dir-card" data-name="Recreation &amp; Parks" data-keywords="pools camps programs parks fields">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Recreation &amp; Parks</h3>
+        <p class="desc">Pools, camps, programs, and the City's parks and fields.</p>
+        <dl><dt>Phone</dt><dd>914-422-1336</dd><dt>Office</dt><dd>City Hall, 2nd Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="recreation.html">Programs &amp; pools →</a></p>
+      </article>
+      <article class="dir-card" data-name="Building Department" data-keywords="permits inspections construction code">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Building Department</h3>
+        <p class="desc">Construction permits, inspections, and code enforcement.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>City Hall, 1st Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="pay.html">Apply for a permit →</a></p>
+      </article>
+      <article class="dir-card" data-name="Finance" data-keywords="tax assessment budget treasurer">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Finance</h3>
+        <p class="desc">Tax collection, assessment, and the City budget.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>City Hall, 1st Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="pay.html">Pay a bill →</a></p>
+      </article>
+      <article class="dir-card" data-name="Planning" data-keywords="zoning land use development variance">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Planning</h3>
+        <p class="desc">Zoning, land use, and development review.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>City Hall, 4th Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="#" data-demo="Planning & zoning">Planning &amp; zoning →</a></p>
+      </article>
+      <article class="dir-card" data-name="City Court" data-keywords="court filings traffic appearances">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>City Court</h3>
+        <p class="desc">Court filings, appearances, and traffic matters.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>Ground Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="#" data-demo="City Court information">Court information →</a></p>
+      </article>
+      <article class="dir-card" data-name="Public Library" data-keywords="library catalog books programs">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Public Library</h3>
+        <p class="desc">Hours, catalog, programs, and meeting rooms.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>100 Martine Avenue</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="#" data-demo="Library catalog & hours">Catalog &amp; hours →</a></p>
+      </article>
+      <article class="dir-card" data-name="Public Works" data-keywords="streets sanitation water sewer trash">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Public Works</h3>
+        <p class="desc">Streets, sanitation, water, and sewer maintenance.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>Ground Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="pay.html#report">Report an issue →</a></p>
+      </article>
+      <article class="dir-card" data-name="Youth Bureau" data-keywords="youth programs scholarships teens">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Youth Bureau</h3>
+        <p class="desc">Youth programs, scholarships, and community partnerships.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>City Hall, 2nd Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="recreation.html">Youth programs →</a></p>
+      </article>
+      <article class="dir-card" data-name="City Clerk" data-keywords="records foil licenses notices marriage">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>City Clerk</h3>
+        <p class="desc">Records, FOIL requests, licenses, and public notices.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>City Hall, 1st Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="#" data-demo="FOIL records request">File a FOIL request →</a></p>
+      </article>
+      <article class="dir-card" data-name="Assessor" data-keywords="property value assessment exemption grievance">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg>Assessor</h3>
+        <p class="desc">Property values, exemptions, and the assessment roll.</p>
+        <dl><dt>Phone</dt><dd>914-422-1200</dd><dt>Office</dt><dd>City Hall, 1st Floor</dd><dt>Hours</dt><dd>Mon–Fri, 9 a.m.–5 p.m.</dd></dl>
+        <p class="links"><a href="pay.html">Exemptions →</a></p>
+      </article>
+    </div>
+  </div></main>
 
   <footer>
     <div class="foot-main"><div class="wrap">
@@ -59,5 +123,6 @@
   <script src="search.js" defer></script>
   <script src="nav.js" defer></script>
   <script src="alerts.js" defer></script>
+  <script src="interactions.js" defer></script>
 </body>
 </html>

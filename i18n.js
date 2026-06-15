@@ -71,7 +71,15 @@
       "No se encontraron resultados. Pruebe una palabra más simple como «impuesto», «permiso» o «piscina».",
     "Updated": "Actualizado", "Dismiss this alert": "Descartar esta alerta",
     "No active alerts right now.": "No hay alertas activas en este momento.",
-    "Notice": "Aviso", "Warning": "Advertencia", "Emergency": "Emergencia"
+    "Notice": "Aviso", "Warning": "Advertencia", "Emergency": "Emergencia",
+    "Close": "Cerrar", "Got it": "Entendido",
+    "In the production website, this opens the secure City service for:": "En el sitio web de producción, esto abre el servicio seguro de la Ciudad para:",
+    "This concept stubs services that need a payment processor or sign-in. The full list is in the project roadmap.": "Este concepto simula los servicios que requieren un procesador de pagos o inicio de sesión. La lista completa está en el plan del proyecto.",
+    "Request received": "Solicitud recibida",
+    "Your service request has been logged as": "Su solicitud de servicio se registró como",
+    "In production this routes to the right department and emails you a confirmation. (Demo — nothing is actually submitted.)": "En producción, esto se envía al departamento correspondiente y le manda una confirmación por correo. (Demostración: no se envía nada en realidad.)",
+    "item": "resultado", "items": "resultados",
+    "department": "departamento", "departments": "departamentos"
   };
 
   /* ---- Body phrases (home + Pay & Apply), keyed by exact English text ---- */
@@ -246,6 +254,20 @@
       "Se le envía un recibo por correo electrónico y se guarda en su cuenta. Los pagos se registran en los archivos de la Ciudad en un día hábil.",
     // Pay — report
     "Report a problem instead": "¿Prefiere reportar un problema?",
+    "Report a problem": "Reportar un problema",
+    "What's the issue?": "¿Cuál es el problema?",
+    "Pothole": "Bache",
+    "Streetlight out": "Alumbrado apagado",
+    "Missed trash or recycling pickup": "Recolección de basura o reciclaje omitida",
+    "Damaged sign or signal": "Señal o semáforo dañado",
+    "Graffiti": "Grafiti",
+    "Other": "Otro",
+    "Location (address or nearest intersection)": "Ubicación (dirección o intersección más cercana)",
+    "Describe the problem": "Describa el problema",
+    "Your email (optional)": "Su correo electrónico (opcional)",
+    "We'll email you a confirmation and tracking number.": "Le enviaremos una confirmación y un número de seguimiento por correo electrónico.",
+    "Submit request": "Enviar solicitud",
+    "No account needed. For emergencies, always call 911.": "No se necesita cuenta. Para emergencias, llame siempre al 911.",
     "Need to flag a pothole, a broken streetlight, or a missed collection? You don't need an account — just tell us where and what, and the request routes to the right department.":
       "¿Necesita reportar un bache, un poste de luz dañado o una recolección omitida? No necesita una cuenta: solo díganos dónde y qué, y la solicitud se enviará al departamento correspondiente.",
     "Report a problem →": "Reportar un problema →",
