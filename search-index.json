@@ -2,49 +2,413 @@
   "generated": "2026-06-15",
   "note": "Static client-side search index for the City of White Plains concept site. 'weight' biases resident tasks above incidental matches.",
   "docs": [
-    { "title": "Pay property taxes", "url": "pay.html", "type": "task", "weight": 100, "summary": "Pay your City property tax bill online by parcel number or tax bill ID.", "keywords": "property tax taxes tax bill parcel pay taxes online assessment escrow" },
-    { "title": "Pay a water & sewer bill", "url": "pay.html", "type": "task", "weight": 100, "summary": "Pay your quarterly water and sewer utility statement online.", "keywords": "water bill sewer utility quarterly statement pay water" },
-    { "title": "Pay or contest a parking ticket", "url": "pay.html", "type": "task", "weight": 100, "summary": "Pay or dispute a parking citation by ticket number.", "keywords": "parking ticket citation fine contest dispute violation pay ticket" },
-    { "title": "Apply for a building permit", "url": "pay.html", "type": "task", "weight": 100, "summary": "Apply online for permits for renovations, additions, and new construction.", "keywords": "building permit construction renovation addition remodel contractor inspection" },
-    { "title": "Report a problem (pothole, streetlight)", "url": "pay.html", "type": "task", "weight": 98, "summary": "Report a pothole, broken streetlight, or missed collection — no account needed.", "keywords": "report problem pothole streetlight missed collection complaint 311 service request graffiti" },
-    { "title": "Pool hours — Kittrell & Gardella", "url": "recreation.html#hours", "type": "task", "weight": 96, "summary": "Hours, locations, and season passes for the Kittrell and Gardella pools.", "keywords": "pool hours kittrell gardella swimming lap lanes season pass swim wading zero depth" },
-    { "title": "Apply for a business license", "url": "pay.html", "type": "task", "weight": 95, "summary": "Open or renew a business in the City of White Plains.", "keywords": "business license open business renew commercial vendor" },
-    { "title": "Apply for a parking permit", "url": "pay.html", "type": "task", "weight": 95, "summary": "Residential and overnight parking permits.", "keywords": "parking permit residential overnight street parking" },
-    { "title": "Register for recreation programs & camps", "url": "pay.html", "type": "task", "weight": 92, "summary": "Register for summer camp, sports leagues, swim lessons, and classes.", "keywords": "recreation register summer camp day camp programs tennis basketball swim lessons senior wellness arts" },
-    { "title": "Trash & recycling schedule", "url": "departments.html", "type": "task", "weight": 90, "summary": "Collection schedules, recycling rules, and sanitation contacts.", "keywords": "trash garbage recycling sanitation collection schedule pickup refuse" },
-    { "title": "Meetings, agendas & minutes", "url": "minutes.html", "type": "task", "weight": 90, "summary": "Common Council agendas, minutes, and the public meeting calendar.", "keywords": "meetings agenda minutes common council public hearing calendar zoning planning board" },
-    { "title": "Schedule a bulk pickup", "url": "pay.html", "type": "task", "weight": 85, "summary": "Schedule large-item or yard waste removal.", "keywords": "bulk pickup large item yard waste furniture appliance removal" },
-    { "title": "Get a dog license", "url": "pay.html", "type": "task", "weight": 82, "summary": "Required annually for all dogs in the City.", "keywords": "dog license pet animal" },
-    { "title": "Property tax exemptions & relief", "url": "pay.html", "type": "service", "weight": 80, "summary": "Senior, veteran, STAR, and payment-plan relief for property taxes.", "keywords": "exemption senior veteran star tax relief payment plan hardship dispute charge" },
-    { "title": "Parking, garages & Bee-Line transit", "url": "pay.html", "type": "service", "weight": 76, "summary": "City garages, permits, and Bee-Line bus / OMNY transit information.", "keywords": "parking garage transit bee-line omny hamilton-main garage bus tap to pay metro-north" },
-    { "title": "FOIL request & City records", "url": "departments.html", "type": "service", "weight": 72, "summary": "Public records (FOIL) requests, certificates, and the City Clerk.", "keywords": "foil freedom of information records request city clerk certificate vital records notary" },
-    { "title": "Special event permit", "url": "pay.html", "type": "service", "weight": 70, "summary": "Permits for block parties, festivals, and park use.", "keywords": "special event block party festival park use street fair" },
-    { "title": "City Hall — address, phone & hours", "url": "index.html", "type": "info", "weight": 78, "summary": "City Hall, 255 Main Street, White Plains, NY 10601. 914-422-1200. Mon–Fri, 9 a.m.–5 p.m.", "keywords": "city hall address phone hours contact 255 main street 10601 914-422-1200 directions" },
-
-    { "title": "Mayor & Common Council", "url": "departments.html", "type": "department", "weight": 62, "summary": "City governance, legislation, and the public meeting calendar.", "keywords": "mayor justin brasch common council john martin governance legislation council president" },
-    { "title": "Finance Department", "url": "pay.html", "type": "department", "weight": 64, "summary": "Tax collection, assessment, and the City budget.", "keywords": "finance taxes assessment budget treasurer comptroller" },
-    { "title": "Recreation & Parks", "url": "recreation.html", "type": "department", "weight": 64, "summary": "Pools, camps, programs, and the City's parks and fields.", "keywords": "recreation parks pools camps fields delfino tibbits storywalk" },
-    { "title": "Building Department", "url": "departments.html", "type": "department", "weight": 60, "summary": "Construction permits, inspections, and code enforcement.", "keywords": "building department permits inspections code enforcement certificate of occupancy" },
-    { "title": "Public Safety (Police & Fire)", "url": "departments.html", "type": "department", "weight": 60, "summary": "Police and Fire departments, emergency services, and permits.", "keywords": "police fire public safety emergency 911 non-emergency" },
-    { "title": "Public Works", "url": "departments.html", "type": "department", "weight": 60, "summary": "Streets, sanitation, water, and sewer maintenance.", "keywords": "public works streets sanitation water sewer snow plowing dpw" },
-    { "title": "Planning Department", "url": "departments.html", "type": "department", "weight": 55, "summary": "Zoning, land use, and development review.", "keywords": "planning zoning land use development review variance site plan" },
-    { "title": "City Court", "url": "departments.html", "type": "department", "weight": 55, "summary": "Court filings, appearances, and traffic matters.", "keywords": "city court filings appearances traffic ticket arraignment" },
-    { "title": "Public Library", "url": "departments.html", "type": "department", "weight": 55, "summary": "Hours, catalog, programs, and meeting rooms.", "keywords": "public library catalog books hours programs meeting rooms" },
-    { "title": "City Clerk", "url": "departments.html", "type": "department", "weight": 56, "summary": "Records, FOIL requests, licenses, and public notices.", "keywords": "city clerk records foil licenses public notices marriage license" },
-    { "title": "Assessor", "url": "departments.html", "type": "department", "weight": 55, "summary": "Property values, exemptions, and the assessment roll.", "keywords": "assessor property value assessment roll exemption grievance" },
-    { "title": "Youth Bureau", "url": "departments.html", "type": "department", "weight": 50, "summary": "Youth programs, scholarships, and community partnerships.", "keywords": "youth bureau programs scholarships teens community" },
-
-    { "title": "Pay & Apply", "url": "pay.html", "type": "page", "weight": 55, "summary": "Pay bills and apply for permits and licenses online, around the clock.", "keywords": "pay apply online services payments permits licenses" },
-    { "title": "Council Meeting Minutes", "url": "minutes.html", "type": "page", "weight": 60, "summary": "Full Common Council meeting minutes as searchable web text.", "keywords": "minutes council meeting record vote resolution agenda" },
-    { "title": "Departments & offices", "url": "departments.html", "type": "page", "weight": 50, "summary": "Every City department, what it handles, and how to reach it.", "keywords": "departments offices directory" },
-    { "title": "News & announcements", "url": "news.html", "type": "page", "weight": 46, "summary": "Official City news, events, public notices, and meeting summaries.", "keywords": "news announcements notices updates events" },
-    { "title": "Home", "url": "index.html", "type": "page", "weight": 48, "summary": "City of White Plains — start here to find a service or task.", "keywords": "home white plains city westchester" },
-
-    { "title": "Downtown Soccer Fest returns", "url": "news-soccerfest.html", "type": "news", "weight": 45, "summary": "Free downtown watch parties June 14, 27 & July 11, with street closures and resident parking.", "keywords": "soccer fest downtown watch party street closures hamilton-main garage events" },
-    { "title": "2026–2027 City budget released for review", "url": "news.html", "type": "news", "weight": 44, "summary": "Proposed municipal budget posted ahead of Common Council hearings.", "keywords": "budget proposed 2026 2027 public hearing finance" },
-    { "title": "Gardella & Kittrell pools open for summer", "url": "news.html", "type": "news", "weight": 42, "summary": "Both city pools open; season passes and registration available online.", "keywords": "pools open gardella kittrell summer season pass swimming" },
-    { "title": "Hiring camp counselors & lifeguards", "url": "news.html", "type": "news", "weight": 41, "summary": "Seasonal Recreation & Parks positions open for summer 2026.", "keywords": "jobs hiring lifeguard camp counselor employment seasonal apply" },
-    { "title": "Bee-Line bus adopts OMNY tap-to-pay", "url": "news.html", "type": "news", "weight": 39, "summary": "Westchester's Bee-Line now accepts OMNY tap-to-pay fares.", "keywords": "bee-line omny transit bus tap to pay fare" },
-    { "title": "New title on the StoryWalk trail", "url": "news.html", "type": "news", "weight": 36, "summary": "A fresh children's book installed along the Bryant–Mamaroneck StoryWalk.", "keywords": "storywalk bryant mamaroneck library children book trail" }
+    {
+      "title": "Pay property taxes",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 100,
+      "summary": "Pay your City property tax bill online by parcel number or tax bill ID.",
+      "keywords": "property tax taxes tax bill parcel pay taxes online assessment escrow"
+    },
+    {
+      "title": "Pay a water & sewer bill",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 100,
+      "summary": "Pay your quarterly water and sewer utility statement online.",
+      "keywords": "water bill sewer utility quarterly statement pay water"
+    },
+    {
+      "title": "Pay or contest a parking ticket",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 100,
+      "summary": "Pay or dispute a parking citation by ticket number.",
+      "keywords": "parking ticket citation fine contest dispute violation pay ticket"
+    },
+    {
+      "title": "Apply for a building permit",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 100,
+      "summary": "Apply online for permits for renovations, additions, and new construction.",
+      "keywords": "building permit construction renovation addition remodel contractor inspection"
+    },
+    {
+      "title": "Report a problem (pothole, streetlight)",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 98,
+      "summary": "Report a pothole, broken streetlight, or missed collection — no account needed.",
+      "keywords": "report problem pothole streetlight missed collection complaint 311 service request graffiti"
+    },
+    {
+      "title": "Pool hours — Kittrell & Gardella",
+      "url": "recreation.html#hours",
+      "type": "task",
+      "weight": 96,
+      "summary": "Hours, locations, and season passes for the Kittrell and Gardella pools.",
+      "keywords": "pool hours kittrell gardella swimming lap lanes season pass swim wading zero depth"
+    },
+    {
+      "title": "Apply for a business license",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 95,
+      "summary": "Open or renew a business in the City of White Plains.",
+      "keywords": "business license open business renew commercial vendor"
+    },
+    {
+      "title": "Apply for a parking permit",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 95,
+      "summary": "Residential and overnight parking permits.",
+      "keywords": "parking permit residential overnight street parking"
+    },
+    {
+      "title": "Register for recreation programs & camps",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 92,
+      "summary": "Register for summer camp, sports leagues, swim lessons, and classes.",
+      "keywords": "recreation register summer camp day camp programs tennis basketball swim lessons senior wellness arts"
+    },
+    {
+      "title": "Trash & recycling schedule",
+      "url": "departments.html",
+      "type": "task",
+      "weight": 90,
+      "summary": "Collection schedules, recycling rules, and sanitation contacts.",
+      "keywords": "trash garbage recycling sanitation collection schedule pickup refuse"
+    },
+    {
+      "title": "Meetings, agendas & minutes",
+      "url": "minutes.html",
+      "type": "task",
+      "weight": 90,
+      "summary": "Common Council agendas, minutes, and the public meeting calendar.",
+      "keywords": "meetings agenda minutes common council public hearing calendar zoning planning board"
+    },
+    {
+      "title": "Schedule a bulk pickup",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 85,
+      "summary": "Schedule large-item or yard waste removal.",
+      "keywords": "bulk pickup large item yard waste furniture appliance removal"
+    },
+    {
+      "title": "Get a dog license",
+      "url": "pay.html",
+      "type": "task",
+      "weight": 82,
+      "summary": "Required annually for all dogs in the City.",
+      "keywords": "dog license pet animal"
+    },
+    {
+      "title": "Property tax exemptions & relief",
+      "url": "pay.html",
+      "type": "service",
+      "weight": 80,
+      "summary": "Senior, veteran, STAR, and payment-plan relief for property taxes.",
+      "keywords": "exemption senior veteran star tax relief payment plan hardship dispute charge"
+    },
+    {
+      "title": "Parking, garages & Bee-Line transit",
+      "url": "pay.html",
+      "type": "service",
+      "weight": 76,
+      "summary": "City garages, permits, and Bee-Line bus / OMNY transit information.",
+      "keywords": "parking garage transit bee-line omny hamilton-main garage bus tap to pay metro-north"
+    },
+    {
+      "title": "FOIL request & City records",
+      "url": "departments.html",
+      "type": "service",
+      "weight": 72,
+      "summary": "Public records (FOIL) requests, certificates, and the City Clerk.",
+      "keywords": "foil freedom of information records request city clerk certificate vital records notary"
+    },
+    {
+      "title": "Special event permit",
+      "url": "pay.html",
+      "type": "service",
+      "weight": 70,
+      "summary": "Permits for block parties, festivals, and park use.",
+      "keywords": "special event block party festival park use street fair"
+    },
+    {
+      "title": "City Hall — address, phone & hours",
+      "url": "index.html",
+      "type": "info",
+      "weight": 78,
+      "summary": "City Hall, 255 Main Street, White Plains, NY 10601. 914-422-1200. Mon–Fri, 9 a.m.–5 p.m.",
+      "keywords": "city hall address phone hours contact 255 main street 10601 914-422-1200 directions"
+    },
+    {
+      "title": "Pay & Apply",
+      "url": "pay.html",
+      "type": "page",
+      "weight": 55,
+      "summary": "Pay bills and apply for permits and licenses online, around the clock.",
+      "keywords": "pay apply online services payments permits licenses"
+    },
+    {
+      "title": "Council Meeting Minutes",
+      "url": "minutes.html",
+      "type": "page",
+      "weight": 60,
+      "summary": "Full Common Council meeting minutes as searchable web text.",
+      "keywords": "minutes council meeting record vote resolution agenda"
+    },
+    {
+      "title": "Departments & offices",
+      "url": "departments.html",
+      "type": "page",
+      "weight": 50,
+      "summary": "Every City department, what it handles, and how to reach it.",
+      "keywords": "departments offices directory"
+    },
+    {
+      "title": "News & announcements",
+      "url": "news.html",
+      "type": "page",
+      "weight": 46,
+      "summary": "Official City news, events, public notices, and meeting summaries.",
+      "keywords": "news announcements notices updates events"
+    },
+    {
+      "title": "Home",
+      "url": "index.html",
+      "type": "page",
+      "weight": 48,
+      "summary": "City of White Plains — start here to find a service or task.",
+      "keywords": "home white plains city westchester"
+    },
+    {
+      "title": "Downtown Soccer Fest returns",
+      "url": "news-soccerfest.html",
+      "type": "news",
+      "weight": 45,
+      "summary": "Free downtown watch parties June 14, 27 & July 11, with street closures and resident parking.",
+      "keywords": "soccer fest downtown watch party street closures hamilton-main garage events"
+    },
+    {
+      "title": "2026–2027 City budget released for review",
+      "url": "news.html",
+      "type": "news",
+      "weight": 44,
+      "summary": "Proposed municipal budget posted ahead of Common Council hearings.",
+      "keywords": "budget proposed 2026 2027 public hearing finance"
+    },
+    {
+      "title": "Gardella & Kittrell pools open for summer",
+      "url": "news.html",
+      "type": "news",
+      "weight": 42,
+      "summary": "Both city pools open; season passes and registration available online.",
+      "keywords": "pools open gardella kittrell summer season pass swimming"
+    },
+    {
+      "title": "Hiring camp counselors & lifeguards",
+      "url": "news.html",
+      "type": "news",
+      "weight": 41,
+      "summary": "Seasonal Recreation & Parks positions open for summer 2026.",
+      "keywords": "jobs hiring lifeguard camp counselor employment seasonal apply"
+    },
+    {
+      "title": "Bee-Line bus adopts OMNY tap-to-pay",
+      "url": "news.html",
+      "type": "news",
+      "weight": 39,
+      "summary": "Westchester's Bee-Line now accepts OMNY tap-to-pay fares.",
+      "keywords": "bee-line omny transit bus tap to pay fare"
+    },
+    {
+      "title": "New title on the StoryWalk trail",
+      "url": "news.html",
+      "type": "news",
+      "weight": 36,
+      "summary": "A fresh children's book installed along the Bryant–Mamaroneck StoryWalk.",
+      "keywords": "storywalk bryant mamaroneck library children book trail"
+    },
+    {
+      "title": "Assessor",
+      "url": "department.html?d=assessor",
+      "type": "department",
+      "weight": 60,
+      "summary": "Property values, exemptions, and the assessment roll.",
+      "keywords": "assessor property assessment exemption roll star senior veteran"
+    },
+    {
+      "title": "Budget",
+      "url": "department.html?d=budget",
+      "type": "department",
+      "weight": 60,
+      "summary": "The City's adopted budget and capital plan.",
+      "keywords": "budget capital plan financial reports adopted proposed"
+    },
+    {
+      "title": "Building Department",
+      "url": "department.html?d=building",
+      "type": "department",
+      "weight": 60,
+      "summary": "Construction permits, inspections, and code enforcement.",
+      "keywords": "building permit inspection code enforcement certificate occupancy construction"
+    },
+    {
+      "title": "Cable Television",
+      "url": "department.html?d=cable-tv",
+      "type": "department",
+      "weight": 60,
+      "summary": "Municipal channel and meeting broadcasts.",
+      "keywords": "cable television channel broadcast multimedia video meetings"
+    },
+    {
+      "title": "City Clerk",
+      "url": "department.html?d=city-clerk",
+      "type": "department",
+      "weight": 60,
+      "summary": "Records, FOIL requests, licenses, and public notices.",
+      "keywords": "city clerk records foil licenses notices marriage vital records"
+    },
+    {
+      "title": "Finance Department",
+      "url": "department.html?d=finance",
+      "type": "department",
+      "weight": 60,
+      "summary": "Tax collection, utility billing, and receivables.",
+      "keywords": "finance taxes water sewer billing payments treasurer"
+    },
+    {
+      "title": "Information Technology",
+      "url": "department.html?d=it",
+      "type": "department",
+      "weight": 60,
+      "summary": "City technology, GIS, and digital services.",
+      "keywords": "information technology it gis maps open data website"
+    },
+    {
+      "title": "Law / Corporation Counsel",
+      "url": "department.html?d=law",
+      "type": "department",
+      "weight": 60,
+      "summary": "Legal counsel to the City.",
+      "keywords": "law corporation counsel legal claims municipal code"
+    },
+    {
+      "title": "Public Library",
+      "url": "department.html?d=library",
+      "type": "department",
+      "weight": 60,
+      "summary": "The White Plains Public Library.",
+      "keywords": "library books catalog programs reading"
+    },
+    {
+      "title": "Parking & Traffic",
+      "url": "department.html?d=parking-traffic",
+      "type": "department",
+      "weight": 60,
+      "summary": "Garages, permits, citations, and traffic.",
+      "keywords": "parking traffic garage permit ticket citation meter"
+    },
+    {
+      "title": "Personnel",
+      "url": "department.html?d=personnel",
+      "type": "department",
+      "weight": 60,
+      "summary": "City jobs, civil service, and human resources.",
+      "keywords": "personnel jobs employment civil service hr hiring"
+    },
+    {
+      "title": "Planning",
+      "url": "department.html?d=planning",
+      "type": "department",
+      "weight": 60,
+      "summary": "Zoning, land use, and development review.",
+      "keywords": "planning zoning land use development site plan variance board"
+    },
+    {
+      "title": "Public Safety — Police & Fire",
+      "url": "department.html?d=public-safety",
+      "type": "department",
+      "weight": 60,
+      "summary": "Police and Fire. For emergencies, call 911.",
+      "keywords": "police fire public safety emergency 911 non-emergency"
+    },
+    {
+      "title": "Public Works",
+      "url": "department.html?d=public-works",
+      "type": "department",
+      "weight": 60,
+      "summary": "Streets, sanitation, water, and sewer.",
+      "keywords": "public works streets sanitation trash recycling water sewer snow pothole"
+    },
+    {
+      "title": "Purchasing",
+      "url": "department.html?d=purchasing",
+      "type": "department",
+      "weight": 60,
+      "summary": "Procurement, bids, and vendor registration.",
+      "keywords": "purchasing procurement bids rfp vendor registration surplus"
+    },
+    {
+      "title": "Recreation & Parks",
+      "url": "department.html?d=recreation",
+      "type": "department",
+      "weight": 60,
+      "summary": "Pools, camps, programs, and parks.",
+      "keywords": "recreation parks pools camps programs fields swim storywalk"
+    },
+    {
+      "title": "Youth Bureau",
+      "url": "department.html?d=youth-bureau",
+      "type": "department",
+      "weight": 60,
+      "summary": "Youth programs, scholarships, and partnerships.",
+      "keywords": "youth bureau programs scholarships teens"
+    },
+    {
+      "title": "Government & transparency",
+      "url": "government.html",
+      "type": "page",
+      "weight": 62,
+      "summary": "Elected officials, Common Council, meetings, budget, and the Municipal Code.",
+      "keywords": "government mayor brasch common council martin budget municipal code charter foil boards elections transparency officials"
+    },
+    {
+      "title": "Our Community",
+      "url": "community.html",
+      "type": "page",
+      "weight": 56,
+      "summary": "Library, recreation, events, transit, history, and senior & youth services.",
+      "keywords": "community library recreation parks events calendar transit metro-north bee-line history seniors youth heritage"
+    },
+    {
+      "title": "Doing Business",
+      "url": "business.html",
+      "type": "page",
+      "weight": 56,
+      "summary": "Licenses, permits, zoning, bids, and business taxes in White Plains.",
+      "keywords": "business license permit zoning planning bids rfp vendor procurement economic development taxes inspections"
+    },
+    {
+      "title": "How Do I…?",
+      "url": "how-do-i.html",
+      "type": "page",
+      "weight": 66,
+      "summary": "Quick answers: how to pay, apply, report, find, register, and request City services.",
+      "keywords": "how do i pay apply report find register request services tasks help"
+    },
+    {
+      "title": "City department directory",
+      "url": "departments.html",
+      "type": "page",
+      "weight": 58,
+      "summary": "Every City department, with contacts, services, and FAQs.",
+      "keywords": "departments directory offices contacts phone"
+    }
   ]
 }

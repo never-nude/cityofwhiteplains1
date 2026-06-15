@@ -22,6 +22,11 @@ See **[PITCH.md](PITCH.md)** for the before/after audit prepared for the Mayor's
 | Article | `news-soccerfest.html` | Single-article layout |
 | Meeting Minutes | `minutes.html` | PDF→web demo: minutes as accessible web text + PDF |
 | Search | `search.html` | Site search results page |
+| Government | `government.html` | Section hub — officials, meetings, budget, Municipal Code |
+| Our Community | `community.html` | Section hub — library, recreation, events, transit, history |
+| Doing Business | `business.html` | Section hub — licenses, permits, zoning, bids, taxes |
+| How Do I…? | `how-do-i.html` | Resident task index (pay, apply, report, find, register, request) |
+| Department detail | `department.html` | Template that renders any of the 17 departments via `?d=slug` |
 
 | Asset | File | Purpose |
 |------|------|---------|
@@ -30,6 +35,8 @@ See **[PITCH.md](PITCH.md)** for the before/after audit prepared for the Mayor's
 | Navigation | `nav.js` | Mobile drawer + persistent bottom task bar |
 | Language | `i18n.js` | EN/ES toggle + civic Spanish translations |
 | Alerts | `alerts.js` | Severity alerts, dismissal, subscribe modal |
+| Interactions | `interactions.js` | Demo-service modal, report form, news + department filters |
+| Departments | `dept-data.js` | Data for all 17 departments (drives the directory + detail) |
 | Minutes PDF | `minutes.pdf` | Companion print/record copy of the minutes page |
 
 ## Features
