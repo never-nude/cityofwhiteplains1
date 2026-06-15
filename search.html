@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search · City of White Plains</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .search-lg { max-width: 640px; }
+  .search-lg input { font-size: 17px; padding: 14px 16px; }
+  .search-lg button { padding: 0 24px; }
+  .result-list { list-style: none; margin: 0; padding: 0; }
+  .result { border-bottom: 1px solid var(--line); }
+  .result a { display: block; padding: 18px 4px; }
+  .result a:hover { text-decoration: none; background: var(--paper-2); }
+  .result a:hover .r-title { text-decoration: underline; }
+  .r-badge { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+    color: #fff; background: var(--navy); padding: 3px 9px; border-radius: 4px; margin-bottom: 8px; }
+  .r-badge.ac-task, .r-badge.ac-service { background: var(--gold); }
+  .r-badge.ac-news { background: var(--ink-dim); }
+  .r-title { display: block; font-family: 'Source Serif 4', serif; font-size: 20px; font-weight: 600; color: var(--navy); }
+  .r-sum { display: block; font-size: 15px; color: var(--ink); margin-top: 4px; }
+  .r-url { display: block; font-size: 13px; color: var(--good); margin-top: 6px; }
+  .no-res { font-size: 17px; color: var(--ink-dim); padding: 24px 0; }
+  #search-count { font-size: 14px; color: var(--ink-dim); font-weight: 600; }
+</style>
+</head>
+<body data-page="search">
+  <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
+  <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal" aria-hidden="true"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag" data-i18n="tagline">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="Search permits, taxes, services…" data-i18n-ph="searchph" aria-label="Search the city website" autocomplete="off"><button type="submit" data-i18n="searchbtn">Search</button></form>
+  </div></div>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html" data-i18n="nav.residents">Residents</a><a href="pay.html" data-i18n="nav.pay">Pay &amp; Apply</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a>
+    <a href="departments.html" data-i18n="nav.depts">Departments</a><a href="news.html" data-i18n="nav.news">News</a><a href="index.html" data-i18n="nav.gov">Government</a><a href="index.html" data-i18n="nav.contact">Contact</a>
+  </div><button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></nav>
+
+  <div class="crumb"><div class="wrap"><a href="index.html" data-i18n="home">Home</a><span aria-hidden="true">›</span><span data-i18n="search">Search</span></div></div>
+
+  <div class="page-hd"><div class="wrap">
+    <div class="kick" data-i18n="search.kick">Find a service</div>
+    <h2 data-i18n="search.title">Search the City website</h2>
+    <p data-i18n="search.sub">Search across services, departments, meetings, and news. Resident tasks appear first.</p>
+    <form class="search search-lg" role="search" action="search.html" method="get" style="margin-top:18px;">
+      <input type="search" name="q" placeholder="Search permits, taxes, services…" data-i18n-ph="searchph" aria-label="Search the city website" autocomplete="off">
+      <button type="submit" data-i18n="searchbtn">Search</button>
+    </form>
+  </div></div>
+
+  <main id="main"><div class="wrap" style="padding:40px 0 60px;">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px;">
+      <h3 id="search-heading" style="font-family:'Source Serif 4',serif;font-size:26px;color:var(--navy);">Search</h3>
+      <span id="search-count" aria-live="polite"></span>
+    </div>
+    <div id="search-results" aria-live="polite"></div>
+
+    <p style="margin-top:34px;font-size:14px;color:var(--ink-dim);" data-i18n="search.help">
+      Popular searches: property taxes, parking ticket, building permit, pool hours, council minutes.
+    </p>
+  </div></main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br><span data-i18n="foot.hours">Office hours: Monday–Friday, 9 a.m.–5 p.m.</span></p></div>
+      <div class="foot-col"><h5 data-i18n="nav.residents">Residents</h5><a href="pay.html" data-i18n="foot.paytaxes">Pay Taxes</a><a href="pay.html" data-i18n="foot.permits">Permits</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a><a href="pay.html" data-i18n="foot.report">Report an Issue</a></div>
+      <div class="foot-col"><h5 data-i18n="nav.gov">Government</h5><a href="departments.html" data-i18n="foot.council">Common Council</a><a href="minutes.html" data-i18n="foot.meetings">Meetings</a><a href="index.html" data-i18n="foot.budget">Budget</a><a href="index.html" data-i18n="foot.code">Municipal Code</a></div>
+      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="index.html" data-i18n="foot.sitemap">Site Map</a><a href="index.html" data-i18n="foot.accessibility">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span data-i18n="foot.copyright">© 2026 City of White Plains, New York. All rights reserved.</span><span data-i18n="foot.concept">Redesign concept — not an official city website.</span></div></div>
+  </footer>
+  <script src="search.js" defer></script>
+</body>
+</html>
