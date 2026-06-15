@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Plan Options · City of White Plains</title>
+<meta name="description" content="Set up a payment plan for City of White Plains property taxes, water and sewer charges, or other balances — who qualifies, how it works, and how to request one.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
+  <header class="site-header">
+  <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal" aria-hidden="true"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag" data-i18n="tagline">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="Search permits, taxes, services…" data-i18n-ph="searchph" aria-label="Search the city website" data-i18n-al="searcharia" autocomplete="off"><button type="submit" data-i18n="searchbtn">Search</button></form>
+  </div></div>
+  </header>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html" data-i18n="nav.residents">Residents</a><a href="government.html" data-i18n="nav.gov">Government</a><a href="departments.html" data-i18n="nav.depts">Departments</a><a href="pay.html" class="active" aria-current="page" data-i18n="nav.services">Services</a><a href="community.html" data-i18n="nav.community">Community</a><a href="business.html" data-i18n="nav.business">Business</a><a href="how-do-i.html" data-i18n="nav.howdoi">How Do I…?</a>
+  </div><button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></nav>
+
+  <div class="crumb"><div class="wrap"><a href="index.html" data-i18n="home">Home</a><span class="sep" aria-hidden="true">›</span><a href="pay.html" data-i18n="nav.services">Pay &amp; Apply</a><span class="sep" aria-hidden="true">›</span>Payment plans</div></div>
+
+  <div class="page-hd"><div class="wrap">
+    <div class="kick">Finance · Need help paying?</div>
+    <h2>Payment plan options</h2>
+    <p>If you can't pay a City balance in full, a payment plan lets you pay it down in scheduled installments and avoid further collection action. Here's who qualifies, how it works, and how to request one.</p>
+  </div></div>
+
+  <main id="main"><div class="wrap"><div class="layout">
+    <div class="prose">
+      <h3>Who can set up a plan</h3>
+      <p>Payment plans are available to residents and property owners with an outstanding balance on:</p>
+      <ul>
+        <li><strong>Property taxes</strong> — current or delinquent City property tax bills</li>
+        <li><strong>Water &amp; sewer</strong> — past-due utility charges</li>
+        <li><strong>Other City charges</strong> — most invoiced balances owed to the City</li>
+      </ul>
+      <p>Accounts already in a tax-enforcement or legal proceeding may have different terms — the Finance Department will let you know when you ask.</p>
+
+      <h3>How a payment plan works</h3>
+      <div class="steps">
+        <div class="step"><div><h4>Tell us about the balance</h4><p>Request a plan below with your account or parcel number and the amount owed. There's no fee to ask.</p></div></div>
+        <div class="step"><div><h4>Finance reviews &amp; proposes terms</h4><p>Staff confirm the balance and offer a schedule — typically 3, 6, or 12 monthly installments depending on the amount.</p></div></div>
+        <div class="step"><div><h4>You approve &amp; make the first payment</h4><p>Once you accept the terms, your first installment starts the plan. Interest or statutory charges may still apply to unpaid balances.</p></div></div>
+        <div class="step"><div><h4>Pay on schedule</h4><p>Pay each installment online, by mail, or in person. Keeping to the schedule keeps the account in good standing.</p></div></div>
+      </div>
+
+      <h3 id="request">Request a payment plan</h3>
+      <p>Send the City the basics and Finance will follow up with proposed terms. You don't need an account to ask.</p>
+      <form id="plan-form" class="form-card" data-stub data-ref-prefix="PP" data-success="Request received" novalidate>
+        <div class="fld"><label for="pp-name">Full name</label>
+          <input type="text" id="pp-name" name="name" required autocomplete="name"></div>
+        <div class="fld"><label for="pp-email">Email</label>
+          <input type="email" id="pp-email" name="email" required autocomplete="email">
+          <span class="hint">We'll reply here with proposed terms.</span></div>
+        <div class="fld"><label for="pp-type">What's the balance for?</label>
+          <select id="pp-type" name="type">
+            <option>Property taxes</option>
+            <option>Water &amp; sewer</option>
+            <option>Parking</option>
+            <option>Other City charge</option>
+          </select></div>
+        <div class="fld"><label for="pp-acct">Account or parcel number (optional)</label>
+          <input type="text" id="pp-acct" name="account" autocomplete="off"></div>
+        <div class="fld"><label for="pp-term">Preferred plan length</label>
+          <select id="pp-term" name="term">
+            <option>3 monthly installments</option>
+            <option>6 monthly installments</option>
+            <option>12 monthly installments</option>
+            <option>Not sure — please advise</option>
+          </select></div>
+        <button type="submit" class="btn">Request a payment plan</button>
+        <p class="form-note">Demo — this concept does not set up real plans or move money. In production, Finance receives this and follows up.</p>
+      </form>
+
+      <h3>Frequently asked</h3>
+      <details class="faq"><summary>Will a payment plan stop interest or penalties?</summary><p>A plan helps you avoid further collection action, but statutory interest and penalties on unpaid tax balances are set by law and may continue until the balance is paid. Finance will spell out what applies to your account.</p></details>
+      <details class="faq"><summary>What if I miss an installment?</summary><p>Contact Finance as soon as you can. A missed payment can put the account back into collections, but staff can often help you get back on track.</p></details>
+      <details class="faq"><summary>Can I pay the balance off early?</summary><p>Yes. You can pay ahead or pay the remaining balance in full at any time with no penalty.</p></details>
+      <details class="faq"><summary>Is there a fee to set up a plan?</summary><p>There's no fee to request or set up a standard payment plan. Card payments may carry the usual processing fee.</p></details>
+
+      <p style="margin-top:8px;"><a href="pay.html" class="btn ghost">← Back to Pay &amp; Apply</a></p>
+    </div>
+
+    <aside class="side">
+      <div class="side-box contact">
+        <h4>Finance Department</h4>
+        <p><strong>Tax &amp; Assessment Office</strong><br>City Hall, 1st Floor<br>255 Main Street<br>White Plains, NY 10601<br><br><strong>Phone:</strong> 914-422-1200<br><strong>Hours:</strong> Mon–Fri, 9 a.m.–5 p.m.</p>
+      </div>
+      <div class="side-box">
+        <h4>Related help</h4>
+        <a href="pay.html">Pay a bill online</a>
+        <a href="#" data-demo="Property tax exemptions">Property tax exemptions</a>
+        <a href="#" data-demo="Senior &amp; veteran relief">Senior &amp; veteran relief</a>
+        <a href="#" data-demo="Dispute a charge">Dispute a charge</a>
+        <a href="department.html?d=finance">Finance Department</a>
+      </div>
+      <div class="side-box">
+        <h4>Accepted payment</h4>
+        <ul class="plain-list">
+          <li>Bank transfer (ACH) — free</li>
+          <li>Visa, Mastercard, Discover</li>
+          <li>In person at City Hall</li>
+          <li>By mail (check or money order)</li>
+        </ul>
+      </div>
+    </aside>
+  </div></div></main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br><span data-i18n="foot.hours">Office hours: Monday–Friday, 9 a.m.–5 p.m.</span></p></div>
+      <div class="foot-col"><h5 data-i18n="nav.residents">Residents</h5><a href="pay.html" data-i18n="foot.paytaxes">Pay Taxes</a><a href="pay.html" data-i18n="foot.permits">Permits</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a><a href="pay.html#report" data-i18n="foot.report">Report an Issue</a></div>
+      <div class="foot-col"><h5 data-i18n="nav.gov">Government</h5><a href="government.html" data-i18n="foot.council">Common Council</a><a href="minutes.html" data-i18n="foot.meetings">Meetings</a><a href="government.html#budget" data-i18n="foot.budget">Budget</a><a href="government.html#code" data-i18n="foot.code">Municipal Code</a></div>
+      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html#contact" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="search.html" data-i18n="foot.sitemap">Site Map</a><a href="index.html" data-i18n="foot.accessibility">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span data-i18n="foot.copyright">© 2026 City of White Plains, New York. All rights reserved.</span><span data-i18n="foot.concept">Redesign concept — not an official city website.</span></div></div>
+  </footer>
+  <script src="i18n.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="nav.js" defer></script>
+  <script src="alerts.js" defer></script>
+  <script src="interactions.js" defer></script>
+</body>
+</html>

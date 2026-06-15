@@ -218,7 +218,30 @@
     render();
   }
 
-  function init() { initReportForm(); initNewsFilter(); initDeptFilter(); renderDepartment(); initTrash(); }
+  /* ---------- Generic stubbed request forms (form[data-stub]) ---------- */
+  function initStubForms() {
+    [].forEach.call(document.querySelectorAll("form[data-stub]"), function (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var bad = null;
+        [].forEach.call(form.querySelectorAll("[required]"), function (f) {
+          if (!String(f.value).trim()) { f.setAttribute("aria-invalid", "true"); if (!bad) bad = f; }
+          else f.removeAttribute("aria-invalid");
+        });
+        if (bad) { bad.focus(); return; }
+        var ref = (form.getAttribute("data-ref-prefix") || "WP") + "-" + new Date().getFullYear() + "-" + Math.floor(100000 + Math.random() * 900000);
+        var ok = document.createElement("div");
+        ok.className = "form-success"; ok.setAttribute("role", "status");
+        ok.innerHTML = '<div class="ok-ic" aria-hidden="true">✓</div>' +
+          "<h3>" + t(form.getAttribute("data-success") || "Request received") + "</h3>" +
+          "<p>" + t("Your request reference is") + " <strong>" + ref + "</strong>. " +
+          t("This concept does not submit anything or move money — see the roadmap.") + "</p>";
+        form.replaceWith(ok); ok.setAttribute("tabindex", "-1"); ok.focus();
+      });
+    });
+  }
+
+  function init() { initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter(); renderDepartment(); initTrash(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

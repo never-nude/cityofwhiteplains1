@@ -409,6 +409,14 @@
       "weight": 58,
       "summary": "Every City department, with contacts, services, and FAQs.",
       "keywords": "departments directory offices contacts phone"
+    },
+    {
+      "title": "Payment plan options",
+      "url": "payment-plans.html",
+      "type": "service",
+      "weight": 82,
+      "summary": "Pay a City balance in installments — who qualifies, how it works, and how to request one.",
+      "keywords": "payment plan installments arrears delinquent taxes water sewer balance hardship pay over time"
     }
   ]
 }

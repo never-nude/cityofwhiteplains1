@@ -84,6 +84,8 @@
     "In production this routes to the right department and emails you a confirmation. (Demo — nothing is actually submitted.)": "En producción, esto se envía al departamento correspondiente y le manda una confirmación por correo. (Demostración: no se envía nada en realidad.)",
     "item": "resultado", "items": "resultados",
     "Next:": "Próximo:", "Refuse & organics": "Desechos y orgánicos", "Recycling": "Reciclaje",
+    "Your request reference is": "Su número de referencia es",
+    "This concept does not submit anything or move money — see the roadmap.": "Este concepto no envía nada ni mueve dinero — consulte el plan del proyecto.",
     "department": "departamento", "departments": "departamentos"
   };
 
