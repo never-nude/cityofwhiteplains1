@@ -83,6 +83,7 @@
     "Your service request has been logged as": "Su solicitud de servicio se registró como",
     "In production this routes to the right department and emails you a confirmation. (Demo — nothing is actually submitted.)": "En producción, esto se envía al departamento correspondiente y le manda una confirmación por correo. (Demostración: no se envía nada en realidad.)",
     "item": "resultado", "items": "resultados",
+    "Next:": "Próximo:", "Refuse & organics": "Desechos y orgánicos", "Recycling": "Reciclaje",
     "department": "departamento", "departments": "departamentos"
   };
 

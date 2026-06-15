@@ -76,11 +76,11 @@
     },
     {
       "title": "Trash & recycling schedule",
-      "url": "departments.html",
+      "url": "trash.html",
       "type": "task",
-      "weight": 90,
-      "summary": "Collection schedules, recycling rules, and sanitation contacts.",
-      "keywords": "trash garbage recycling sanitation collection schedule pickup refuse"
+      "weight": 94,
+      "summary": "Find your collection day, upcoming pickups, holiday delays, and recycling rules.",
+      "keywords": "trash garbage recycling sanitation collection schedule pickup refuse zone day dates bulk organics"
     },
     {
       "title": "Meetings, agendas & minutes",

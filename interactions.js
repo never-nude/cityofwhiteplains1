@@ -178,7 +178,47 @@
     host.innerHTML = head + body;
   }
 
-  function init() { initReportForm(); initNewsFilter(); initDeptFilter(); renderDepartment(); }
+  /* ---------- Trash & recycling: compute upcoming collection dates ---------- */
+  function initTrash() {
+    var sel = document.getElementById("trash-zone"), out = document.getElementById("trash-upcoming");
+    if (!sel || !out) return;
+    // weekdays as JS getDay() values: Mon=1 … Fri=5
+    var ZONES = {
+      A: { refuse: [1, 4], rec: [3] }, B: { refuse: [2, 5], rec: [4] },
+      C: { refuse: [1, 4], rec: [2] }, D: { refuse: [2, 5], rec: [5] }
+    };
+    function nextDates(days, count) {
+      var res = [], d = new Date(); d.setHours(0, 0, 0, 0);
+      for (var i = 0; i < 120 && res.length < count; i++) {
+        var dd = new Date(d); dd.setDate(d.getDate() + i);
+        if (days.indexOf(dd.getDay()) !== -1) res.push(dd);
+      }
+      return res;
+    }
+    function lang() { return (window.WP && WP.lang === "es") ? "es-US" : "en-US"; }
+    function fmtLong(dt) { return dt.toLocaleDateString(lang(), { weekday: "long", month: "long", day: "numeric" }); }
+    function fmtShort(dt) { return dt.toLocaleDateString(lang(), { weekday: "short", month: "short", day: "numeric" }); }
+    var TRASH_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M6 7l1 13a1 1 0 001 1h8a1 1 0 001-1l1-13"/></svg>';
+    var REC_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 19l-3-5 4-2M17 19l3-5-4-2M12 3l3 5h-6zM7 19h6M12 21l2-3"/></svg>';
+    function col(cls, icon, title, days) {
+      var ds = nextDates(days, 4);
+      if (!ds.length) return "";
+      var lis = ds.slice(1).map(function (x) { return "<li>" + fmtShort(x) + "</li>"; }).join("");
+      return '<div class="pickup ' + cls + '"><h3><span class="ic" aria-hidden="true">' + icon + "</span>" + title + "</h3>" +
+        '<p class="next">' + t("Next:") + " " + fmtLong(ds[0]) + "</p><ul>" + lis + "</ul></div>";
+    }
+    function render() {
+      var z = ZONES[sel.value] || ZONES.A;
+      out.innerHTML = '<div class="pickups">' +
+        col("", TRASH_SVG, t("Refuse & organics"), z.refuse) +
+        col("rec", REC_SVG, t("Recycling"), z.rec) + "</div>";
+    }
+    sel.addEventListener("change", render);
+    document.addEventListener("wp:languagechange", render);
+    render();
+  }
+
+  function init() { initReportForm(); initNewsFilter(); initDeptFilter(); renderDepartment(); initTrash(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

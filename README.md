@@ -27,6 +27,7 @@ See **[PITCH.md](PITCH.md)** for the before/after audit prepared for the Mayor's
 | Doing Business | `business.html` | Section hub — licenses, permits, zoning, bids, taxes |
 | How Do I…? | `how-do-i.html` | Resident task index (pay, apply, report, find, register, request) |
 | Department detail | `department.html` | Template that renders any of the 17 departments via `?d=slug` |
+| Trash & Recycling | `trash.html` | Collection schedule with a live 'next pickup' calculator by zone |
 
 | Asset | File | Purpose |
 |------|------|---------|

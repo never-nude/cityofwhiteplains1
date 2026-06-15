@@ -210,7 +210,7 @@ window.WP_DEPTS = [
     tagline: "Streets, sanitation, water, and sewer.",
     overview: "The Department of Public Works maintains City streets and sidewalks, collects trash and recycling, runs the water and sewer systems, and handles snow and storm response.",
     services: [
-      { t: "Trash & recycling schedule", demo: true },
+      { t: "Trash & recycling schedule", h: "trash.html" },
       { t: "Schedule a bulk pickup", h: "pay.html" },
       { t: "Report a pothole or streetlight", h: "pay.html#report" },
       { t: "Water & sewer billing", h: "pay.html" }
