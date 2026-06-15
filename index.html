@@ -3,62 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City of White Plains, New York</title>
+<title>City of White Plains, New York — Official Website</title>
+<meta name="description" content="Official website of the City of White Plains, New York. Pay bills, apply for permits, report an issue, read Council agendas and minutes, and contact City Hall.">
 <link rel="stylesheet" href="style.css">
 <style>
+  /* Hero */
   .hero { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
-  .hero .wrap { padding: 56px 28px; position: relative; z-index: 2; }
-  .hero::after { content: '1776'; position: absolute; right: 2%; top: 50%; transform: translateY(-50%);
-    font-family: 'Source Serif 4', serif; font-weight: 700; font-size: 220px; color: rgba(255,255,255,0.04); z-index: 1; line-height: 1; }
-  .hero .kick { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-  .hero h2 { font-family: 'Source Serif 4', serif; font-size: clamp(30px, 4.5vw, 48px); font-weight: 700; line-height: 1.08; letter-spacing: -0.015em; max-width: 18ch; }
-  .hero p { color: #c4d0e0; font-size: 18px; max-width: 50ch; margin-top: 18px; }
-  .tasks { background: var(--paper-2); border-bottom: 1px solid var(--line); }
-  .tasks .head { display: flex; align-items: baseline; justify-content: space-between; padding: 32px 0 18px; }
-  .tasks .head h3 { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dim); }
-  .grid8 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding-bottom: 36px; }
-  .task { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 8px; border-left: 4px solid var(--navy); transition: all .15s; }
-  .task:hover { text-decoration: none; border-left-color: var(--gold); box-shadow: 0 4px 14px rgba(17,36,63,0.1); transform: translateY(-2px); }
-  .task .ic { font-size: 22px; }
-  .task h4 { font-size: 16px; font-weight: 700; color: var(--navy); }
-  .task p { font-size: 13px; color: var(--ink-dim); }
-  .alert { background: var(--gold-soft); border-top: 3px solid var(--gold); }
-  .alert .wrap { padding: 16px 28px; display: flex; gap: 14px; align-items: center; }
-  .alert .lbl { background: var(--gold-dark); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; flex-shrink: 0; }
-  .alert p { font-size: 15px; color: #5c4a1f; }
-  .alert a { color: var(--link-hover); font-weight: 600; }
-  section.block { padding: 56px 0; }
+  .hero .wrap { padding: 52px 28px 40px; position: relative; z-index: 2; }
+  .hero .kick { font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .hero h2 { font-family: 'Source Serif 4', serif; font-size: clamp(30px, 4.5vw, 47px); font-weight: 700; line-height: 1.07; letter-spacing: -0.018em; max-width: 20ch; }
+  .hero p { color: #c4d0e0; font-size: 18px; max-width: 52ch; margin-top: 16px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.14); }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: #d6dfeb; font-weight: 500; }
+  .hero-meta svg { width: 16px; height: 16px; color: var(--gold); flex-shrink: 0; }
+  .hero-skyline { position: absolute; right: 0; bottom: 0; width: min(560px, 52%); z-index: 1; opacity: 0.9; pointer-events: none; }
+  .hero-skyline svg { display: block; width: 100%; height: auto; }
+  @media (max-width: 760px){ .hero-skyline { opacity: 0.5; width: 72%; } }
+
+  /* Section heads */
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 26px; border-bottom: 2px solid var(--navy); padding-bottom: 12px; flex-wrap: wrap; }
+  .sec-head h2 { font-family: 'Source Serif 4', serif; font-size: clamp(24px, 3vw, 30px); font-weight: 700; color: var(--navy); letter-spacing: -0.012em; }
+  .sec-head a { font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .eyebrow { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+  section.block { padding: 52px 0; }
   .block.alt { background: var(--paper-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .sec-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; border-bottom: 2px solid var(--navy); padding-bottom: 12px; }
-  .sec-head h3 { font-family: 'Source Serif 4', serif; font-size: 28px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
-  .sec-head a { font-size: 14px; font-weight: 600; }
+
+  /* Resident Quick Actions */
+  .qa-band { background: var(--paper); border-bottom: 1px solid var(--line); }
+  .qa-band .wrap { padding: 40px 28px 44px; }
+  .qa-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .qa { display: flex; align-items: center; gap: 16px; background: var(--paper); border: 1px solid var(--line);
+    border-left: 5px solid var(--navy); border-radius: 10px; padding: 20px 22px; min-height: 88px; transition: all .15s; height: 100%; }
+  .qa:hover { text-decoration: none; border-left-color: var(--gold); box-shadow: 0 6px 18px rgba(17,36,63,0.12); transform: translateY(-2px); }
+  .qa-ic { flex-shrink: 0; width: 46px; height: 46px; border-radius: 9px; background: var(--navy); color: #fff; display: grid; place-items: center; }
+  .qa:hover .qa-ic { background: var(--gold-dark); }
+  .qa-ic svg { width: 24px; height: 24px; }
+  .qa-t { display: block; font-size: 17px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+  .qa-d { display: block; font-size: 13.5px; color: var(--ink-dim); margin-top: 3px; }
+
+  /* News & events */
   .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .story .ph { height: 170px; background: var(--paper-3); border-radius: 6px; position: relative; border: 1px solid var(--line); overflow: hidden;
-    display: grid; place-items: center; font-size: 46px; }
+  .story .ph { height: 168px; background: var(--paper-3); border-radius: 6px; position: relative; border: 1px solid var(--line); overflow: hidden; display: grid; place-items: center; font-size: 44px; }
   .story .ph .cat { position: absolute; bottom: 0; left: 0; background: var(--navy); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 11px; text-transform: uppercase; letter-spacing: 0.04em; }
   .story .date { font-size: 13px; color: var(--ink-dim); font-weight: 600; margin-top: 14px; }
-  .story h4 { font-family: 'Source Serif 4', serif; font-size: 19px; font-weight: 600; line-height: 1.25; margin-top: 6px; color: var(--navy); }
+  .story h3 { font-family: 'Source Serif 4', serif; font-size: 19px; font-weight: 600; line-height: 1.25; margin-top: 6px; color: var(--navy); }
   .story p { font-size: 14.5px; color: var(--ink-dim); margin-top: 8px; }
-  .story:hover h4 { color: var(--link-hover); }
+  .story:hover h3 { color: var(--link-hover); }
+
+  /* Resource tiles (government + community) */
+  .res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 30px; }
+  .res { display: block; background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--navy); border-radius: 8px; padding: 18px 20px; transition: all .15s; }
+  .res:hover { text-decoration: none; border-left-color: var(--gold); box-shadow: 0 4px 14px rgba(17,36,63,0.1); transform: translateY(-2px); }
+  .res h3 { font-size: 16.5px; font-weight: 700; color: var(--navy); }
+  .res p { font-size: 13.5px; color: var(--ink-dim); margin-top: 4px; }
+  .subhead { font-size: 13px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-dim); margin: 4px 0 16px; }
+
+  /* Departments */
   .dept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper); }
-  .dept { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .dept { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .dept:hover { background: var(--paper-2); text-decoration: none; }
-  .dept .di { font-size: 20px; width: 24px; text-align: center; }
-  .dept b { font-weight: 600; font-size: 15.5px; color: var(--navy); }
+  .dept svg { width: 20px; height: 20px; color: var(--navy); flex-shrink: 0; }
+  .dept b { font-weight: 600; font-size: 15px; color: var(--navy); }
   .dept .meta { display: block; font-size: 12.5px; color: var(--ink-dim); font-weight: 400; }
+
+  /* Heritage */
   .history { background: var(--navy); color: #fff; }
-  .history .wrap { padding: 60px 28px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
+  .history .wrap { padding: 58px 28px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
   .history .kick { color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
-  .history h3 { font-family: 'Source Serif 4', serif; font-size: 32px; font-weight: 700; line-height: 1.15; }
+  .history h2 { font-family: 'Source Serif 4', serif; font-size: clamp(26px,3.4vw,32px); font-weight: 700; line-height: 1.15; }
   .history p { color: #c4d0e0; font-size: 16px; margin-top: 16px; }
   .bignum { font-family: 'Source Serif 4', serif; font-size: clamp(80px, 14vw, 150px); font-weight: 700; color: var(--gold); line-height: 0.85; text-align: center; }
   .bignum small { display: block; font-family: 'Public Sans'; font-size: 15px; font-weight: 600; color: #c4d0e0; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 14px; }
-  @media (max-width: 920px) { .grid8 { grid-template-columns: repeat(2,1fr); } .news-grid { grid-template-columns: 1fr; } .dept-grid { grid-template-columns: 1fr; } .history .wrap { grid-template-columns: 1fr; gap: 30px; } }
-  @media (max-width: 520px) { .grid8 { grid-template-columns: 1fr; } }
+
+  /* Contact City Hall */
+  .contact-band { background: var(--paper-2); border-top: 1px solid var(--line); }
+  .contact-band .wrap { padding: 48px 28px; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 36px; }
+  .contact-band h2 { font-family: 'Source Serif 4', serif; font-size: 26px; color: var(--navy); margin-bottom: 10px; }
+  .contact-band p { font-size: 15px; color: var(--ink); line-height: 1.7; }
+  .contact-band .lbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-dim); margin-bottom: 6px; }
+  .contact-band a.btn { margin-top: 14px; }
+
+  @media (max-width: 920px) {
+    .qa-grid { grid-template-columns: repeat(2, 1fr); }
+    .news-grid, .res-grid, .dept-grid { grid-template-columns: 1fr; }
+    .history .wrap { grid-template-columns: 1fr; gap: 28px; }
+    .contact-band .wrap { grid-template-columns: 1fr; gap: 26px; }
+  }
+  @media (max-width: 560px) { .qa-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body data-translate-body="1">
-  <a href="#main" class="skip">Skip to main content</a>
+  <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
   <header class="site-header">
   <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
   <div class="masthead"><div class="wrap">
@@ -69,60 +104,155 @@
   </header>
   <nav class="mainnav" aria-label="Primary"><div class="wrap">
     <a href="index.html" class="active" aria-current="page" data-i18n="nav.residents">Residents</a><a href="pay.html" data-i18n="nav.pay">Pay &amp; Apply</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a>
-    <a href="departments.html" data-i18n="nav.depts">Departments</a><a href="news.html" data-i18n="nav.news">News</a><a href="index.html" data-i18n="nav.gov">Government</a><a href="index.html" data-i18n="nav.contact">Contact</a>
+    <a href="departments.html" data-i18n="nav.depts">Departments</a><a href="news.html" data-i18n="nav.news">News</a><a href="index.html#government" data-i18n="nav.gov">Government</a><a href="index.html#contact" data-i18n="nav.contact">Contact</a>
   </div><button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></nav>
 
   <main id="main">
-    <div class="hero"><div class="wrap">
-      <div class="kick">Birthplace of the State of New York</div>
-      <h2>The business of White Plains, made easy.</h2>
-      <p>Westchester's county seat — services, meetings, and records, all in plain reach.</p>
-    </div></div>
-
-    <div class="tasks"><div class="wrap">
-      <div class="head"><h3>What can we help you with?</h3><a href="pay.html">All services →</a></div>
-      <div class="grid8">
-        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">💳</span><h4>Pay Taxes & Bills</h4><p>Property tax, water, parking tickets</p></a>
-        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">📋</span><h4>Permits & Licenses</h4><p>Building, business, and parking</p></a>
-        <a href="recreation.html" class="task"><span class="ic" aria-hidden="true">🗑️</span><h4>Trash & Recycling</h4><p>Collection schedules and rules</p></a>
-        <a href="recreation.html" class="task"><span class="ic" aria-hidden="true">🏊</span><h4>Recreation & Parks</h4><p>Pools, programs, registration</p></a>
-        <a href="minutes.html" class="task"><span class="ic" aria-hidden="true">📅</span><h4>Meetings & Agendas</h4><p>Council, planning, and zoning</p></a>
-        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">🚌</span><h4>Parking & Transit</h4><p>Garages, permits, Bee-Line</p></a>
-        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">⚠️</span><h4>Report a Problem</h4><p>Potholes, streetlights, and more</p></a>
-        <a href="pay.html" class="task"><span class="ic" aria-hidden="true">📄</span><h4>Records & Forms</h4><p>FOIL requests and certificates</p></a>
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="hero-skyline" aria-hidden="true">
+        <svg viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg" role="img">
+          <g fill="#1c3656">
+            <rect x="20" y="120" width="46" height="80"/><rect x="74" y="96" width="40" height="104"/>
+            <rect x="250" y="108" width="44" height="92"/><rect x="486" y="104" width="40" height="96"/>
+            <rect x="430" y="130" width="44" height="70"/>
+          </g>
+          <g fill="#23426a">
+            <rect x="122" y="64" width="52" height="136"/><rect x="182" y="86" width="38" height="114"/>
+            <rect x="392" y="80" width="34" height="120"/>
+          </g>
+          <!-- City Hall: portico + dome -->
+          <g fill="#2b4d78">
+            <rect x="300" y="120" width="86" height="80"/>
+          </g>
+          <g fill="#9a7b2e">
+            <path d="M343 86 l34 34 H309 z"/><!-- pediment -->
+            <rect x="318" y="74" width="2.4" height="14"/><circle cx="319.2" cy="72" r="3.4"/><!-- flagpole + finial -->
+          </g>
+          <g stroke="#0e1d33" stroke-width="0" fill="#1c3656">
+            <rect x="309" y="118" width="68" height="6"/>
+          </g>
+          <g fill="#0e1d33" opacity="0.5">
+            <rect x="132" y="80" width="8" height="10"/><rect x="148" y="80" width="8" height="10"/>
+            <rect x="132" y="104" width="8" height="10"/><rect x="148" y="104" width="8" height="10"/>
+            <rect x="132" y="128" width="8" height="10"/><rect x="148" y="128" width="8" height="10"/>
+          </g>
+          <g stroke="#9a7b2e" stroke-width="3" stroke-linecap="round">
+            <line x1="343" y1="86" x2="343" y2="120"/>
+          </g>
+        </svg>
       </div>
-    </div></div>
+      <div class="wrap">
+        <p class="kick">Official City Government · Westchester County, New York</p>
+        <h2 id="hero-h">The business of White Plains, made easy.</h2>
+        <p>Westchester's county seat — services, meetings, and records, all in plain reach.</p>
+        <div class="hero-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg>City Hall · 255 Main Street</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mon–Fri, 9 a.m.–5 p.m.</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5c0 9 6 15 15 15l0-3.5-4-1.5-2 2c-2.5-1.2-4.8-3.5-6-6l2-2-1.5-4L4 5z"/></svg>914-422-1200</span>
+        </div>
+      </div>
+    </section>
 
-    <section class="block"><div class="wrap">
-      <div class="sec-head"><h3>City News</h3><a href="news.html">View all announcements →</a></div>
+    <!-- Emergency & service alerts inject here (severity, timestamp, dismiss) -->
+    <div id="wp-alert-slot"></div>
+
+    <section class="qa-band" aria-labelledby="qa-h">
+      <div class="wrap">
+        <div class="sec-head"><h2 id="qa-h">Resident Quick Actions</h2><a href="pay.html">All services →</a></div>
+        <ul class="qa-grid">
+          <li><a class="qa" href="pay.html">
+            <span class="qa-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 9.5h19"/><path d="M6 14.5h4"/></svg></span>
+            <span><span class="qa-t">Pay Bills</span><span class="qa-d">Property tax, water, parking</span></span></a></li>
+          <li><a class="qa" href="pay.html#report">
+            <span class="qa-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3.5 1.8 21h20.4z"/><path d="M12 10v5"/><circle cx="12" cy="18" r="0.6" fill="currentColor" stroke="none"/></svg></span>
+            <span><span class="qa-t">Report an Issue</span><span class="qa-d">Potholes, lights, sanitation</span></span></a></li>
+          <li><a class="qa" href="minutes.html">
+            <span class="qa-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>
+            <span><span class="qa-t">Agendas &amp; Minutes</span><span class="qa-d">Council meetings &amp; records</span></span></a></li>
+          <li><a class="qa" href="pay.html">
+            <span class="qa-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.5l2.4 1.7 2.9-.3 1 2.8 2.5 1.5-.9 2.8.9 2.8-2.5 1.5-1 2.8-2.9-.3L12 21.5l-2.4-1.7-2.9.3-1-2.8L3.2 13.8l.9-2.8-.9-2.8 2.5-1.5 1-2.8 2.9.3z"/><path d="M9.5 12l1.8 1.8 3.2-3.6"/></svg></span>
+            <span><span class="qa-t">Permits &amp; Licenses</span><span class="qa-d">Building, business, parking</span></span></a></li>
+          <li><a class="qa" href="index.html#contact">
+            <span class="qa-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M4 21V9l8-4.5L20 9v12"/><path d="M8 21v-5M12 21v-5M16 21v-5M4 9h16"/></svg></span>
+            <span><span class="qa-t">Contact City Hall</span><span class="qa-d">255 Main Street · 914-422-1200</span></span></a></li>
+          <li><a class="qa" href="news.html">
+            <span class="qa-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg></span>
+            <span><span class="qa-t">City Calendar</span><span class="qa-d">Events, hearings, holidays</span></span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" aria-labelledby="news-h"><div class="wrap">
+      <div class="sec-head"><h2 id="news-h">News &amp; Events</h2><a href="news.html">View all announcements →</a></div>
       <div class="news-grid">
-        <a href="news-soccerfest.html" class="story"><div class="ph">⚽<span class="cat">Community</span></div><div class="date">June 13, 2026</div><h4>Downtown Soccer Fest returns for a three-week run</h4><p>Watch international matchups on the big screen in the heart of downtown.</p></a>
-        <a href="news.html" class="story"><div class="ph">🏊<span class="cat">Recreation</span></div><div class="date">June 9, 2026</div><h4>Gardella and Kittrell pools open for the summer</h4><p>Kittrell features zero-depth entry and lap lanes. Registration is open.</p></a>
-        <a href="news.html" class="story"><div class="ph">🌅<span class="cat">Employment</span></div><div class="date">June 2, 2026</div><h4>Hiring summer camp counselors and lifeguards</h4><p>The City is staffing up for the 2026 season. Apply online today.</p></a>
+        <a href="news-soccerfest.html" class="story"><div class="ph">⚽<span class="cat">Community</span></div><div class="date">June 13, 2026</div><h3>Downtown Soccer Fest returns for a three-week run</h3><p>Watch international matchups on the big screen in the heart of downtown.</p></a>
+        <a href="news.html" class="story"><div class="ph">🏊<span class="cat">Recreation</span></div><div class="date">June 9, 2026</div><h3>Gardella and Kittrell pools open for the summer</h3><p>Kittrell features zero-depth entry and lap lanes. Registration is open.</p></a>
+        <a href="minutes.html" class="story"><div class="ph">🏛️<span class="cat">Government</span></div><div class="date">June 2, 2026</div><h3>Common Council minutes posted as searchable web text</h3><p>The June 1 regular meeting record is online, with a downloadable PDF alongside.</p></a>
       </div>
     </div></section>
 
-    <section class="block alt"><div class="wrap">
-      <div class="sec-head"><h3>Departments</h3><a href="departments.html">Full directory →</a></div>
+    <section class="block alt" id="government" aria-labelledby="gov-h"><div class="wrap">
+      <span class="eyebrow">Open & accountable</span>
+      <div class="sec-head"><h2 id="gov-h">Government &amp; Transparency</h2><a href="departments.html">Full directory →</a></div>
+      <div class="res-grid">
+        <a class="res" href="departments.html"><h3>Mayor &amp; Common Council</h3><p>Elected officials, legislation, and the meeting calendar</p></a>
+        <a class="res" href="minutes.html"><h3>Agendas &amp; Minutes</h3><p>Council meeting records, published as web text</p></a>
+        <a class="res" href="pay.html"><h3>City Budget</h3><p>The proposed 2026–2027 municipal budget</p></a>
+        <a class="res" href="index.html"><h3>Municipal Code</h3><p>Local laws, ordinances, and zoning code</p></a>
+        <a class="res" href="news.html"><h3>Public Notices</h3><p>Hearings, bids, and legal notices</p></a>
+        <a class="res" href="departments.html"><h3>FOIL Requests</h3><p>Request public records from the City Clerk</p></a>
+      </div>
+
+      <p class="subhead">City Departments</p>
       <div class="dept-grid">
-        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">🏛️</span><b>Mayor & Common Council<span class="meta">Governance and legislation</span></b></a>
-        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">👮</span><b>Public Safety<span class="meta">Police and Fire</span></b></a>
-        <a href="recreation.html" class="dept"><span class="di" aria-hidden="true">🌳</span><b>Recreation & Parks<span class="meta">Programs and facilities</span></b></a>
-        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">🏗️</span><b>Building Department<span class="meta">Permits and inspections</span></b></a>
-        <a href="pay.html" class="dept"><span class="di" aria-hidden="true">💰</span><b>Finance<span class="meta">Taxes and assessment</span></b></a>
-        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">📐</span><b>Planning<span class="meta">Zoning and development</span></b></a>
-        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">⚖️</span><b>City Court<span class="meta">Filings and appearances</span></b></a>
-        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">📚</span><b>Public Library<span class="meta">Hours and catalog</span></b></a>
-        <a href="departments.html" class="dept"><span class="di" aria-hidden="true">🚧</span><b>Public Works<span class="meta">Streets and sanitation</span></b></a>
+        <a href="departments.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M4 21V9l8-4 8 4v12M9 21v-6h6v6"/></svg><b>Mayor &amp; Common Council<span class="meta">Governance and legislation</span></b></a>
+        <a href="departments.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 2.5l7 3v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10v-6z"/></svg><b>Public Safety<span class="meta">Police and Fire</span></b></a>
+        <a href="recreation.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v18M12 8c0-3 2-5 5-5 0 3-2 5-5 5zM12 11C12 8 10 6 7 6c0 3 2 5 5 5z"/></svg><b>Recreation &amp; Parks<span class="meta">Programs and facilities</span></b></a>
+        <a href="departments.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M5 21V11l5-3 5 3v10M9 21v-4h2v4M19 21v-7l-4-2"/></svg><b>Building Department<span class="meta">Permits and inspections</span></b></a>
+        <a href="pay.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M14.5 9.3C14 8.2 13 7.7 12 7.7c-1.4 0-2.5.8-2.5 2s1.1 1.8 2.5 1.8 2.5.7 2.5 1.9-1.1 2-2.5 2c-1 0-2-.5-2.5-1.6"/></svg><b>Finance<span class="meta">Taxes and assessment</span></b></a>
+        <a href="departments.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20l6-6M14 10l6-6M4 9V4h5M20 15v5h-5M14 10l-4 4"/></svg><b>Planning<span class="meta">Zoning and development</span></b></a>
+        <a href="departments.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v18M5 7h14M7 7l-3 7h6zM17 7l-3 7h6zM4 14a3 3 0 006 0M14 14a3 3 0 006 0M9 21h6"/></svg><b>City Court<span class="meta">Filings and appearances</span></b></a>
+        <a href="departments.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5c2.5-1 5.5-1 8 .5 2.5-1.5 5.5-1.5 8-.5v13c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5zM12 5.5V19"/></svg><b>Public Library<span class="meta">Hours and catalog</span></b></a>
+        <a href="departments.html" class="dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 21h18M6 21v-8M10 21v-8M14 21v-8M18 21v-8M4 13h16L12 5z"/></svg><b>Public Works<span class="meta">Streets and sanitation</span></b></a>
       </div>
     </div></section>
 
-    <section class="history"><div class="wrap">
+    <section class="block" aria-labelledby="comm-h"><div class="wrap">
+      <span class="eyebrow">For residents &amp; families</span>
+      <div class="sec-head"><h2 id="comm-h">Community &amp; Recreation</h2><a href="recreation.html">Explore programs →</a></div>
+      <div class="res-grid">
+        <a class="res" href="recreation.html"><h3>Pools &amp; Parks</h3><p>Kittrell and Gardella pools, fields, and green space</p></a>
+        <a class="res" href="pay.html"><h3>Summer Camps</h3><p>Day camp and youth programs, June through August</p></a>
+        <a class="res" href="departments.html"><h3>Public Library</h3><p>Catalog, hours, programs, and meeting rooms</p></a>
+        <a class="res" href="recreation.html"><h3>StoryWalk Trail</h3><p>A children's book, page by page, on the Bryant–Mamaroneck path</p></a>
+        <a class="res" href="recreation.html"><h3>Senior Services</h3><p>Wellness classes, walking groups, and resources</p></a>
+        <a class="res" href="departments.html"><h3>Youth Bureau</h3><p>Programs, scholarships, and community partnerships</p></a>
+      </div>
+    </div></section>
+
+    <section class="history" aria-labelledby="hist-h"><div class="wrap">
       <div class="bignum">1776<small>July 9 · A capital is declared</small></div>
       <div>
         <div class="kick">Why we say "Birthplace of New York"</div>
-        <h3>The State of New York was born here.</h3>
+        <h2 id="hist-h">The State of New York was born here.</h2>
         <p>On July 9, 1776, the New York Provincial Congress met at the original County Court House in White Plains, adopted the Declaration of Independence, and declared New York an independent state. Two days later, the Declaration was read publicly here for the first time in New York. We've been governing ourselves ever since.</p>
+      </div>
+    </div></section>
+
+    <section class="contact-band" id="contact" aria-labelledby="contact-h"><div class="wrap">
+      <div>
+        <p class="eyebrow">We're here to help</p>
+        <h2 id="contact-h">Contact City Hall</h2>
+        <p>Reach the City of White Plains by phone, email, or in person. For emergencies, always call 911.</p>
+        <a href="pay.html#report" class="btn">Report a problem →</a>
+      </div>
+      <div>
+        <p class="lbl">City Hall</p>
+        <p>255 Main Street<br>White Plains, NY 10601<br><strong>914-422-1200</strong><br>Mon–Fri, 9 a.m.–5 p.m.</p>
+      </div>
+      <div>
+        <p class="lbl">Quick contacts</p>
+        <p><a href="pay.html">Finance &amp; Tax Office</a><br><a href="departments.html">City Clerk</a><br><a href="recreation.html">Recreation &amp; Parks</a><br><a href="departments.html">All departments</a></p>
       </div>
     </div></section>
   </main>
@@ -132,7 +262,7 @@
       <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br><span data-i18n="foot.hours">Office hours: Monday–Friday, 9 a.m.–5 p.m.</span></p></div>
       <div class="foot-col"><h5 data-i18n="nav.residents">Residents</h5><a href="pay.html" data-i18n="foot.paytaxes">Pay Taxes</a><a href="pay.html" data-i18n="foot.permits">Permits</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a><a href="pay.html" data-i18n="foot.report">Report an Issue</a></div>
       <div class="foot-col"><h5 data-i18n="nav.gov">Government</h5><a href="departments.html" data-i18n="foot.council">Common Council</a><a href="minutes.html" data-i18n="foot.meetings">Meetings</a><a href="index.html" data-i18n="foot.budget">Budget</a><a href="index.html" data-i18n="foot.code">Municipal Code</a></div>
-      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="index.html" data-i18n="foot.sitemap">Site Map</a><a href="index.html" data-i18n="foot.accessibility">Accessibility</a></div>
+      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html#contact" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="index.html" data-i18n="foot.sitemap">Site Map</a><a href="index.html" data-i18n="foot.accessibility">Accessibility</a></div>
     </div></div>
     <div class="foot-bottom"><div class="wrap"><span data-i18n="foot.copyright">© 2026 City of White Plains, New York. All rights reserved.</span><span data-i18n="foot.concept">Redesign concept — not an official city website.</span></div></div>
   </footer>

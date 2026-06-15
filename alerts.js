@@ -89,7 +89,8 @@
     });
 
     addSubscribeRow(region, shown);
-    main.parentNode.insertBefore(region, main);
+    var slot = document.getElementById("wp-alert-slot");
+    if (slot) slot.appendChild(region); else main.parentNode.insertBefore(region, main);
   }
 
   function addSubscribeRow(region, shown) {
