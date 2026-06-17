@@ -9,7 +9,7 @@ window.WP_DEPTS = [
     overview: "The Assessor determines the assessed value of every property in the City, maintains the assessment roll, and administers exemptions that lower what eligible owners pay in property tax.",
     services: [
       { t: "Look up a property assessment", demo: true },
-      { t: "Apply for a STAR, senior, or veteran exemption", demo: true },
+      { t: "Apply for a STAR, senior, or veteran exemption", h: "exemptions.html" },
       { t: "File a grievance with the Board of Assessment Review", demo: true },
       { t: "View the annual assessment roll", demo: true }
     ],

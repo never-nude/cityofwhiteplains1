@@ -417,6 +417,30 @@
       "weight": 82,
       "summary": "Pay a City balance in installments — who qualifies, how it works, and how to request one.",
       "keywords": "payment plan installments arrears delinquent taxes water sewer balance hardship pay over time"
+    },
+    {
+      "title": "Property tax exemptions",
+      "url": "exemptions.html",
+      "type": "service",
+      "weight": 84,
+      "summary": "STAR, senior, veteran, and disability exemptions — who qualifies, deadlines, and how to apply.",
+      "keywords": "exemption star enhanced senior veteran disability clergy tax relief lower assessment eligibility"
+    },
+    {
+      "title": "Senior & veteran relief",
+      "url": "relief.html",
+      "type": "service",
+      "weight": 82,
+      "summary": "Property-tax relief and assistance for older adults and veterans.",
+      "keywords": "senior veteran relief older adults 65 exemption help assistance tax"
+    },
+    {
+      "title": "Dispute a charge or bill",
+      "url": "dispute.html",
+      "type": "service",
+      "weight": 80,
+      "summary": "Dispute a water/sewer bill, City fee, or parking ticket and request a review.",
+      "keywords": "dispute contest bill charge error water sewer parking ticket adjustment appeal review"
     }
   ]
 }

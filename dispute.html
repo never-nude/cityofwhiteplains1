@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dispute a Charge · City of White Plains</title>
+<meta name="description" content="Dispute a City of White Plains charge or bill — property tax, water and sewer, or a parking ticket — and how the review works.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
+  <header class="site-header">
+  <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal" aria-hidden="true"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag" data-i18n="tagline">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="Search permits, taxes, services…" data-i18n-ph="searchph" aria-label="Search the city website" data-i18n-al="searcharia" autocomplete="off"><button type="submit" data-i18n="searchbtn">Search</button></form>
+  </div></div>
+  </header>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html" data-i18n="nav.residents">Residents</a><a href="government.html" data-i18n="nav.gov">Government</a><a href="departments.html" data-i18n="nav.depts">Departments</a><a href="pay.html" class="active" aria-current="page" data-i18n="nav.services">Services</a><a href="community.html" data-i18n="nav.community">Community</a><a href="business.html" data-i18n="nav.business">Business</a><a href="how-do-i.html" data-i18n="nav.howdoi">How Do I…?</a>
+  </div><button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></nav>
+
+  <div class="crumb"><div class="wrap"><a href="index.html" data-i18n="home">Home</a><span class="sep" aria-hidden="true">›</span><a href="pay.html" data-i18n="nav.services">Pay &amp; Apply</a><span class="sep" aria-hidden="true">›</span>Dispute a charge</div></div>
+
+  <div class="page-hd"><div class="wrap">
+    <div class="kick">Finance · Need help paying?</div>
+    <h2>Dispute a charge or bill</h2>
+    <p>Think a City charge is wrong? Tell us what and why. Most disputes are resolved without a formal proceeding — here's how it works and how to start.</p>
+  </div></div>
+
+  <main id="main"><div class="wrap"><div class="layout">
+    <div class="prose">
+      <h3>What you can dispute here</h3>
+      <div class="res-grid">
+        <div class="res"><h3>Water &amp; sewer bill</h3><p>A reading that looks too high, a leak adjustment, or a billing error.</p></div>
+        <div class="res"><h3>A City fee or invoice</h3><p>Permit, license, or other charge you believe is incorrect or duplicated.</p></div>
+        <div class="res"><h3>A parking ticket</h3><p>Contest a citation you believe was issued in error.</p></div>
+      </div>
+      <div class="callout-ext"><p><strong>Property assessment is different.</strong> If you disagree with your home's <em>assessed value</em> (not a bill), that goes through the Assessor's grievance process. <a href="exemptions.html">Start with the Assessor →</a></p></div>
+
+      <h3>How a dispute works</h3>
+      <div class="steps">
+        <div class="step"><div><h4>Submit your dispute</h4><p>Use the form below with the bill or ticket number and what you think is wrong. There's no fee to ask.</p></div></div>
+        <div class="step"><div><h4>Staff review</h4><p>The right department checks the account, the reading or citation, and any notes, and may contact you for more detail.</p></div></div>
+        <div class="step"><div><h4>You get a decision</h4><p>You'll receive an adjustment, an explanation, or — for tickets — the option to escalate to a hearing.</p></div></div>
+        <div class="step"><div><h4>Pay any corrected balance</h4><p>If an amount remains, you can pay it online or set up a plan; due dates are paused while a dispute is open where allowed.</p></div></div>
+      </div>
+
+      <h3 id="start">Start a dispute</h3>
+      <form id="ds-form" class="form-card" data-stub data-ref-prefix="DSP" data-success="Dispute submitted" novalidate>
+        <div class="fld"><label for="ds-type">What are you disputing?</label>
+          <select id="ds-type" name="type">
+            <option>Water &amp; sewer bill</option>
+            <option>Property tax bill</option>
+            <option>Parking ticket</option>
+            <option>Permit or other City fee</option>
+            <option>Other</option>
+          </select></div>
+        <div class="fld"><label for="ds-ref">Bill, account, or ticket number</label>
+          <input type="text" id="ds-ref" name="reference" required autocomplete="off"></div>
+        <div class="fld"><label for="ds-reason">What's wrong, and why?</label>
+          <textarea id="ds-reason" name="reason" required></textarea></div>
+        <div class="fld"><label for="ds-email">Your email</label>
+          <input type="email" id="ds-email" name="email" required autocomplete="email">
+          <span class="hint">We'll send your case number and any decision here.</span></div>
+        <button type="submit" class="btn">Submit dispute</button>
+        <p class="form-note">Demo — this concept does not open real cases or adjust balances. In production, this routes to the right department.</p>
+      </form>
+
+      <h3>Frequently asked</h3>
+      <details class="faq"><summary>Do I have to pay while a dispute is open?</summary><p>Where the law allows, the disputed amount's due date is held while staff review. Anything not in dispute should still be paid on time to avoid penalties.</p></details>
+      <details class="faq"><summary>What if I disagree with the decision?</summary><p>Parking citations can be escalated to a hearing; billing decisions can be reviewed by the department head. Your decision notice explains the next step.</p></details>
+      <details class="faq"><summary>How long does it take?</summary><p>Simple billing corrections are often resolved within a few business days; tickets and complex cases take longer.</p></details>
+
+      <p style="margin-top:8px;"><a href="pay.html" class="btn ghost">← Back to Pay &amp; Apply</a></p>
+    </div>
+
+    <aside class="side">
+      <div class="side-box contact">
+        <h4>Finance Department</h4>
+        <p><strong>Tax &amp; Assessment Office</strong><br>City Hall, 1st Floor<br>255 Main Street<br>White Plains, NY 10601<br><br><strong>Phone:</strong> 914-422-1200<br><strong>Hours:</strong> Mon–Fri, 9 a.m.–5 p.m.</p>
+      </div>
+      <div class="side-box">
+        <h4>Related help</h4>
+        <a href="pay.html">Pay a bill online</a>
+        <a href="payment-plans.html">Payment plan options</a>
+        <a href="exemptions.html">Property tax exemptions</a>
+        <a href="department.html?d=parking-traffic">Parking &amp; Traffic</a>
+      </div>
+    </aside>
+  </div></div></main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br><span data-i18n="foot.hours">Office hours: Monday–Friday, 9 a.m.–5 p.m.</span></p></div>
+      <div class="foot-col"><h5 data-i18n="nav.residents">Residents</h5><a href="pay.html" data-i18n="foot.paytaxes">Pay Taxes</a><a href="pay.html" data-i18n="foot.permits">Permits</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a><a href="pay.html#report" data-i18n="foot.report">Report an Issue</a></div>
+      <div class="foot-col"><h5 data-i18n="nav.gov">Government</h5><a href="government.html" data-i18n="foot.council">Common Council</a><a href="minutes.html" data-i18n="foot.meetings">Meetings</a><a href="government.html#budget" data-i18n="foot.budget">Budget</a><a href="government.html#code" data-i18n="foot.code">Municipal Code</a></div>
+      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html#contact" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="search.html" data-i18n="foot.sitemap">Site Map</a><a href="index.html" data-i18n="foot.accessibility">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span data-i18n="foot.copyright">© 2026 City of White Plains, New York. All rights reserved.</span><span data-i18n="foot.concept">Redesign concept — not an official city website.</span></div></div>
+  </footer>
+  <script src="i18n.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="nav.js" defer></script>
+  <script src="alerts.js" defer></script>
+  <script src="interactions.js" defer></script>
+</body>
+</html>

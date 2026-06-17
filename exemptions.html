@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Tax Exemptions · City of White Plains</title>
+<meta name="description" content="Property tax exemptions in White Plains — STAR, senior, veteran, and disability exemptions, who qualifies, deadlines, and how to apply.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
+  <header class="site-header">
+  <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal" aria-hidden="true"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag" data-i18n="tagline">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="Search permits, taxes, services…" data-i18n-ph="searchph" aria-label="Search the city website" data-i18n-al="searcharia" autocomplete="off"><button type="submit" data-i18n="searchbtn">Search</button></form>
+  </div></div>
+  </header>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html" data-i18n="nav.residents">Residents</a><a href="government.html" data-i18n="nav.gov">Government</a><a href="departments.html" data-i18n="nav.depts">Departments</a><a href="pay.html" class="active" aria-current="page" data-i18n="nav.services">Services</a><a href="community.html" data-i18n="nav.community">Community</a><a href="business.html" data-i18n="nav.business">Business</a><a href="how-do-i.html" data-i18n="nav.howdoi">How Do I…?</a>
+  </div><button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></nav>
+
+  <div class="crumb"><div class="wrap"><a href="index.html" data-i18n="home">Home</a><span class="sep" aria-hidden="true">›</span><a href="pay.html" data-i18n="nav.services">Pay &amp; Apply</a><span class="sep" aria-hidden="true">›</span>Property tax exemptions</div></div>
+
+  <div class="page-hd"><div class="wrap">
+    <div class="kick">Finance · Assessor · Need help paying?</div>
+    <h2>Property tax exemptions</h2>
+    <p>Exemptions lower the taxable value of your home, which lowers your City property tax bill. See what you may qualify for, the deadline, and how to apply.</p>
+  </div></div>
+
+  <main id="main"><div class="wrap"><div class="layout">
+    <div class="prose">
+      <h3>Exemptions you may qualify for</h3>
+      <div class="res-grid">
+        <div class="res"><h3>Basic &amp; Enhanced STAR</h3><p>School-tax relief for owner-occupied homes; Enhanced STAR adds savings for seniors who meet the income limit.</p></div>
+        <div class="res"><h3>Senior Citizens</h3><p>Owners 65+ with income below the City limit may receive a reduction in assessed value.</p></div>
+        <div class="res"><h3>Veterans</h3><p>Alternative and Cold War veterans exemptions for those who served, with added benefit for service-connected disabilities.</p></div>
+        <div class="res"><h3>Persons with Disabilities</h3><p>Owners with a documented disability and limited income may qualify for a reduction.</p></div>
+        <div class="res"><h3>Clergy</h3><p>A statutory exemption for members of the clergy who meet the requirements.</p></div>
+        <div class="res"><h3>Home Improvement</h3><p>Temporary relief on the added value of certain residential improvements.</p></div>
+      </div>
+
+      <h3>How to apply</h3>
+      <div class="steps">
+        <div class="step"><div><h4>Confirm you're eligible</h4><p>Each exemption has its own age, income, residency, or service requirements. Use the form below and the Assessor will tell you what fits.</p></div></div>
+        <div class="step"><div><h4>Gather your documents</h4><p>Typically proof of age, income (prior-year tax return), residency, and — for veterans — discharge papers (DD-214).</p></div></div>
+        <div class="step"><div><h4>File by the deadline</h4><p>Most exemption applications are due by the City's <strong>taxable status date</strong> in the spring. File once; some renew automatically, others annually.</p></div></div>
+        <div class="step"><div><h4>See it on your bill</h4><p>Approved exemptions appear on the next assessment roll and reduce the tax you owe.</p></div></div>
+      </div>
+
+      <h3 id="check">Check what you may qualify for</h3>
+      <p>Tell the Assessor a little about your situation and they'll follow up with the exemptions you're likely eligible for and the forms you need.</p>
+      <form id="ex-form" class="form-card" data-stub data-ref-prefix="EX" data-success="Request received" novalidate>
+        <div class="fld"><label for="ex-name">Full name</label>
+          <input type="text" id="ex-name" name="name" required autocomplete="name"></div>
+        <div class="fld"><label for="ex-email">Email</label>
+          <input type="email" id="ex-email" name="email" required autocomplete="email"></div>
+        <div class="fld"><label for="ex-parcel">Property address or parcel number (optional)</label>
+          <input type="text" id="ex-parcel" name="parcel" autocomplete="street-address"></div>
+        <fieldset class="fld"><legend>Which may apply to you?</legend>
+          <label class="chk"><input type="checkbox" name="ex" value="star"> STAR / Enhanced STAR</label>
+          <label class="chk"><input type="checkbox" name="ex" value="senior"> Senior Citizens</label>
+          <label class="chk"><input type="checkbox" name="ex" value="veteran"> Veterans</label>
+          <label class="chk"><input type="checkbox" name="ex" value="disability"> Persons with Disabilities</label>
+          <label class="chk"><input type="checkbox" name="ex" value="other"> Not sure</label>
+        </fieldset>
+        <button type="submit" class="btn">Check eligibility</button>
+        <p class="form-note">Demo — this concept does not process exemption applications. In production, the Assessor receives this and replies with next steps.</p>
+      </form>
+
+      <h3>Frequently asked</h3>
+      <details class="faq"><summary>What's the deadline to apply?</summary><p>Most exemptions must be filed by the taxable status date set each spring. Applying after that date generally means the exemption starts the following tax year.</p></details>
+      <details class="faq"><summary>Do I have to reapply every year?</summary><p>Basic STAR and some others carry over automatically; income-based exemptions like Senior Citizens usually require annual renewal. The Assessor will tell you which applies.</p></details>
+      <details class="faq"><summary>Can I combine exemptions?</summary><p>Often yes — for example, a senior may receive both Enhanced STAR and the Senior Citizens exemption if income limits are met.</p></details>
+
+      <p style="margin-top:8px;"><a href="pay.html" class="btn ghost">← Back to Pay &amp; Apply</a></p>
+    </div>
+
+    <aside class="side">
+      <div class="side-box contact">
+        <h4>Assessor's Office</h4>
+        <p><strong>Office of the Assessor</strong><br>City Hall, 1st Floor<br>255 Main Street<br>White Plains, NY 10601<br><br><strong>Phone:</strong> 914-422-1200<br><strong>Hours:</strong> Mon–Fri, 9 a.m.–5 p.m.</p>
+      </div>
+      <div class="side-box">
+        <h4>Related help</h4>
+        <a href="pay.html">Pay property taxes</a>
+        <a href="payment-plans.html">Payment plan options</a>
+        <a href="relief.html">Senior &amp; veteran relief</a>
+        <a href="dispute.html">Dispute a charge</a>
+        <a href="department.html?d=assessor">Assessor Department</a>
+      </div>
+    </aside>
+  </div></div></main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br><span data-i18n="foot.hours">Office hours: Monday–Friday, 9 a.m.–5 p.m.</span></p></div>
+      <div class="foot-col"><h5 data-i18n="nav.residents">Residents</h5><a href="pay.html" data-i18n="foot.paytaxes">Pay Taxes</a><a href="pay.html" data-i18n="foot.permits">Permits</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a><a href="pay.html#report" data-i18n="foot.report">Report an Issue</a></div>
+      <div class="foot-col"><h5 data-i18n="nav.gov">Government</h5><a href="government.html" data-i18n="foot.council">Common Council</a><a href="minutes.html" data-i18n="foot.meetings">Meetings</a><a href="government.html#budget" data-i18n="foot.budget">Budget</a><a href="government.html#code" data-i18n="foot.code">Municipal Code</a></div>
+      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html#contact" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="search.html" data-i18n="foot.sitemap">Site Map</a><a href="index.html" data-i18n="foot.accessibility">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span data-i18n="foot.copyright">© 2026 City of White Plains, New York. All rights reserved.</span><span data-i18n="foot.concept">Redesign concept — not an official city website.</span></div></div>
+  </footer>
+  <script src="i18n.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="nav.js" defer></script>
+  <script src="alerts.js" defer></script>
+  <script src="interactions.js" defer></script>
+</body>
+</html>
