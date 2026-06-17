@@ -347,3 +347,16 @@ fieldset.fld { border: 1px solid var(--line); border-radius: 8px; padding: 12px 
 .callout-ext { background: var(--gold-soft); border-left: 4px solid var(--gold-dark); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 22px; }
 .callout-ext p { margin: 0; font-size: 15px; color: #5c4a1f; }
 @media (max-width: 920px) { .howdo-grid { grid-template-columns: 1fr; } }
+
+/* ===== Alert bar — compact, single-line, collapsed ===== */
+.alertbar-inner { align-items: baseline; padding: 9px 28px; gap: 10px; }
+.alertbar-ic { font-size: 14px; line-height: 1.5; }
+.alertbar-text { font-size: 14px; line-height: 1.5; margin: 0; }
+.alertbar-label { margin-right: 6px; padding: 1px 7px; }
+.alertbar-title { font-weight: 700; }
+.alertbar-time { display: inline; margin-left: 8px; font-size: 12px; white-space: nowrap; }
+.alertbar-x { min-width: 32px; min-height: 32px; font-size: 13px; align-self: center; }
+.alert-subrow-inner { padding-top: 6px; padding-bottom: 6px; gap: 16px; }
+.alert-toggle { background: none; border: none; color: var(--link); font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; padding: 6px 4px; min-height: 36px; }
+.alert-toggle:hover { text-decoration: underline; color: var(--link-hover); }
+@media (max-width: 560px) { .alertbar-inner { padding-left: 18px; padding-right: 18px; } .alertbar-time { display: block; margin-left: 0; } }

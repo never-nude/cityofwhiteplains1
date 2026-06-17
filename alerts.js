@@ -1,5 +1,6 @@
 /* City of White Plains — alert system
    - Severity levels (notice / warning / emergency), timestamped
+   - Compact + collapsed by default (highest severity shown; rest behind a toggle)
    - Dismissible per session (sessionStorage; no localStorage)
    - Working "Subscribe to alerts" modal (UI is real; submission is stubbed)
    No dependencies. */
@@ -28,6 +29,7 @@
     }
   ];
 
+  var RANK = { emergency: 0, warning: 1, notice: 2 };
   var DKEY = "wp-alerts-dismissed";
   function dismissed() { try { return JSON.parse(sessionStorage.getItem(DKEY) || "[]"); } catch (e) { return []; } }
   function dismiss(id) {
@@ -45,12 +47,60 @@
     if (isNaN(d)) return "";
     var lang = (window.WP && WP.lang === "es") ? "es-US" : "en-US";
     try {
-      return d.toLocaleDateString(lang, { month: "long", day: "numeric", year: "numeric" }) + ", " +
+      return d.toLocaleDateString(lang, { month: "short", day: "numeric" }) + ", " +
         d.toLocaleTimeString(lang, { hour: "numeric", minute: "2-digit" });
     } catch (e) { return iso; }
   }
-
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+
+  var expanded = false;
+
+  function buildBar(a) {
+    var sev = SEV[a.severity] || SEV.notice;
+    var bar = el("div", "alertbar alertbar-" + a.severity);
+    bar.setAttribute("role", a.severity === "emergency" ? "alert" : "status");
+    bar.dataset.id = a.id;
+    var inner = el("div", "wrap alertbar-inner");
+    inner.innerHTML =
+      '<span class="alertbar-ic" aria-hidden="true">' + sev.icon + '</span>' +
+      '<p class="alertbar-text">' +
+        '<span class="alertbar-label">' + t(sev.label) + '</span> ' +
+        '<span class="alertbar-title"></span> ' +
+        '<span class="alertbar-body"></span> ' +
+        (a.href ? '<a class="alertbar-link" href="' + a.href + '"></a> ' : '') +
+        '<time class="alertbar-time" datetime="' + a.time + '"></time>' +
+      '</p>' +
+      '<button type="button" class="alertbar-x" aria-label="' + t("Dismiss this alert") + '">✕</button>';
+    inner.querySelector(".alertbar-title").textContent = a.title;
+    inner.querySelector(".alertbar-body").textContent = a.body;
+    if (a.href) inner.querySelector(".alertbar-link").textContent = (a.linkText || "Details") + " →";
+    inner.querySelector(".alertbar-time").textContent = t("Updated") + " " + fmtTime(a.time);
+    inner.querySelector(".alertbar-x").addEventListener("click", function () {
+      dismiss(a.id); bar.remove(); applyCollapse();
+    });
+    bar.appendChild(inner);
+    return bar;
+  }
+
+  function applyCollapse() {
+    var region = document.getElementById("wp-alerts"); if (!region) return;
+    var bars = [].slice.call(region.querySelectorAll(".alertbar"));
+    bars.forEach(function (b, i) { b.hidden = (!expanded && i > 0); });
+    var extra = bars.length - 1;
+    var tog = region.querySelector(".alert-toggle");
+    if (tog) {
+      if (extra <= 0) { tog.hidden = true; }
+      else {
+        tog.hidden = false;
+        tog.textContent = expanded
+          ? t("Show fewer")
+          : ("+ " + extra + " " + (extra === 1 ? t("more update") : t("more updates")));
+        tog.setAttribute("aria-expanded", expanded ? "true" : "false");
+      }
+    }
+    var msg = region.querySelector(".alert-subrow-msg");
+    if (msg) msg.textContent = bars.length === 0 ? t("No active alerts right now.") : "";
+  }
 
   function render() {
     var main = document.querySelector("main");
@@ -59,50 +109,24 @@
     region.id = "wp-alerts";
     region.setAttribute("aria-label", "City alerts");
 
-    var shown = 0, d = dismissed();
-    ALERTS.forEach(function (a) {
-      if (d.indexOf(a.id) !== -1) return;
-      shown++;
-      var sev = SEV[a.severity] || SEV.notice;
-      var bar = el("div", "alertbar alertbar-" + a.severity);
-      bar.setAttribute("role", a.severity === "emergency" ? "alert" : "status");
-      var inner = el("div", "wrap alertbar-inner");
-      inner.innerHTML =
-        '<span class="alertbar-ic" aria-hidden="true">' + sev.icon + '</span>' +
-        '<div class="alertbar-text">' +
-          '<span class="alertbar-label">' + t(sev.label) + '</span>' +
-          '<span class="alertbar-title"></span> ' +
-          '<span class="alertbar-body"></span> ' +
-          (a.href ? '<a class="alertbar-link" href="' + a.href + '"></a> ' : '') +
-          '<time class="alertbar-time" datetime="' + a.time + '"></time>' +
-        '</div>' +
-        '<button type="button" class="alertbar-x" aria-label="' + t("Dismiss this alert") + '">✕</button>';
-      inner.querySelector(".alertbar-title").textContent = a.title;
-      inner.querySelector(".alertbar-body").textContent = a.body;
-      if (a.href) { var lk = inner.querySelector(".alertbar-link"); lk.textContent = (a.linkText || "Details") + " →"; }
-      inner.querySelector(".alertbar-time").textContent = t("Updated") + " " + fmtTime(a.time);
-      inner.querySelector(".alertbar-x").addEventListener("click", function () {
-        dismiss(a.id); bar.remove(); if (!region.querySelector(".alertbar")) addSubscribeRow(region);
-      });
-      bar.appendChild(inner);
-      region.appendChild(bar);
-    });
+    var d = dismissed();
+    var active = ALERTS.filter(function (a) { return d.indexOf(a.id) === -1; })
+      .sort(function (a, b) { return (RANK[a.severity] || 9) - (RANK[b.severity] || 9); });
+    active.forEach(function (a) { region.appendChild(buildBar(a)); });
 
-    addSubscribeRow(region, shown);
+    var row = el("div", "alert-subrow");
+    row.innerHTML = '<div class="wrap alert-subrow-inner">' +
+      '<span class="alert-subrow-msg"></span>' +
+      '<button type="button" class="alert-toggle" aria-expanded="false" hidden></button>' +
+      '<button type="button" class="btn-link-sub" data-subscribe data-i18n="alerts.subscribe">Subscribe to alerts</button>' +
+      '</div>';
+    row.querySelector(".alert-toggle").addEventListener("click", function () { expanded = !expanded; applyCollapse(); });
+    region.appendChild(row);
+
     var slot = document.getElementById("wp-alert-slot");
     if (slot) slot.appendChild(region); else main.parentNode.insertBefore(region, main);
-  }
-
-  function addSubscribeRow(region, shown) {
-    if (region.querySelector(".alert-subrow")) return;
-    var row = el("div", "alert-subrow");
-    var inner = el("div", "wrap alert-subrow-inner");
-    inner.innerHTML = '<span class="alert-subrow-msg">' +
-      (shown === 0 ? t("No active alerts right now.") : "") + '</span>' +
-      '<button type="button" class="btn-link-sub" data-subscribe data-i18n="alerts.subscribe">Subscribe to alerts</button>';
-    row.appendChild(inner);
-    region.appendChild(row);
-    if (window.WP && WP.applyLang) WP.applyLang(row);
+    applyCollapse();
+    if (window.WP && WP.applyLang) WP.applyLang(region);
   }
 
   /* ---------- Subscribe modal (stubbed submission) ---------- */
@@ -183,5 +207,6 @@
     document.querySelectorAll(".alertbar-time").forEach(function (tEl) {
       var iso = tEl.getAttribute("datetime"); if (iso) tEl.textContent = t("Updated") + " " + fmtTime(iso);
     });
+    applyCollapse();
   });
 })();
