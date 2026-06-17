@@ -572,6 +572,103 @@
     renderAll(); setView("month");
   }
 
+  /* ---------- Homepage task launcher ("I want to…") ---------- */
+  var WP_TASKS = [
+    { l: "Pay a bill (taxes, water, parking)", u: "pay.html", k: "pay bill taxes property water sewer parking ticket permit fee online", pop: 1 },
+    { l: "Find your trash & recycling day", u: "trash.html", k: "trash garbage recycling pickup collection day schedule zone bulk", pop: 1 },
+    { l: "Apply for a permit or license", u: "pay.html", k: "permit license building business parking dog apply application", pop: 1 },
+    { l: "Report a problem", u: "pay.html#report", k: "report problem pothole streetlight light graffiti missed pickup complaint issue", pop: 1 },
+    { l: "Council agendas & minutes", u: "minutes.html", k: "council meeting agenda minutes resolution vote government", pop: 1 },
+    { l: "Find a City job", u: "jobs.html", k: "job jobs employment work civil service exam careers hiring openings", pop: 1 },
+    { l: "Pay your water & sewer bill", u: "water-sewer.html", k: "water sewer bill utility account balance leak meter" },
+    { l: "City calendar & events", u: "calendar.html", k: "calendar events meetings hearings holidays festival concert" },
+    { l: "Request public records (FOIL)", u: "foil.html", k: "foil records request freedom of information documents clerk" },
+    { l: "Recreation, pools & camps", u: "recreation.html", k: "recreation parks pool swim camp program class league register kids" },
+    { l: "Register to vote", u: "https://www.ny.gov/services/register-vote", k: "vote voting register election ballot 18" },
+    { l: "Apply for a marriage license", u: "https://www.cityofwhiteplains.com/318/Marriage-Licenses", k: "marriage license wedding married clerk" },
+    { l: "Birth & death certificates", u: "https://www.cityofwhiteplains.com/317/Vital-Records", k: "birth death certificate vital record clerk baby" },
+    { l: "License your dog", u: "https://www.cityofwhiteplains.com/88/City-Clerk", k: "dog pet license animal" },
+    { l: "Browse City departments", u: "departments.html", k: "department directory phone contact office staff" },
+    { l: "Contact City Hall", u: "index.html#contact", k: "contact phone address email city hall reach" },
+    { l: "City maps & zoning (GIS)", u: "https://www.cityofwhiteplains.com/808/Maps-Plans-Zoning", k: "map maps gis zoning property parcel lookup district" },
+    { l: "City budget & finances", u: "government.html#budget", k: "budget finance money spending tax rate" },
+    { l: "Municipal code & local laws", u: "government.html#code", k: "code law laws ordinance local rule regulation" },
+    { l: "Metro-North & buses", u: "community.html#transit", k: "metro north train bus bee-line omny transit commute station" },
+    { l: "Start or run a business", u: "business.html", k: "business start open license commercial economic development" },
+    { l: "News & announcements", u: "news.html", k: "news announcement update notice press story" },
+    { l: "Accessibility help", u: "accessibility.html", k: "accessibility ada disability screen reader large text contrast" }
+  ];
+  function initLauncher() {
+    var input = document.getElementById("launch-input"),
+        resultsEl = document.getElementById("launch-results"),
+        chipsEl = document.getElementById("launch-chips"),
+        form = document.getElementById("launcher");
+    if (!input || !resultsEl || !form) return;
+    var active = -1, shown = [];
+    function isExt(tk) { return /^https?:/.test(tk.u); }
+    function go(tk) { if (!tk) return; if (isExt(tk)) window.open(tk.u, "_blank", "noopener"); else window.location.href = tk.u; }
+    function score(tk, q) {
+      var label = tk.l.toLowerCase(), hay = (tk.l + " " + tk.k).toLowerCase();
+      if (label.indexOf(q) === 0) return 4;
+      if (label.indexOf(q) !== -1) return 3;
+      if (hay.indexOf(q) !== -1) return 2;
+      // token prefix match (e.g. "vot" → "vote")
+      if (hay.split(/\s+/).some(function (w) { return w.indexOf(q) === 0; })) return 1;
+      return 0;
+    }
+    function filter(q) {
+      q = q.toLowerCase().trim(); if (!q) return [];
+      return WP_TASKS.map(function (tk) { return { tk: tk, s: score(tk, q) }; })
+        .filter(function (x) { return x.s > 0; })
+        .sort(function (a, b) { return b.s - a.s; }).slice(0, 6).map(function (x) { return x.tk; });
+    }
+    function renderResults(list) {
+      shown = list; active = -1; input.removeAttribute("aria-activedescendant");
+      if (!list.length) {
+        var q = input.value.trim();
+        if (q) { resultsEl.innerHTML = '<li class="launch-empty">' + t("Press Enter to search the whole site for") + ' “' + esc(q) + '”</li>'; resultsEl.hidden = false; }
+        else { resultsEl.hidden = true; resultsEl.innerHTML = ""; }
+        input.setAttribute("aria-expanded", q ? "true" : "false"); return;
+      }
+      resultsEl.innerHTML = list.map(function (tk, i) {
+        return '<li role="option" id="lr-' + i + '"><button type="button" data-i="' + i + '">' +
+          '<span class="lr-t">' + esc(tb(tk.l)) + '</span>' +
+          '<span class="lr-go">' + (isExt(tk) ? t("Open ↗") : t("Go →")) + '</span></button></li>';
+      }).join("");
+      resultsEl.hidden = false; input.setAttribute("aria-expanded", "true");
+    }
+    function renderChips() {
+      chipsEl.innerHTML = WP_TASKS.filter(function (tk) { return tk.pop; }).map(function (tk) {
+        return '<button type="button" data-u="' + tk.u + '" data-e="' + (isExt(tk) ? 1 : 0) + '">' + esc(tb(tk.l.replace(/ \(.*\)/, ""))) + "</button>";
+      }).join("");
+    }
+    function setActive(i) {
+      var items = resultsEl.querySelectorAll("li[role=option]");
+      items.forEach(function (li, idx) { li.classList.toggle("active", idx === i); });
+      active = i;
+      if (i >= 0 && items[i]) input.setAttribute("aria-activedescendant", "lr-" + i);
+      else input.removeAttribute("aria-activedescendant");
+    }
+    input.addEventListener("input", function () { renderResults(filter(input.value)); });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") { e.preventDefault(); if (shown.length) setActive((active + 1) % shown.length); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); if (shown.length) setActive((active - 1 + shown.length) % shown.length); }
+      else if (e.key === "Enter") { if (active >= 0 && shown[active]) { e.preventDefault(); go(shown[active]); } }
+      else if (e.key === "Escape") { renderResults([]); }
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (active >= 0 && shown[active]) return go(shown[active]);
+      if (shown.length) return go(shown[0]);
+      var q = input.value.trim(); if (q) window.location.href = "search.html?q=" + encodeURIComponent(q);
+    });
+    resultsEl.addEventListener("click", function (e) { var b = e.target.closest("[data-i]"); if (b) go(shown[+b.getAttribute("data-i")]); });
+    chipsEl.addEventListener("click", function (e) { var b = e.target.closest("[data-u]"); if (b) go({ u: b.getAttribute("data-u"), k: "" }); });
+    document.addEventListener("click", function (e) { if (!form.contains(e.target)) renderResults([]); });
+    document.addEventListener("wp:languagechange", function () { renderChips(); if (input.value.trim()) renderResults(filter(input.value)); });
+    renderChips();
+  }
+
   /* ---------- Water & sewer account lookup (demo) ---------- */
   function initWaterLookup() {
     var form = document.getElementById("water-lookup"), out = document.getElementById("water-result");
@@ -620,7 +717,7 @@
 
   function init() {
     initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter();
-    renderDepartment(); initTrash(); initCalendar(); initWaterLookup(); upgradeStubLinks();
+    renderDepartment(); initTrash(); initCalendar(); initWaterLookup(); initLauncher(); upgradeStubLinks();
     // Re-render the department detail (and re-upgrade its links) when language changes.
     document.addEventListener("wp:languagechange", function () {
       if (document.getElementById("dept-detail")) { renderDepartment(); upgradeStubLinks(); }

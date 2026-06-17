@@ -20,6 +20,25 @@
   .hero-skyline svg { display: block; width: 100%; height: auto; }
   @media (max-width: 760px){ .hero-skyline { opacity: 0.5; width: 72%; } }
 
+  /* Task launcher — the front door */
+  .launch { position: relative; max-width: 640px; margin: 24px 0 2px; z-index: 5; }
+  .launch-bar { display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 12px; padding: 6px 6px 6px 16px; box-shadow: 0 12px 32px rgba(0,0,0,0.28); }
+  .launch-bar > svg { width: 20px; height: 20px; color: var(--ink-dim); flex-shrink: 0; }
+  .launch-bar input { flex: 1; border: none; outline: none; font: inherit; font-size: 17px; color: var(--ink); padding: 11px 0; background: transparent; min-width: 0; }
+  .launch-go { background: var(--gold); color: #fff; border: none; font: inherit; font-weight: 700; font-size: 15px; padding: 11px 20px; border-radius: 9px; cursor: pointer; }
+  .launch-go:hover { background: var(--gold-dark); }
+  .launch-results { list-style: none; margin: 8px 0 0; padding: 6px; position: absolute; left: 0; right: 0; top: 100%; background: #fff; border-radius: 12px; box-shadow: 0 16px 44px rgba(0,0,0,0.30); z-index: 20; max-height: 62vh; overflow-y: auto; }
+  .launch-results button { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: none; border: none; font: inherit; padding: 11px 12px; cursor: pointer; border-radius: 8px; color: var(--ink); }
+  .launch-results li.active button, .launch-results button:hover { background: var(--paper-2); }
+  .launch-results .lr-t { font-size: 15.5px; font-weight: 600; color: var(--navy); }
+  .launch-results .lr-go { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--gold-dark); white-space: nowrap; }
+  .launch-empty { padding: 12px; font-size: 14px; color: var(--ink-dim); }
+  .launch-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .launch-chips button { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.30); color: #eaf0f7; font: inherit; font-size: 13.5px; font-weight: 600; padding: 7px 14px; border-radius: 999px; cursor: pointer; }
+  .launch-chips button:hover { background: rgba(255,255,255,0.22); color: #fff; }
+  .vh { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  @media (max-width: 560px){ .launch-go { padding: 11px 14px; } .launch-bar input { font-size: 16px; } }
+
   /* Section heads */
   .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 26px; border-bottom: 2px solid var(--navy); padding-bottom: 12px; flex-wrap: wrap; }
   .sec-head h2 { font-family: 'Source Serif 4', serif; font-size: clamp(24px, 3vw, 30px); font-weight: 700; color: var(--navy); letter-spacing: -0.012em; }
@@ -144,6 +163,15 @@
         <p class="kick">Official City Government · Westchester County, NY</p>
         <h2 id="hero-h">The City of White Plains, New York.</h2>
         <p>Westchester's county seat — services, meetings, and records, all in plain reach.</p>
+        <form class="launch" id="launcher" role="search" autocomplete="off" aria-label="Find a service or task">
+          <div class="launch-bar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+            <input type="text" id="launch-input" role="combobox" aria-expanded="false" aria-controls="launch-results" aria-autocomplete="list" placeholder="What do you need to do?">
+            <button type="submit" class="launch-go">Go</button>
+          </div>
+          <ul class="launch-results" id="launch-results" data-dyn role="listbox" aria-label="Suggestions" hidden></ul>
+          <div class="launch-chips" id="launch-chips" data-dyn></div>
+        </form>
         <div class="hero-meta">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-6h6v6"/></svg>City Hall · 255 Main Street</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mon–Fri, 9 a.m.–5 p.m.</span>
