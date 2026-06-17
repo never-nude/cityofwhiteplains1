@@ -10,6 +10,99 @@
   function t(s) { return (window.WP && typeof WP.t === "function") ? WP.t(s) : s; }
   function esc(s) { return String(s).replace(/[<>&]/g, function (c) { return { "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]; }); }
 
+  /* ---------- Real destinations for what used to be demo stubs ----------
+     Transactional/official actions link out to the live City, County, State,
+     or transit service; informational ones route to a real in-site page.
+     Anything mapped here stops being a "concept" modal and becomes a real link. */
+  var WP_LINKS = {
+    // payments & permits → official City portals
+    "Property tax payment": "https://cwp.munisselfservice.com/citizens/RealEstate/Default.aspx?mode=new",
+    "Water & sewer payment": "https://www.cityofwhiteplains.com/820/Online-Payments",
+    "Permit fee payment": "https://www.cityofwhiteplains.com/820/Online-Payments",
+    "Parking ticket payment": "https://www.cityofwhiteplains.com/331/Pay-Parking-Tickets",
+    "Parking permit application": "https://whiteplains.thepermitportal.com/",
+    "Building permit application": "https://www.cityofwhiteplains.com/115/Building-Permits-Applications",
+    "Business license application": "https://www.cityofwhiteplains.com/814/Applications-Permits",
+    "Dog license application": "https://www.cityofwhiteplains.com/88/City-Clerk",
+    "Special event permit": "https://www.cityofwhiteplains.com/814/Applications-Permits",
+    "Request a certificate of occupancy": "https://www.cityofwhiteplains.com/86/Building",
+    "Schedule an inspection": "https://www.cityofwhiteplains.com/123/Inspection-Information",
+    // clerk / vital records / voting
+    "Marriage license": "https://www.cityofwhiteplains.com/318/Marriage-Licenses",
+    "Apply for a marriage license": "https://www.cityofwhiteplains.com/318/Marriage-Licenses",
+    "Vital record (birth, marriage, death)": "https://www.cityofwhiteplains.com/317/Vital-Records",
+    "Request a vital record": "https://www.cityofwhiteplains.com/317/Vital-Records",
+    "File a FOIL records request": "https://www.cityofwhiteplains.com/88/City-Clerk",
+    "File a claim against the City": "https://www.cityofwhiteplains.com/88/City-Clerk",
+    "Register to vote": "https://www.ny.gov/services/register-vote",
+    // assessor / finance / budget
+    "Look up a property assessment": "https://www.cityofwhiteplains.com/84/Assessor",
+    "View the annual assessment roll": "https://www.cityofwhiteplains.com/84/Assessor",
+    "File a grievance with the Board of Assessment Review": "https://www.cityofwhiteplains.com/84/Assessor",
+    "View quarterly financial reports": "https://www.cityofwhiteplains.com/92/Finance",
+    "Adopted City budget": "https://www.cityofwhiteplains.com/301/Budget",
+    "Capital improvement plan": "https://www.cityofwhiteplains.com/301/Budget",
+    "See the capital improvement plan": "https://www.cityofwhiteplains.com/301/Budget",
+    // planning / zoning / maps
+    "Zoning lookup": "https://www.cityofwhiteplains.com/808/Maps-Plans-Zoning",
+    "Look up zoning for a property": "https://www.cityofwhiteplains.com/808/Maps-Plans-Zoning",
+    "GIS / City maps": "https://www.cityofwhiteplains.com/808/Maps-Plans-Zoning",
+    "Explore City maps & GIS": "https://www.cityofwhiteplains.com/808/Maps-Plans-Zoning",
+    "Browse open data": "https://www.cityofwhiteplains.com/808/Maps-Plans-Zoning",
+    "Start a site plan review": "https://www.cityofwhiteplains.com/99/Planning",
+    "Comprehensive plan & studies": "https://www.cityofwhiteplains.com/99/Planning",
+    // procurement / jobs
+    "Open bids & RFPs": "https://www.cityofwhiteplains.com/801/Bid-Opportunities",
+    "View open bids & RFPs": "https://www.cityofwhiteplains.com/801/Bid-Opportunities",
+    "Surplus property auctions": "https://www.cityofwhiteplains.com/356/Purchasing",
+    "Register as a City vendor": "https://www.cityofwhiteplains.com/356/Purchasing",
+    "See current City job openings": "https://www.cityofwhiteplains.com/Jobs.aspx",
+    "Civil service exams": "https://www.cityofwhiteplains.com/98/Personnel",
+    "Civil service exam schedule": "https://www.cityofwhiteplains.com/98/Personnel",
+    "Employee resources": "https://www.cityofwhiteplains.com/98/Personnel",
+    // transit (external)
+    "Metro-North service": "https://new.mta.info/agencies/metro-north-railroad",
+    "Bee-Line bus & OMNY": "https://transportation.westchestergov.com/",
+    "Find a City garage": "https://www.cityofwhiteplains.com/97/Parking-Traffic",
+    // public safety → real in-site department page
+    "File a police report": "department.html?d=public-safety",
+    "Non-emergency police line": "department.html?d=public-safety",
+    "Fire prevention & permits": "department.html?d=public-safety",
+    // informational → real in-site pages
+    "Set up a payment plan": "payment-plans.html",
+    "Facility rentals": "recreation.html",
+    "Program Guide (PDF)": "recreation.html",
+    "See the programming schedule": "recreation.html",
+    "Economic development": "business.html",
+    "Bulk pickup scheduling": "trash.html",
+    "Browse City multimedia": "news.html",
+    "Subscribe to the City calendar feed": "calendar.ics"
+  };
+  function isExternal(url) { return /^https?:/.test(url); }
+  function upgradeStubLinks(root) {
+    (root || document).querySelectorAll("[data-demo]").forEach(function (el) {
+      var url = WP_LINKS[el.getAttribute("data-demo")];
+      if (!url) return;                 // no real target yet → leave as honest modal
+      el.removeAttribute("data-demo");
+      if (el.tagName === "A") {
+        el.setAttribute("href", url);
+        if (isExternal(url)) {
+          el.setAttribute("target", "_blank");
+          el.setAttribute("rel", "noopener");
+          if (el.children.length === 0 && !/↗/.test(el.textContent)) {
+            el.insertAdjacentHTML("beforeend", ' <span class="ext" aria-hidden="true">↗</span><span class="vh"> (opens a new site)</span>');
+          }
+        }
+      } else {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (isExternal(url)) window.open(url, "_blank", "noopener");
+          else window.location.href = url;
+        });
+      }
+    });
+  }
+
   /* ---------- generic accessible modal ---------- */
   function openModal(title, bodyHTML) {
     if (document.getElementById("wp-modal")) return;
@@ -71,7 +164,7 @@
       ok.innerHTML = '<div class="ok-ic" aria-hidden="true">✓</div>' +
         "<h3>" + t("Request received") + "</h3>" +
         "<p>" + t("Your service request has been logged as") + " <strong>" + ref + "</strong>. " +
-        t("In production this routes to the right department and emails you a confirmation. (Demo — nothing is actually submitted.)") + "</p>";
+        t("In production this routes to the right department and emails you a confirmation.") + "</p>";
       form.replaceWith(ok);
       ok.setAttribute("tabindex", "-1"); ok.focus();
     });
@@ -235,7 +328,7 @@
         ok.innerHTML = '<div class="ok-ic" aria-hidden="true">✓</div>' +
           "<h3>" + t(form.getAttribute("data-success") || "Request received") + "</h3>" +
           "<p>" + t("Your request reference is") + " <strong>" + ref + "</strong>. " +
-          t("This concept does not submit anything or move money — see the roadmap.") + "</p>";
+          t("Submissions aren't processed in this proposal.") + "</p>";
         form.replaceWith(ok); ok.setAttribute("tabindex", "-1"); ok.focus();
       });
     });
@@ -476,7 +569,7 @@
     renderAll(); setView("month");
   }
 
-  function init() { initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter(); renderDepartment(); initTrash(); initCalendar(); }
+  function init() { initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter(); renderDepartment(); initTrash(); initCalendar(); upgradeStubLinks(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

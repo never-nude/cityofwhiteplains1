@@ -465,6 +465,14 @@
       "weight": 80,
       "summary": "Dispute a water/sewer bill, City fee, or parking ticket and request a review.",
       "keywords": "dispute contest bill charge error water sewer parking ticket adjustment appeal review"
+    },
+    {
+      "title": "Accessibility",
+      "url": "accessibility.html",
+      "type": "page",
+      "weight": 60,
+      "summary": "The City's commitment to an accessible website (WCAG 2.1 AA), how to request accommodations, and how to report a barrier.",
+      "keywords": "accessibility ada wcag section 508 disability screen reader accommodation alternate format tty relay contrast keyboard"
     }
   ]
 }
