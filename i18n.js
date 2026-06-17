@@ -128,11 +128,11 @@
   var PHRASE_ES = {
     // Home — hero
     "Birthplace of the State of New York": "Cuna del Estado de Nueva York",
-    "The business of White Plains, made easy.": "Los trámites de White Plains, más fáciles.",
+    "The City of White Plains, New York.": "La Ciudad de White Plains, Nueva York.",
     "Westchester's county seat — services, meetings, and records, all in plain reach.":
       "Sede del condado de Westchester: servicios, reuniones y registros, todo a su alcance.",
     // Home — refreshed homepage (quick actions, resources, contact)
-    "Official City Government · Westchester County, New York": "Gobierno Municipal Oficial · Condado de Westchester, Nueva York",
+    "Official City Government · Westchester County, NY": "Gobierno Municipal Oficial · Condado de Westchester, NY",
     "City Hall · 255 Main Street": "Ayuntamiento · 255 Main Street",
     "Resident Quick Actions": "Gestiones Rápidas para Residentes",
     "Pay Bills": "Pagar Facturas",
