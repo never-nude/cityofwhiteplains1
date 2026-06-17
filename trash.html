@@ -23,7 +23,7 @@
   @media (max-width: 560px) { .pickups { grid-template-columns: 1fr; } .zone-pick select { min-width: 0; width: 100%; } }
 </style>
 </head>
-<body>
+<body data-translate-body="1">
   <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
   <header class="site-header">
   <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
@@ -61,7 +61,7 @@
       </div>
       <p id="zone-help" style="font-size:13px;color:var(--ink-dim);margin-top:-12px;margin-bottom:18px;">Not sure of your zone? Check the weekly table below or contact Public Works.</p>
 
-      <div id="trash-upcoming" aria-live="polite"></div>
+      <div id="trash-upcoming" data-dyn aria-live="polite"></div>
 
       <h3>Weekly collection by zone</h3>
       <table>

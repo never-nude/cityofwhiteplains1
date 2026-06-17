@@ -212,12 +212,15 @@
     inp.addEventListener("input", apply); apply();
   }
 
+  /* body-phrase translator for JS-injected dynamic content (depts, events) */
+  function tb(s) { return (window.WP && typeof WP.tBody === "function") ? WP.tBody(s) : s; }
+
   /* ---------- Department detail (department.html?d=slug) ---------- */
   function deptLink(item) {
-    if (item.demo) return '<a href="#" data-demo="' + esc(item.t) + '">' + esc(item.t) + "</a>";
+    if (item.demo) return '<a href="#" data-demo="' + esc(item.t) + '">' + esc(tb(item.t)) + "</a>";
     var h = item.h || "#";
-    if (/^https?:/.test(h)) return '<a href="' + h + '" target="_blank" rel="noopener">' + esc(item.t) + ' <span class="ext" aria-hidden="true">↗</span><span class="vh"> (opens a new site)</span></a>';
-    return '<a href="' + h + '">' + esc(item.t) + "</a>";
+    if (/^https?:/.test(h)) return '<a href="' + h + '" target="_blank" rel="noopener">' + esc(tb(item.t)) + ' <span class="ext" aria-hidden="true">↗</span><span class="vh"> (opens a new site)</span></a>';
+    return '<a href="' + h + '">' + esc(tb(item.t)) + "</a>";
   }
   function renderDepartment() {
     var host = document.getElementById("dept-detail");
@@ -227,45 +230,45 @@
     for (var i = 0; i < window.WP_DEPTS.length; i++) if (window.WP_DEPTS[i].slug === slug) { d = window.WP_DEPTS[i]; break; }
     var crumb = document.getElementById("dept-crumb");
     if (!d) {
-      document.title = "Department not found · City of White Plains";
-      if (crumb) crumb.textContent = "Not found";
-      host.innerHTML = '<div class="page-hd"><div class="wrap"><h2>Department not found</h2>' +
-        '<p>We couldn\'t find that department. <a href="departments.html" style="color:#fff;text-decoration:underline;">Browse all departments →</a></p></div></div>';
+      document.title = t("Department not found") + " · City of White Plains";
+      if (crumb) crumb.textContent = t("Not found");
+      host.innerHTML = '<div class="page-hd"><div class="wrap"><h2>' + t("Department not found") + '</h2>' +
+        '<p>' + t("We couldn't find that department.") + ' <a href="departments.html" style="color:#fff;text-decoration:underline;">' + t("Browse all departments →") + '</a></p></div></div>';
       return;
     }
     document.title = d.name + " · City of White Plains";
-    if (crumb) crumb.textContent = d.name;
+    if (crumb) crumb.textContent = tb(d.name);
 
-    var head = '<div class="page-hd"><div class="wrap"><div class="kick">' + esc(d.group || "City Department") + '</div>' +
-      "<h2>" + esc(d.name) + "</h2><p>" + esc(d.tagline || "") + "</p></div></div>";
+    var head = '<div class="page-hd"><div class="wrap"><div class="kick">' + esc(tb(d.group || "City Department")) + '</div>' +
+      "<h2>" + esc(tb(d.name)) + "</h2><p>" + esc(tb(d.tagline || "")) + "</p></div></div>";
 
-    var ext = d.external ? '<div class="callout-ext"><p>This department maintains its own website. ' +
-      '<a href="' + d.external + '" target="_blank" rel="noopener">Visit it directly ↗</a></p></div>' : "";
+    var ext = d.external ? '<div class="callout-ext"><p>' + t("This department maintains its own website.") + ' ' +
+      '<a href="' + d.external + '" target="_blank" rel="noopener">' + t("Visit it directly ↗") + '</a></p></div>' : "";
 
     var services = (d.services || []).map(function (s) { return "<li>" + deptLink(s) + "</li>"; }).join("");
     var faqs = (d.faqs && d.faqs.length)
-      ? "<h3>Frequently asked</h3>" + d.faqs.map(function (f) {
-          return '<details class="faq"><summary>' + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>";
+      ? "<h3>" + t("Frequently asked") + "</h3>" + d.faqs.map(function (f) {
+          return '<details class="faq"><summary>' + esc(tb(f.q)) + "</summary><p>" + esc(tb(f.a)) + "</p></details>";
         }).join("")
       : "";
     var related = (d.related || []).map(function (r) {
       var x = /^https?:/.test(r.h) ? ' target="_blank" rel="noopener"' : "";
-      return '<a href="' + r.h + '"' + x + ">" + esc(r.t) + "</a>";
+      return '<a href="' + r.h + '"' + x + ">" + esc(tb(r.t)) + "</a>";
     }).join("");
 
     var body = '<div class="wrap"><div class="layout"><div class="prose">' +
       ext +
-      "<h3>About this department</h3><p>" + esc(d.overview) + "</p>" +
-      "<h3>Services</h3><ul class=\"svc-list\">" + services + "</ul>" +
+      "<h3>" + t("About this department") + "</h3><p>" + esc(tb(d.overview)) + "</p>" +
+      "<h3>" + t("Services") + "</h3><ul class=\"svc-list\">" + services + "</ul>" +
       faqs +
       '</div><aside class="side">' +
-        '<div class="side-box contact"><h4>Contact</h4><p><strong>' + esc(d.name) + "</strong><br>" +
-          esc(d.contact.office) + "<br><br><strong>Phone:</strong> " + esc(d.contact.phone) +
-          "<br><strong>Hours:</strong> " + esc(d.contact.hours) + "</p></div>" +
-        (related ? '<div class="side-box"><h4>Related</h4>' + related + "</div>" : "") +
-        '<div class="side-box"><h4>Quick actions</h4>' +
-          '<a href="pay.html">Pay a bill</a><a href="pay.html#report">Report a problem</a>' +
-          '<a href="departments.html">All departments</a></div>' +
+        '<div class="side-box contact"><h4>' + t("Contact") + '</h4><p><strong>' + esc(tb(d.name)) + "</strong><br>" +
+          esc(tb(d.contact.office)) + "<br><br><strong>" + t("Phone:") + "</strong> " + esc(d.contact.phone) +
+          "<br><strong>" + t("Hours:") + "</strong> " + esc(tb(d.contact.hours)) + "</p></div>" +
+        (related ? '<div class="side-box"><h4>' + t("Related") + '</h4>' + related + "</div>" : "") +
+        '<div class="side-box"><h4>' + t("Quick actions") + '</h4>' +
+          '<a href="pay.html">' + t("Pay a bill") + '</a><a href="pay.html#report">' + t("Report a problem") + '</a>' +
+          '<a href="departments.html">' + t("All departments") + '</a></div>' +
       "</aside></div></div>";
 
     host.innerHTML = head + body;
@@ -438,8 +441,8 @@
     function evButton(e, idx, cls) {
       var c = catByKey[e.cat];
       return '<button type="button" class="' + cls + '" data-ei="' + idx + '" style="--c:' + c.c + ';--evbg:' + c.bg + '" ' +
-        'title="' + esc(timeLabel(e) + " — " + e.t) + '"><span class="et">' +
-        (e.time ? esc(e.time) + " " : "") + "</span>" + esc(e.t) + "</button>";
+        'title="' + esc(timeLabel(e) + " — " + tb(e.t)) + '"><span class="et">' +
+        (e.time ? esc(e.time) + " " : "") + "</span>" + esc(tb(e.t)) + "</button>";
     }
 
     function renderMonth() {
@@ -480,8 +483,8 @@
           '</div><div class="ad-day">' + dt.getDate() + "</div></div>" +
           '<div class="agenda-item" data-ei="' + WP_EVENTS.indexOf(e) + '">' +
           '<span class="agenda-tag" style="--c:' + c.c + '">' + esc(catLabel(e.cat)) + "</span>" +
-          "<h4>" + esc(e.t) + "</h4>" +
-          '<div class="meta">' + esc(timeLabel(e)) + " · " + esc(e.loc) + "</div></div></div>";
+          "<h4>" + esc(tb(e.t)) + "</h4>" +
+          '<div class="meta">' + esc(timeLabel(e)) + " · " + esc(tb(e.loc)) + "</div></div></div>";
       });
       listEl.innerHTML = html;
     }
@@ -498,7 +501,7 @@
           'style="display:block;width:100%;text-align:left;border:none;border-left:3px solid ' + c.c +
           ';background:none;cursor:pointer;padding:8px 0 8px 12px;border-bottom:1px solid var(--line);font:inherit;">' +
           '<span style="font-size:12px;font-weight:700;color:' + c.c + ';display:block;">' + esc(ds) + "</span>" +
-          '<span style="font-size:14px;color:var(--ink);">' + esc(e.t) + "</span></button>";
+          '<span style="font-size:14px;color:var(--ink);">' + esc(tb(e.t)) + "</span></button>";
       }).join("");
     }
 
@@ -507,15 +510,15 @@
       var c = catByKey[e.cat], dt = parse(e.d);
       var dateStr = dt.toLocaleDateString(lang(), { weekday: "long", month: "long", day: "numeric", year: "numeric" });
       var link = e.url ? '<p style="margin-top:14px;"><a class="btn" href="' + e.url + '">' + t("More details") + " →</a></p>" : "";
-      openModal(e.t,
+      openModal(tb(e.t),
         '<div class="ev-detail">' +
         '<span class="ev-tag" style="background:' + c.c + '">' + esc(catLabel(e.cat)) + "</span>" +
         "<dl>" +
         "<dt>" + t("Date") + "</dt><dd>" + esc(dateStr) + "</dd>" +
         "<dt>" + t("Time") + "</dt><dd>" + esc(timeLabel(e)) + "</dd>" +
-        "<dt>" + t("Location") + "</dt><dd>" + esc(e.loc) + "</dd>" +
+        "<dt>" + t("Location") + "</dt><dd>" + esc(tb(e.loc)) + "</dd>" +
         "</dl>" +
-        '<p class="ev-desc">' + esc(e.desc) + "</p>" + link + "</div>");
+        '<p class="ev-desc">' + esc(tb(e.desc)) + "</p>" + link + "</div>");
     }
 
     function openDay(dayKey) {
@@ -526,8 +529,8 @@
         var c = catByKey[e.cat];
         return '<div style="padding:10px 0;border-top:1px solid var(--line);">' +
           '<span class="ev-tag" style="display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;color:#fff;border-radius:4px;padding:2px 8px;background:' + c.c + '">' + esc(catLabel(e.cat)) + "</span>" +
-          '<div style="font-weight:700;color:var(--navy);margin-top:5px;">' + esc(e.t) + "</div>" +
-          '<div style="font-size:13.5px;color:var(--ink-dim);">' + esc(timeLabel(e)) + " · " + esc(e.loc) + "</div></div>";
+          '<div style="font-weight:700;color:var(--navy);margin-top:5px;">' + esc(tb(e.t)) + "</div>" +
+          '<div style="font-size:13.5px;color:var(--ink-dim);">' + esc(timeLabel(e)) + " · " + esc(tb(e.loc)) + "</div></div>";
       }).join("");
       openModal(dateStr, '<div class="modal-p">' + body + "</div>");
     }
@@ -569,7 +572,14 @@
     renderAll(); setView("month");
   }
 
-  function init() { initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter(); renderDepartment(); initTrash(); initCalendar(); upgradeStubLinks(); }
+  function init() {
+    initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter();
+    renderDepartment(); initTrash(); initCalendar(); upgradeStubLinks();
+    // Re-render the department detail (and re-upgrade its links) when language changes.
+    document.addEventListener("wp:languagechange", function () {
+      if (document.getElementById("dept-detail")) { renderDepartment(); upgradeStubLinks(); }
+    });
+  }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

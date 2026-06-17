@@ -89,7 +89,7 @@
   }
 </style>
 </head>
-<body>
+<body data-translate-body="1">
   <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
   <header class="site-header">
   <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
@@ -116,7 +116,7 @@
       <div class="cal-tools">
         <div class="cal-nav">
           <button type="button" id="cal-prev" aria-label="Previous month">‹</button>
-          <span class="cal-title" id="cal-title" aria-live="polite">—</span>
+          <span class="cal-title" id="cal-title" data-dyn aria-live="polite">—</span>
           <button type="button" id="cal-next" aria-label="Next month">›</button>
         </div>
         <button type="button" class="cal-today" id="cal-todaybtn" data-i18n="cal.today">Today</button>
@@ -126,16 +126,16 @@
         </div>
       </div>
 
-      <div class="cal-filters" id="cal-filters" role="group" aria-label="Filter by category"></div>
+      <div class="cal-filters" id="cal-filters" data-dyn role="group" aria-label="Filter by category"></div>
 
-      <div id="cal-grid-wrap">
+      <div id="cal-grid-wrap" data-dyn>
         <div class="cal-grid" aria-hidden="false">
           <div class="cal-dow" id="cal-dow"></div>
           <div class="cal-weeks" id="cal-weeks"></div>
         </div>
       </div>
 
-      <div class="cal-list" id="cal-list" aria-live="polite"></div>
+      <div class="cal-list" id="cal-list" data-dyn aria-live="polite"></div>
 
       <h3 data-i18n="cal.about.h">About the City calendar</h3>
       <p data-i18n="cal.about.p1">Common Council regular meetings are generally held on the first Monday of each month at 7:30 p.m. in the Common Council Chambers, with work sessions and committee meetings scheduled as needed. Public hearings are noticed in advance and are open to all residents.</p>
@@ -148,7 +148,7 @@
     <aside class="side">
       <div class="side-box">
         <h4 data-i18n="cal.next.h">Next up</h4>
-        <div id="cal-upcoming"></div>
+        <div id="cal-upcoming" data-dyn></div>
       </div>
       <div class="side-box contact">
         <h4 data-i18n="cal.clerk.h">City Clerk</h4>
