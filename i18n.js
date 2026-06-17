@@ -61,7 +61,35 @@
                        "© 2026 Ciudad de White Plains, Nueva York. Todos los derechos reservados."],
     "foot.concept": ["Redesign concept — not an official city website.",
                      "Concepto de rediseño — no es un sitio web oficial de la ciudad."],
-    "alerts.subscribe": ["Subscribe to alerts", "Suscribirse a las alertas"]
+    "alerts.subscribe": ["Subscribe to alerts", "Suscribirse a las alertas"],
+    "contact.phone": ["Phone:", "Teléfono:"],
+    "contact.hours": ["Hours:", "Horario:"],
+    "cal.kick": ["Stay informed", "Manténgase informado"],
+    "cal.title": ["City Calendar", "Calendario Municipal"],
+    "cal.intro": ["Common Council meetings and public hearings, City holidays, recreation programs, and community events — all in one place. Select a category or switch to the list view to plan ahead.",
+                  "Reuniones del Concejo Municipal y audiencias públicas, días feriados de la Ciudad, programas de recreación y eventos comunitarios, todo en un solo lugar. Seleccione una categoría o cambie a la vista de lista para planificar."],
+    "cal.sample.b": ["Sample calendar.", "Calendario de muestra."],
+    "cal.sample.t": ["Dates shown here are illustrative for this concept. In production they would sync from the City Clerk, Recreation, and Public Works systems, with an exportable feed you could add to your own calendar.",
+                     "Las fechas que se muestran son ilustrativas para este concepto. En producción se sincronizarían con los sistemas de la Secretaría Municipal, Recreación y Obras Públicas, con un feed exportable que podría agregar a su propio calendario."],
+    "cal.today": ["Today", "Hoy"],
+    "cal.month": ["Month", "Mes"],
+    "cal.list": ["List", "Lista"],
+    "cal.about.h": ["About the City calendar", "Acerca del calendario municipal"],
+    "cal.about.p1": ["Common Council regular meetings are generally held on the first Monday of each month at 7:30 p.m. in the Common Council Chambers, with work sessions and committee meetings scheduled as needed. Public hearings are noticed in advance and are open to all residents.",
+                     "Las reuniones ordinarias del Concejo Municipal se celebran generalmente el primer lunes de cada mes a las 7:30 p. m. en la Sala del Concejo Municipal, con sesiones de trabajo y reuniones de comités según sea necesario. Las audiencias públicas se anuncian con anticipación y están abiertas a todos los residentes."],
+    "cal.about.p2": ["City offices are closed on the legal holidays listed here, which also shift trash and recycling collection. Recreation programs, library events, and community happenings round out the rest of the calendar.",
+                     "Las oficinas de la Ciudad permanecen cerradas en los días feriados oficiales que se indican aquí, lo que también modifica la recolección de basura y reciclaje. Los programas de recreación, los eventos de la biblioteca y las actividades comunitarias completan el resto del calendario."],
+    "cal.cta.agendas": ["View agendas & minutes →", "Ver órdenes del día y actas →"],
+    "cal.cta.subscribe": ["Subscribe to this calendar →", "Suscribirse a este calendario →"],
+    "cal.next.h": ["Next up", "Próximamente"],
+    "cal.clerk.h": ["City Clerk", "Secretaría Municipal"],
+    "cal.clerk.name": ["Office of the City Clerk", "Oficina de la Secretaría Municipal"],
+    "cal.clerk.hours": ["Mon–Fri, 9 a.m.–5 p.m.", "lun.–vie., 9 a. m.–5 p. m."],
+    "cal.links.h": ["Quick links", "Enlaces rápidos"],
+    "cal.links.minutes": ["Agendas & minutes", "Órdenes del día y actas"],
+    "cal.links.council": ["Common Council", "Concejo Municipal"],
+    "cal.links.rec": ["Recreation programs", "Programas de recreación"],
+    "cal.links.trash": ["Trash & recycling", "Basura y reciclaje"]
   };
 
   /* ---- Dynamic strings used from JS (search badges, results page) ---- */
@@ -87,7 +115,13 @@
     "more update": "actualización más", "more updates": "actualizaciones más", "Show fewer": "Mostrar menos",
     "Your request reference is": "Su número de referencia es",
     "This concept does not submit anything or move money — see the roadmap.": "Este concepto no envía nada ni mueve dinero — consulte el plan del proyecto.",
-    "department": "departamento", "departments": "departamentos"
+    "department": "departamento", "departments": "departamentos",
+    // calendar
+    "Council & committees": "Concejo y comités", "Public hearings": "Audiencias públicas",
+    "City holidays": "Días feriados", "Recreation": "Recreación", "Community events": "Eventos comunitarios",
+    "All day": "Todo el día", "more": "más", "Date": "Fecha", "Time": "Hora", "Location": "Lugar",
+    "More details": "Más detalles", "No events match the selected categories.": "Ningún evento coincide con las categorías seleccionadas.",
+    "Nothing coming up.": "No hay nada próximamente."
   };
 
   /* ---- Body phrases (home + Pay & Apply), keyed by exact English text ---- */

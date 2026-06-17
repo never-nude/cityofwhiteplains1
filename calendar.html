@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>City Calendar &middot; City of White Plains</title>
+<meta name="description" content="The City of White Plains calendar — Common Council meetings, public hearings, City holidays, recreation programs, and community events in one place.">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---- Calendar toolbar ---- */
+  .cal-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin: 0 0 20px; }
+  .cal-nav { display: flex; align-items: center; gap: 8px; }
+  .cal-nav button { border: 2px solid var(--line); background: #fff; border-radius: 7px; width: 38px; height: 38px;
+    font-size: 18px; line-height: 1; color: var(--navy); cursor: pointer; display: grid; place-items: center; }
+  .cal-nav button:hover { border-color: var(--navy); background: var(--paper-2); }
+  .cal-title { font-family: 'Source Serif 4', serif; font-size: 23px; font-weight: 700; color: var(--navy);
+    min-width: 12ch; text-align: center; }
+  .cal-today { border: 2px solid var(--navy); background: transparent; color: var(--navy); font: inherit;
+    font-weight: 600; font-size: 14px; border-radius: 7px; padding: 8px 14px; cursor: pointer; }
+  .cal-today:hover { background: var(--navy); color: #fff; }
+  .cal-view { margin-left: auto; display: inline-flex; border: 2px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .cal-view button { border: none; background: #fff; font: inherit; font-weight: 600; font-size: 14px;
+    color: var(--ink-dim); padding: 8px 16px; cursor: pointer; }
+  .cal-view button.on { background: var(--navy); color: #fff; }
+
+  /* ---- Category filter chips ---- */
+  .cal-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+  .cal-chip { border: 1.5px solid var(--line); background: #fff; border-radius: 999px; font: inherit;
+    font-size: 13.5px; font-weight: 600; color: var(--ink-dim); padding: 6px 14px 6px 11px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 7px; }
+  .cal-chip .dot { width: 11px; height: 11px; border-radius: 3px; background: var(--c, var(--navy)); flex-shrink: 0; }
+  .cal-chip[aria-pressed="true"] { color: var(--ink); border-color: var(--navy); background: var(--paper-2); }
+  .cal-chip[aria-pressed="false"] { opacity: 0.62; }
+
+  /* ---- Month grid ---- */
+  .cal-grid { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--line); }
+  .cal-dow { display: grid; grid-template-columns: repeat(7, 1fr); background: var(--navy); }
+  .cal-dow span { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    text-align: center; padding: 10px 4px; }
+  .cal-weeks { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+  .cal-cell { background: #fff; min-height: 116px; padding: 7px 8px 9px; display: flex; flex-direction: column; gap: 4px; }
+  .cal-cell.pad { background: var(--paper-2); }
+  .cal-cell .dnum { font-size: 13px; font-weight: 700; color: var(--ink-dim); align-self: flex-start;
+    width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; }
+  .cal-cell.today .dnum { background: var(--navy); color: #fff; }
+  .cal-ev { text-align: left; border: none; background: var(--evbg, var(--paper-2)); border-left: 3px solid var(--c, var(--navy));
+    border-radius: 4px; padding: 3px 6px; font: inherit; font-size: 12px; line-height: 1.25; color: var(--ink);
+    cursor: pointer; width: 100%; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cal-ev:hover { background: var(--paper-3); }
+  .cal-ev .et { font-weight: 600; }
+  .cal-more { font-size: 11.5px; font-weight: 600; color: var(--link); background: none; border: none;
+    cursor: pointer; padding: 2px 6px; text-align: left; }
+  .cal-more:hover { text-decoration: underline; }
+
+  /* ---- Agenda / list view ---- */
+  .cal-list { display: none; }
+  .agenda-month { font-family: 'Source Serif 4', serif; font-size: 20px; color: var(--navy); font-weight: 700;
+    margin: 22px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--line); }
+  .agenda-row { display: grid; grid-template-columns: 92px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .agenda-row:hover { background: var(--paper-2); }
+  .agenda-date { text-align: center; }
+  .agenda-date .ad-dow { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--ink-dim); letter-spacing: 0.04em; }
+  .agenda-date .ad-day { font-family: 'Source Serif 4', serif; font-size: 30px; font-weight: 700; color: var(--navy); line-height: 1; }
+  .agenda-item { cursor: pointer; }
+  .agenda-item h4 { font-size: 16.5px; color: var(--navy); margin: 0 0 3px; }
+  .agenda-item .meta { font-size: 13.5px; color: var(--ink-dim); }
+  .agenda-tag { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+    color: #fff; background: var(--c, var(--navy)); border-radius: 4px; padding: 2px 7px; margin-bottom: 5px; }
+  .cal-empty { color: var(--ink-dim); font-size: 15px; padding: 24px 0; }
+
+  /* ---- Event detail (inside modal) ---- */
+  .ev-detail .ev-tag { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+    color: #fff; border-radius: 4px; padding: 3px 9px; margin-bottom: 12px; }
+  .ev-detail dl { margin: 0; display: grid; grid-template-columns: 88px 1fr; gap: 8px 14px; }
+  .ev-detail dt { font-size: 13px; font-weight: 700; color: var(--ink-dim); }
+  .ev-detail dd { margin: 0; font-size: 15px; color: var(--ink); }
+  .ev-detail .ev-desc { margin-top: 14px; font-size: 15px; line-height: 1.6; color: var(--ink); }
+
+  @media (max-width: 720px) {
+    .cal-cell { min-height: 92px; }
+    .cal-ev .et { display: none; }
+    .cal-ev { font-size: 0; padding: 5px; }
+    .cal-ev .dot-m { display: block; }
+    .cal-view { margin-left: 0; }
+  }
+  @media (max-width: 520px) {
+    .cal-title { font-size: 19px; min-width: 9ch; }
+    .agenda-row { grid-template-columns: 64px 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
+  <header class="site-header">
+  <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal" aria-hidden="true"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag" data-i18n="tagline">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="Search permits, taxes, services…" data-i18n-ph="searchph" aria-label="Search the city website" data-i18n-al="searcharia" autocomplete="off"><button type="submit" data-i18n="searchbtn">Search</button></form>
+  </div></div>
+  </header>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html" data-i18n="nav.residents">Residents</a><a href="government.html" data-i18n="nav.gov">Government</a><a href="departments.html" data-i18n="nav.depts">Departments</a><a href="pay.html" data-i18n="nav.services">Services</a><a href="community.html" data-i18n="nav.community">Community</a><a href="business.html" data-i18n="nav.business">Business</a><a href="how-do-i.html" data-i18n="nav.howdoi">How Do I…?</a>
+  </div><button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></nav>
+
+  <div class="crumb"><div class="wrap"><a href="index.html" data-i18n="home">Home</a><span class="sep" aria-hidden="true">›</span><a href="community.html" data-i18n="nav.community">Community</a><span class="sep" aria-hidden="true">›</span><span data-i18n="cal.title">City Calendar</span></div></div>
+
+  <div class="page-hd"><div class="wrap">
+    <div class="kick" data-i18n="cal.kick">Stay informed</div>
+    <h2 data-i18n="cal.title">City Calendar</h2>
+    <p data-i18n="cal.intro">Common Council meetings and public hearings, City holidays, recreation programs, and community events — all in one place. Select a category or switch to the list view to plan ahead.</p>
+  </div></div>
+
+  <main id="main"><div class="wrap"><div class="layout">
+    <div class="prose">
+      <div class="callout-ext"><p><strong data-i18n="cal.sample.b">Sample calendar.</strong> <span data-i18n="cal.sample.t">Dates shown here are illustrative for this concept. In production they would sync from the City Clerk, Recreation, and Public Works systems, with an exportable feed you could add to your own calendar.</span></p></div>
+
+      <div class="cal-tools">
+        <div class="cal-nav">
+          <button type="button" id="cal-prev" aria-label="Previous month">‹</button>
+          <span class="cal-title" id="cal-title" aria-live="polite">—</span>
+          <button type="button" id="cal-next" aria-label="Next month">›</button>
+        </div>
+        <button type="button" class="cal-today" id="cal-todaybtn" data-i18n="cal.today">Today</button>
+        <div class="cal-view" role="group" aria-label="Calendar view">
+          <button type="button" id="cal-view-month" class="on" aria-pressed="true" data-i18n="cal.month">Month</button>
+          <button type="button" id="cal-view-list" aria-pressed="false" data-i18n="cal.list">List</button>
+        </div>
+      </div>
+
+      <div class="cal-filters" id="cal-filters" role="group" aria-label="Filter by category"></div>
+
+      <div id="cal-grid-wrap">
+        <div class="cal-grid" aria-hidden="false">
+          <div class="cal-dow" id="cal-dow"></div>
+          <div class="cal-weeks" id="cal-weeks"></div>
+        </div>
+      </div>
+
+      <div class="cal-list" id="cal-list" aria-live="polite"></div>
+
+      <h3 data-i18n="cal.about.h">About the City calendar</h3>
+      <p data-i18n="cal.about.p1">Common Council regular meetings are generally held on the first Monday of each month at 7:30 p.m. in the Common Council Chambers, with work sessions and committee meetings scheduled as needed. Public hearings are noticed in advance and are open to all residents.</p>
+      <p data-i18n="cal.about.p2">City offices are closed on the legal holidays listed here, which also shift trash and recycling collection. Recreation programs, library events, and community happenings round out the rest of the calendar.</p>
+
+      <a href="minutes.html" class="btn" data-i18n="cal.cta.agendas">View agendas &amp; minutes →</a>
+      <a href="#" class="btn ghost" style="margin-left:10px;" data-demo="Subscribe to the City calendar feed" data-i18n="cal.cta.subscribe">Subscribe to this calendar →</a>
+    </div>
+
+    <aside class="side">
+      <div class="side-box">
+        <h4 data-i18n="cal.next.h">Next up</h4>
+        <div id="cal-upcoming"></div>
+      </div>
+      <div class="side-box contact">
+        <h4 data-i18n="cal.clerk.h">City Clerk</h4>
+        <p><strong data-i18n="cal.clerk.name">Office of the City Clerk</strong><br>City Hall, Room 106<br>255 Main Street<br>White Plains, NY 10601<br><br><strong data-i18n="contact.phone">Phone:</strong> 914-422-1227<br><strong data-i18n="contact.hours">Hours:</strong> <span data-i18n="cal.clerk.hours">Mon–Fri, 9 a.m.–5 p.m.</span></p>
+      </div>
+      <div class="side-box">
+        <h4 data-i18n="cal.links.h">Quick links</h4>
+        <a href="minutes.html" data-i18n="cal.links.minutes">Agendas &amp; minutes</a>
+        <a href="government.html" data-i18n="cal.links.council">Common Council</a>
+        <a href="recreation.html" data-i18n="cal.links.rec">Recreation programs</a>
+        <a href="trash.html" data-i18n="cal.links.trash">Trash &amp; recycling</a>
+        <a href="how-do-i.html" data-i18n="nav.howdoi">How Do I…?</a>
+      </div>
+    </aside>
+  </div></div></main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br><span data-i18n="foot.hours">Office hours: Monday–Friday, 9 a.m.–5 p.m.</span></p></div>
+      <div class="foot-col"><h5 data-i18n="nav.residents">Residents</h5><a href="pay.html" data-i18n="foot.paytaxes">Pay Taxes</a><a href="pay.html" data-i18n="foot.permits">Permits</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a><a href="pay.html#report" data-i18n="foot.report">Report an Issue</a></div>
+      <div class="foot-col"><h5 data-i18n="nav.gov">Government</h5><a href="government.html" data-i18n="foot.council">Common Council</a><a href="minutes.html" data-i18n="foot.meetings">Meetings</a><a href="government.html#budget" data-i18n="foot.budget">Budget</a><a href="government.html#code" data-i18n="foot.code">Municipal Code</a></div>
+      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html#contact" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="search.html" data-i18n="foot.sitemap">Site Map</a><a href="index.html" data-i18n="foot.accessibility">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span data-i18n="foot.copyright">© 2026 City of White Plains, New York. All rights reserved.</span><span data-i18n="foot.concept">Redesign concept — not an official city website.</span></div></div>
+  </footer>
+  <script src="i18n.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="nav.js" defer></script>
+  <script src="alerts.js" defer></script>
+  <script src="interactions.js" defer></script>
+</body>
+</html>

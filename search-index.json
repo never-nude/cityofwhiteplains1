@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-15",
+  "generated": "2026-06-17",
   "note": "Static client-side search index for the City of White Plains concept site. 'weight' biases resident tasks above incidental matches.",
   "docs": [
     {
@@ -89,6 +89,30 @@
       "weight": 90,
       "summary": "Common Council agendas, minutes, and the public meeting calendar.",
       "keywords": "meetings agenda minutes common council public hearing calendar zoning planning board"
+    },
+    {
+      "title": "City Calendar",
+      "url": "calendar.html",
+      "type": "page",
+      "weight": 92,
+      "summary": "Common Council meetings, public hearings, City holidays, recreation programs, and community events in one calendar.",
+      "keywords": "calendar events meetings public hearings holidays city offices closed recreation programs community events council schedule agenda dates month"
+    },
+    {
+      "title": "Public hearings schedule",
+      "url": "calendar.html",
+      "type": "info",
+      "weight": 80,
+      "summary": "Upcoming public hearings before the Common Council, with dates, times, and locations.",
+      "keywords": "public hearing budget zoning site plan capital plan parking permit notice comment council chambers"
+    },
+    {
+      "title": "City holidays & office closings",
+      "url": "calendar.html",
+      "type": "info",
+      "weight": 78,
+      "summary": "Legal holidays when City offices are closed, which also shift trash and recycling collection.",
+      "keywords": "holiday holidays city offices closed juneteenth labor day thanksgiving christmas new year memorial day veterans columbus indigenous closings"
     },
     {
       "title": "Schedule a bulk pickup",

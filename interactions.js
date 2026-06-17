@@ -241,7 +241,242 @@
     });
   }
 
-  function init() { initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter(); renderDepartment(); initTrash(); }
+  /* ---------- City calendar (calendar.html) ---------- */
+  var CAL_CATS = [
+    { k: "meeting",   c: "#11243f", bg: "#e7ecf3", label: "Council & committees" },
+    { k: "hearing",   c: "#9a7b2e", bg: "#f5edda", label: "Public hearings" },
+    { k: "holiday",   c: "#b3261e", bg: "#fbe6e4", label: "City holidays" },
+    { k: "rec",       c: "#2e7d52", bg: "#e3f0e8", label: "Recreation" },
+    { k: "community", c: "#1a4480", bg: "#e6edf6", label: "Community events" }
+  ];
+  var WP_EVENTS = [
+    // May 2026
+    { d: "2026-05-04", cat: "meeting",   t: "Common Council Regular Meeting", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular monthly meeting of the Common Council. Agenda posted the Friday before; open to the public with a public-comment period." },
+    { d: "2026-05-18", cat: "rec",       t: "Summer Camp Registration Opens", time: "9:00 a.m.", loc: "Recreation & Parks, Gillie Park", desc: "Online and in-person registration opens for youth summer day camps. Residents register first; popular sessions fill quickly." },
+    { d: "2026-05-25", cat: "holiday",   t: "Memorial Day — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed. Refuse and recycling collection shifts one day later for the rest of the week." },
+    { d: "2026-05-30", cat: "community", t: "Memorial Day Parade & Ceremony", time: "10:00 a.m.", loc: "Mamaroneck Avenue", desc: "Annual parade up Mamaroneck Avenue followed by a remembrance ceremony. Street closures begin at 9 a.m." },
+    // June 2026
+    { d: "2026-06-01", cat: "meeting",   t: "Common Council Regular Meeting", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular monthly meeting of the Common Council. Minutes are published as searchable web text afterward." },
+    { d: "2026-06-08", cat: "meeting",   t: "Common Council Work Session", time: "6:00 p.m.", loc: "Council Conference Room, City Hall", desc: "Informal work session for the Council to review upcoming legislation and department briefings." },
+    { d: "2026-06-10", cat: "hearing",   t: "Public Hearing — 2026–2027 Proposed Budget", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Public hearing on the proposed municipal budget. Residents may comment in person or submit written remarks to the City Clerk." },
+    { d: "2026-06-13", cat: "community", t: "Downtown Soccer Fest — Opening Weekend", time: "12:00 p.m.", loc: "Court Street & Renaissance Plaza", desc: "International matchups on the big screen in the heart of downtown, with food vendors and family activities.", url: "news-soccerfest.html" },
+    { d: "2026-06-15", cat: "rec",       t: "Gardella & Kittrell Pools Open", time: "11:00 a.m.", loc: "Gardella Park & Kittrell Park", desc: "Both City pools open for the season. Kittrell features zero-depth entry and lap lanes. Season passes on sale now.", url: "recreation.html#hours" },
+    { d: "2026-06-17", cat: "community", t: "Farmers Market — Opening Day", time: "8:00 a.m.", loc: "Court Street", desc: "The downtown farmers market returns for the season every Wednesday through October. Local produce, bakers, and makers." },
+    { d: "2026-06-19", cat: "holiday",   t: "Juneteenth — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed in observance of Juneteenth. Collection shifts one day later." },
+    { d: "2026-06-22", cat: "rec",       t: "Youth Summer Camp Begins", time: "9:00 a.m.", loc: "City parks & recreation sites", desc: "First day of the Recreation & Parks summer day-camp season. Check your confirmation for site and drop-off details." },
+    { d: "2026-06-24", cat: "meeting",   t: "Planning Board Meeting", time: "7:00 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular Planning Board meeting to review site-plan and subdivision applications. Agenda posted in advance." },
+    { d: "2026-06-27", cat: "community", t: "Concerts in the Park", time: "6:30 p.m.", loc: "Tibbits Park", desc: "Free outdoor summer concert series. Bring a blanket or lawn chair; food trucks on site." },
+    // July 2026
+    { d: "2026-07-03", cat: "holiday",   t: "Independence Day (observed) — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed. July 4 falls on a Saturday, so the holiday is observed Friday, July 3." },
+    { d: "2026-07-06", cat: "meeting",   t: "Common Council Regular Meeting", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular monthly meeting of the Common Council." },
+    { d: "2026-07-08", cat: "hearing",   t: "Public Hearing — Site Plan Review", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Public hearing on a downtown mixed-use site-plan application. Project materials are available from the Planning Department." },
+    { d: "2026-07-11", cat: "community", t: "Downtown Soccer Fest — Finale", time: "12:00 p.m.", loc: "Court Street & Renaissance Plaza", desc: "Closing weekend of the downtown viewing festival.", url: "news-soccerfest.html" },
+    { d: "2026-07-15", cat: "rec",       t: "Family Movie Night", time: "8:30 p.m.", loc: "Turnure Park", desc: "Free outdoor movie under the stars. Screening begins at dusk; concessions benefit youth programs." },
+    { d: "2026-07-22", cat: "meeting",   t: "Zoning Board of Appeals", time: "7:00 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular meeting of the Zoning Board of Appeals to consider variance and special-permit requests." },
+    { d: "2026-07-25", cat: "community", t: "Summer Sounds Concert", time: "6:30 p.m.", loc: "Tibbits Park", desc: "Free outdoor summer concert series continues. Rain date the following Saturday." },
+    // August 2026
+    { d: "2026-08-03", cat: "meeting",   t: "Common Council Regular Meeting", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular monthly meeting of the Common Council." },
+    { d: "2026-08-12", cat: "hearing",   t: "Public Hearing — Parking Permit Districts", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Public hearing on proposed changes to residential parking permit districts. Residents in affected areas are encouraged to attend." },
+    { d: "2026-08-15", cat: "rec",       t: "Adult Tennis League Finals", time: "9:00 a.m.", loc: "Gardella Park Courts", desc: "Championship matches for the City summer tennis league. Spectators welcome." },
+    { d: "2026-08-19", cat: "community", t: "National Night Out & Community Safety Day", time: "5:00 p.m.", loc: "Renaissance Plaza", desc: "Meet the Police and Fire departments, with demonstrations, giveaways, and family activities." },
+    { d: "2026-08-26", cat: "meeting",   t: "Planning Board Meeting", time: "7:00 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular Planning Board meeting. Agenda posted in advance." },
+    // September 2026
+    { d: "2026-09-07", cat: "holiday",   t: "Labor Day — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed. Refuse and recycling collection shifts one day later for the rest of the week." },
+    { d: "2026-09-08", cat: "meeting",   t: "Common Council Regular Meeting", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular monthly meeting, held Tuesday this month following the Labor Day holiday." },
+    { d: "2026-09-09", cat: "hearing",   t: "Public Hearing — Capital Improvement Plan", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Public hearing on the multi-year capital improvement plan for streets, parks, and facilities." },
+    { d: "2026-09-12", cat: "rec",       t: "Fall Recreation Programs Begin", time: "9:00 a.m.", loc: "City recreation sites", desc: "Fall classes, leagues, and after-school programs begin. Registration is open online." },
+    { d: "2026-09-19", cat: "community", t: "White Plains Outdoor Arts Festival", time: "10:00 a.m.", loc: "Tibbits Park & Court Street", desc: "Juried fine-art and craft festival drawing artists from across the region. Free admission." },
+    { d: "2026-09-23", cat: "meeting",   t: "Zoning Board of Appeals", time: "7:00 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular meeting of the Zoning Board of Appeals." },
+    // October–December 2026
+    { d: "2026-10-05", cat: "meeting",   t: "Common Council Regular Meeting", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular monthly meeting of the Common Council." },
+    { d: "2026-10-12", cat: "holiday",   t: "Indigenous Peoples' / Columbus Day — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed. Collection shifts one day later." },
+    { d: "2026-10-31", cat: "community", t: "Downtown Halloween Walk", time: "3:00 p.m.", loc: "Mamaroneck Avenue", desc: "Trick-or-treating with downtown merchants, costume contest, and family activities." },
+    { d: "2026-11-02", cat: "meeting",   t: "Common Council Regular Meeting", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Regular monthly meeting of the Common Council." },
+    { d: "2026-11-03", cat: "holiday",   t: "Election Day — City offices closed", time: null, loc: "Citywide", desc: "City Hall is closed. Polls are open 6 a.m.–9 p.m.; find your polling place through the County Board of Elections." },
+    { d: "2026-11-11", cat: "holiday",   t: "Veterans Day — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed in observance of Veterans Day." },
+    { d: "2026-11-26", cat: "holiday",   t: "Thanksgiving — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed. No collection; the week's schedule shifts later." },
+    { d: "2026-11-27", cat: "holiday",   t: "Day after Thanksgiving — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices remain closed." },
+    { d: "2026-12-05", cat: "community", t: "Holiday Tree Lighting", time: "5:00 p.m.", loc: "Renaissance Plaza", desc: "Annual tree lighting with music, hot cocoa, and a visit from Santa." },
+    { d: "2026-12-07", cat: "meeting",   t: "Common Council Regular Meeting", time: "7:30 p.m.", loc: "Common Council Chambers, City Hall", desc: "Final regular Council meeting of the year." },
+    { d: "2026-12-25", cat: "holiday",   t: "Christmas Day — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed. Collection shifts one day later for the week." },
+    { d: "2027-01-01", cat: "holiday",   t: "New Year's Day — City offices closed", time: null, loc: "Citywide", desc: "City Hall and non-emergency offices are closed for the New Year holiday." }
+  ];
+
+  function initCalendar() {
+    var weeks = document.getElementById("cal-weeks");
+    if (!weeks) return;
+    var dowEl = document.getElementById("cal-dow"), titleEl = document.getElementById("cal-title");
+    var filtersEl = document.getElementById("cal-filters"), listEl = document.getElementById("cal-list");
+    var gridWrap = document.getElementById("cal-grid-wrap"), upEl = document.getElementById("cal-upcoming");
+
+    var catByKey = {}; CAL_CATS.forEach(function (c) { catByKey[c.k] = c; });
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var vY = today.getFullYear(), vM = today.getMonth();
+    var active = {}; CAL_CATS.forEach(function (c) { active[c.k] = true; });
+    var view = "month";
+
+    function lang() { return (window.WP && WP.lang === "es") ? "es-US" : "en-US"; }
+    function parse(s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+    function key(dt) { return dt.getFullYear() + "-" + String(dt.getMonth() + 1).padStart(2, "0") + "-" + String(dt.getDate()).padStart(2, "0"); }
+    function visible() { return WP_EVENTS.filter(function (e) { return active[e.cat]; }); }
+    function eventsOn(dt) { var k = key(dt); return visible().filter(function (e) { return e.d === k; }); }
+    function catLabel(k) { return t(catByKey[k].label); }
+    function timeLabel(e) { return e.time ? e.time : t("All day"); }
+
+    /* day-of-week headers, localized */
+    function renderDOW() {
+      var base = new Date(2026, 10, 1); // Nov 1 2026 = Sunday
+      var html = "";
+      for (var i = 0; i < 7; i++) {
+        var d = new Date(base); d.setDate(1 + i);
+        html += "<span>" + d.toLocaleDateString(lang(), { weekday: "short" }) + "</span>";
+      }
+      dowEl.innerHTML = html;
+    }
+
+    function renderFilters() {
+      filtersEl.innerHTML = CAL_CATS.map(function (c) {
+        return '<button type="button" class="cal-chip" data-cat="' + c.k + '" aria-pressed="' +
+          (active[c.k] ? "true" : "false") + '" style="--c:' + c.c + '">' +
+          '<span class="dot" aria-hidden="true"></span>' + esc(catLabel(c.k)) + "</button>";
+      }).join("");
+    }
+
+    function evButton(e, idx, cls) {
+      var c = catByKey[e.cat];
+      return '<button type="button" class="' + cls + '" data-ei="' + idx + '" style="--c:' + c.c + ';--evbg:' + c.bg + '" ' +
+        'title="' + esc(timeLabel(e) + " — " + e.t) + '"><span class="et">' +
+        (e.time ? esc(e.time) + " " : "") + "</span>" + esc(e.t) + "</button>";
+    }
+
+    function renderMonth() {
+      titleEl.textContent = new Date(vY, vM, 1).toLocaleDateString(lang(), { month: "long", year: "numeric" });
+      var first = new Date(vY, vM, 1);
+      var offset = first.getDay(); // Sunday = 0
+      var daysInMonth = new Date(vY, vM + 1, 0).getDate();
+      var totalCells = Math.ceil((offset + daysInMonth) / 7) * 7;
+      var cells = "";
+      for (var i = 0; i < totalCells; i++) {
+        var dt = new Date(vY, vM, 1 - offset + i);
+        var inMonth = dt.getMonth() === vM && dt.getFullYear() === vY;
+        var isToday = dt.getTime() === today.getTime();
+        var evs = inMonth ? eventsOn(dt) : [];
+        var inner = '<span class="dnum">' + dt.getDate() + "</span>";
+        evs.slice(0, 3).forEach(function (e) { inner += evButton(e, WP_EVENTS.indexOf(e), "cal-ev"); });
+        if (evs.length > 3) {
+          inner += '<button type="button" class="cal-more" data-day="' + key(dt) + '">+' +
+            (evs.length - 3) + " " + t("more") + "</button>";
+        }
+        cells += '<div class="cal-cell' + (inMonth ? "" : " pad") + (isToday ? " today" : "") + '">' + inner + "</div>";
+      }
+      weeks.innerHTML = cells;
+    }
+
+    function renderList() {
+      var future = visible().filter(function (e) { return parse(e.d) >= today; })
+        .sort(function (a, b) { return a.d < b.d ? -1 : 1; });
+      if (!future.length) { listEl.innerHTML = '<p class="cal-empty">' + t("No events match the selected categories.") + "</p>"; return; }
+      var html = "", curMonth = "";
+      future.forEach(function (e) {
+        var dt = parse(e.d);
+        var mlabel = dt.toLocaleDateString(lang(), { month: "long", year: "numeric" });
+        if (mlabel !== curMonth) { curMonth = mlabel; html += '<div class="agenda-month">' + esc(mlabel) + "</div>"; }
+        var c = catByKey[e.cat];
+        html += '<div class="agenda-row">' +
+          '<div class="agenda-date"><div class="ad-dow">' + dt.toLocaleDateString(lang(), { weekday: "short" }) +
+          '</div><div class="ad-day">' + dt.getDate() + "</div></div>" +
+          '<div class="agenda-item" data-ei="' + WP_EVENTS.indexOf(e) + '">' +
+          '<span class="agenda-tag" style="--c:' + c.c + '">' + esc(catLabel(e.cat)) + "</span>" +
+          "<h4>" + esc(e.t) + "</h4>" +
+          '<div class="meta">' + esc(timeLabel(e)) + " · " + esc(e.loc) + "</div></div></div>";
+      });
+      listEl.innerHTML = html;
+    }
+
+    function renderUpcoming() {
+      if (!upEl) return;
+      var next = visible().filter(function (e) { return parse(e.d) >= today; })
+        .sort(function (a, b) { return a.d < b.d ? -1 : 1; }).slice(0, 4);
+      if (!next.length) { upEl.innerHTML = '<p style="font-size:14px;color:var(--ink-dim);margin:0;">' + t("Nothing coming up.") + "</p>"; return; }
+      upEl.innerHTML = next.map(function (e) {
+        var dt = parse(e.d), c = catByKey[e.cat];
+        var ds = dt.toLocaleDateString(lang(), { month: "short", day: "numeric" });
+        return '<button type="button" class="cal-up" data-ei="' + WP_EVENTS.indexOf(e) + '" ' +
+          'style="display:block;width:100%;text-align:left;border:none;border-left:3px solid ' + c.c +
+          ';background:none;cursor:pointer;padding:8px 0 8px 12px;border-bottom:1px solid var(--line);font:inherit;">' +
+          '<span style="font-size:12px;font-weight:700;color:' + c.c + ';display:block;">' + esc(ds) + "</span>" +
+          '<span style="font-size:14px;color:var(--ink);">' + esc(e.t) + "</span></button>";
+      }).join("");
+    }
+
+    function openEvent(idx) {
+      var e = WP_EVENTS[idx]; if (!e) return;
+      var c = catByKey[e.cat], dt = parse(e.d);
+      var dateStr = dt.toLocaleDateString(lang(), { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+      var link = e.url ? '<p style="margin-top:14px;"><a class="btn" href="' + e.url + '">' + t("More details") + " →</a></p>" : "";
+      openModal(e.t,
+        '<div class="ev-detail">' +
+        '<span class="ev-tag" style="background:' + c.c + '">' + esc(catLabel(e.cat)) + "</span>" +
+        "<dl>" +
+        "<dt>" + t("Date") + "</dt><dd>" + esc(dateStr) + "</dd>" +
+        "<dt>" + t("Time") + "</dt><dd>" + esc(timeLabel(e)) + "</dd>" +
+        "<dt>" + t("Location") + "</dt><dd>" + esc(e.loc) + "</dd>" +
+        "</dl>" +
+        '<p class="ev-desc">' + esc(e.desc) + "</p>" + link + "</div>");
+    }
+
+    function openDay(dayKey) {
+      var dt = parse(dayKey);
+      var evs = eventsOn(dt);
+      var dateStr = dt.toLocaleDateString(lang(), { weekday: "long", month: "long", day: "numeric" });
+      var body = evs.map(function (e) {
+        var c = catByKey[e.cat];
+        return '<div style="padding:10px 0;border-top:1px solid var(--line);">' +
+          '<span class="ev-tag" style="display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;color:#fff;border-radius:4px;padding:2px 8px;background:' + c.c + '">' + esc(catLabel(e.cat)) + "</span>" +
+          '<div style="font-weight:700;color:var(--navy);margin-top:5px;">' + esc(e.t) + "</div>" +
+          '<div style="font-size:13.5px;color:var(--ink-dim);">' + esc(timeLabel(e)) + " · " + esc(e.loc) + "</div></div>";
+      }).join("");
+      openModal(dateStr, '<div class="modal-p">' + body + "</div>");
+    }
+
+    function setView(v) {
+      view = v;
+      gridWrap.style.display = v === "month" ? "" : "none";
+      listEl.style.display = v === "list" ? "block" : "none";
+      var mb = document.getElementById("cal-view-month"), lb = document.getElementById("cal-view-list");
+      mb.classList.toggle("on", v === "month"); mb.setAttribute("aria-pressed", v === "month" ? "true" : "false");
+      lb.classList.toggle("on", v === "list"); lb.setAttribute("aria-pressed", v === "list" ? "true" : "false");
+    }
+
+    function renderAll() { renderDOW(); renderFilters(); renderMonth(); renderList(); renderUpcoming(); }
+
+    /* events */
+    document.getElementById("cal-prev").addEventListener("click", function () { vM--; if (vM < 0) { vM = 11; vY--; } renderMonth(); });
+    document.getElementById("cal-next").addEventListener("click", function () { vM++; if (vM > 11) { vM = 0; vY++; } renderMonth(); });
+    document.getElementById("cal-todaybtn").addEventListener("click", function () { vY = today.getFullYear(); vM = today.getMonth(); renderMonth(); setView("month"); });
+    document.getElementById("cal-view-month").addEventListener("click", function () { setView("month"); });
+    document.getElementById("cal-view-list").addEventListener("click", function () { setView("list"); });
+    filtersEl.addEventListener("click", function (ev) {
+      var b = ev.target.closest("[data-cat]"); if (!b) return;
+      var k = b.getAttribute("data-cat"); active[k] = !active[k];
+      b.setAttribute("aria-pressed", active[k] ? "true" : "false");
+      renderMonth(); renderList(); renderUpcoming();
+    });
+    function onActivate(ev) {
+      var more = ev.target.closest(".cal-more");
+      if (more) { openDay(more.getAttribute("data-day")); return; }
+      var item = ev.target.closest("[data-ei]");
+      if (item) openEvent(+item.getAttribute("data-ei"));
+    }
+    weeks.addEventListener("click", onActivate);
+    listEl.addEventListener("click", onActivate);
+    if (upEl) upEl.addEventListener("click", onActivate);
+    document.addEventListener("wp:languagechange", function () { renderAll(); });
+
+    renderAll(); setView("month");
+  }
+
+  function init() { initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter(); renderDepartment(); initTrash(); initCalendar(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
