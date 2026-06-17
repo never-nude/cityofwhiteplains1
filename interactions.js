@@ -581,6 +581,7 @@
     { l: "Council agendas & minutes", u: "minutes.html", k: "council meeting agenda minutes resolution vote government", pop: 1 },
     { l: "Find a City job", u: "jobs.html", k: "job jobs employment work civil service exam careers hiring openings", pop: 1 },
     { l: "Pay your water & sewer bill", u: "water-sewer.html", k: "water sewer bill utility account balance leak meter" },
+    { l: "Downtown, dining & events", u: "downtown.html", k: "downtown mamaroneck avenue dining restaurants bars nightlife shopping arts things to do events festival", pop: 1 },
     { l: "City calendar & events", u: "calendar.html", k: "calendar events meetings hearings holidays festival concert" },
     { l: "Request public records (FOIL)", u: "foil.html", k: "foil records request freedom of information documents clerk" },
     { l: "Recreation, pools & camps", u: "recreation.html", k: "recreation parks pool swim camp program class league register kids" },

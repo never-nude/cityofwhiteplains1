@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Downtown White Plains · City of White Plains</title>
+<meta name="description" content="Explore Downtown White Plains and Mamaroneck Avenue — dining, nightlife, shopping, arts, and the events that make the city's cultural scene.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .dt-hero { background: var(--navy); color: #fff; }
+  .dt-hero .wrap { padding: 48px 28px; }
+  .dt-hero .kick { color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+  .dt-hero h2 { font-family: 'Source Serif 4', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; line-height: 1.08; letter-spacing: -0.015em; }
+  .dt-hero p { color: #c4d0e0; font-size: 18px; max-width: 60ch; margin-top: 14px; }
+  .feat { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 4px 0 26px; }
+  .feat .res { display: flex; flex-direction: column; }
+  .feat .res .em { font-size: 24px; margin-bottom: 6px; }
+  .events { list-style: none; margin: 0 0 22px; padding: 0; }
+  .events li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); align-items: start; }
+  .events li:last-child { border-bottom: 1px solid var(--line); }
+  .events .when { text-align: center; background: var(--paper-2); border: 1px solid var(--line); border-radius: 8px; padding: 8px 4px; }
+  .events .when .m { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--gold-dark); letter-spacing: 0.04em; }
+  .events .when .d { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1; }
+  .events h4 { font-size: 16.5px; color: var(--navy); margin: 0 0 3px; }
+  .events p { font-size: 14px; color: var(--ink-dim); margin: 0; }
+  @media (max-width: 620px){ .feat { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-translate-body="1">
+  <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
+  <header class="site-header">
+  <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal" aria-hidden="true"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag" data-i18n="tagline">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="Search permits, taxes, services…" data-i18n-ph="searchph" aria-label="Search the city website" data-i18n-al="searcharia" autocomplete="off"><button type="submit" data-i18n="searchbtn">Search</button></form>
+  </div></div>
+  </header>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html" data-i18n="nav.residents">Residents</a><a href="government.html" data-i18n="nav.gov">Government</a><a href="departments.html" data-i18n="nav.depts">Departments</a><a href="pay.html" data-i18n="nav.services">Services</a><a href="community.html" data-i18n="nav.community">Community</a><a href="business.html" data-i18n="nav.business">Business</a><a href="how-do-i.html" data-i18n="nav.howdoi">How Do I…?</a>
+  </div><button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></nav>
+
+  <div class="crumb"><div class="wrap"><a href="index.html" data-i18n="home">Home</a><span class="sep" aria-hidden="true">›</span><a href="community.html" data-i18n="nav.community">Community</a><span class="sep" aria-hidden="true">›</span>Downtown</div></div>
+
+  <section class="dt-hero"><div class="wrap">
+    <div class="kick">Explore</div>
+    <h2>Downtown White Plains</h2>
+    <p>Mamaroneck Avenue is the spine of the city's cultural life — restaurants and rooftops, galleries and shops, street festivals and farmers markets, all a short walk from the train. Here's what's happening and how to make a day of it.</p>
+  </div></section>
+
+  <main id="main"><div class="wrap"><div class="layout">
+    <div class="prose">
+      <h3>The heart of it: Mamaroneck Avenue</h3>
+      <p>Running through the center of the city, Mamaroneck Avenue is where White Plains comes out to eat, meet, and celebrate. Its sidewalks string together restaurants and bars, coffee shops, boutiques, and arts spaces, and on warm evenings the street itself becomes the venue. It's walkable, transit-friendly, and the natural first stop whether you're new in town or have been here for years.</p>
+
+      <div class="feat">
+        <a class="res" href="#events"><span class="em" aria-hidden="true">🎉</span><h3>Events &amp; festivals</h3><p>Street parties, live music, and seasonal celebrations downtown.</p></a>
+        <a class="res" href="https://wpbid.com/" target="_blank" rel="noopener"><span class="em" aria-hidden="true">🍽️</span><h3>Eat &amp; drink <span class="ext" aria-hidden="true">↗</span></h3><p>The full downtown dining and nightlife directory (BID).</p></a>
+        <a class="res" href="https://artswestchester.org/" target="_blank" rel="noopener"><span class="em" aria-hidden="true">🎭</span><h3>Arts &amp; culture <span class="ext" aria-hidden="true">↗</span></h3><p>ArtsWestchester's gallery sits at 31 Mamaroneck Avenue.</p></a>
+        <a class="res" href="#getting-here"><span class="em" aria-hidden="true">🚆</span><h3>Getting here &amp; parking</h3><p>35 minutes from Grand Central, with garages right downtown.</p></a>
+      </div>
+
+      <h3>Eat &amp; drink</h3>
+      <p>Downtown's dining runs from quick weekday lunches to date-night dinners and late drinks — Mamaroneck Avenue and the blocks around it hold everything from family-friendly mainstays to newer rooftop and craft spots. Because the lineup changes with the seasons, the Business Improvement District keeps the most current directory.</p>
+      <a href="https://wpbid.com/" target="_blank" rel="noopener" class="btn">Browse the downtown directory ↗</a>
+
+      <h3>Shop</h3>
+      <p>You can spend an afternoon between the avenue's independent shops and the major centers nearby. <strong>The Westchester</strong> and <strong>City Center</strong> anchor downtown retail and dining — City Center also has a movie theater — while Mamaroneck Avenue keeps the local, one-of-a-kind storefronts that give downtown its character.</p>
+
+      <h3>Arts &amp; culture</h3>
+      <p>White Plains is the cultural hub of the county, and much of that energy lives downtown. <strong>ArtsWestchester</strong>, the region's arts council, runs a gallery and programs from its home at 31 Mamaroneck Avenue, and the city's calendar fills out with concerts in the parks, public art, and seasonal performances throughout the year.</p>
+      <a href="https://artswestchester.org/" target="_blank" rel="noopener" class="btn ghost">Visit ArtsWestchester ↗</a>
+      <a href="calendar.html" class="btn ghost" style="margin-left:10px;">See the City calendar →</a>
+
+      <h3 id="events">Signature downtown events</h3>
+      <p>A rolling calendar of free, family-friendly happenings keeps downtown busy from spring through the holidays. A few favorites:</p>
+      <ul class="events">
+        <li><div class="when"><span class="m">May–Aug</span><span class="d">3rd</span></div><div><h4>Rock the Block</h4><p>Third Wednesdays, May through August — live music, outdoor dining, and family fun in the heart of downtown.</p></div></li>
+        <li><div class="when"><span class="m">Jun–Jul</span><span class="d">⚽</span></div><div><h4>Downtown Soccer Fest</h4><p>A free, citywide watch party inspired by the 2026 World Cup, turning downtown into a fan zone. <a href="news-soccerfest.html">Read more →</a></p></div></li>
+        <li><div class="when"><span class="m">Summer</span><span class="d">🍗</span></div><div><h4>Wing Walk</h4><p>A downtown crawl of wing tastings from local restaurants, hosted by the BID.</p></div></li>
+        <li><div class="when"><span class="m">Jun–Oct</span><span class="d">🥕</span></div><div><h4>Farmers Market</h4><p>Wednesdays on Court Street — local produce, bakers, and makers through the season.</p></div></li>
+        <li><div class="when"><span class="m">Dec</span><span class="d">🎄</span></div><div><h4>Holiday Tree Lighting</h4><p>Music, hot cocoa, and a visit from Santa at Renaissance Plaza to kick off the season.</p></div></li>
+      </ul>
+      <a href="calendar.html" class="btn">All city events →</a>
+      <a href="https://wpbid.com/events/" target="_blank" rel="noopener" class="btn ghost" style="margin-left:10px;">Downtown events (BID) ↗</a>
+
+      <h3 id="getting-here">Getting here &amp; parking</h3>
+      <p>Downtown is built around the train. Metro-North's Harlem Line reaches White Plains in about 35 minutes from Grand Central, and the White Plains TransCenter connects Bee-Line buses right beside the station. If you drive, the City's parking garages put you a block or two from the avenue.</p>
+      <ul>
+        <li><strong>By train:</strong> Metro-North to White Plains — roughly 35 minutes from Manhattan.</li>
+        <li><strong>By bus:</strong> Westchester's Bee-Line and OMNY tap-to-pay at the TransCenter.</li>
+        <li><strong>By car:</strong> City garages and on-street parking throughout downtown.</li>
+      </ul>
+      <a href="community.html#transit" class="btn ghost">Transit &amp; getting around →</a>
+      <a href="department.html?d=parking-traffic" class="btn ghost" style="margin-left:10px;">Parking &amp; garages →</a>
+    </div>
+
+    <aside class="side">
+      <div class="side-box">
+        <h4>Plan your visit</h4>
+        <a href="calendar.html">City calendar &amp; events</a>
+        <a href="https://wpbid.com/" target="_blank" rel="noopener">Downtown directory (BID) ↗</a>
+        <a href="https://artswestchester.org/" target="_blank" rel="noopener">ArtsWestchester ↗</a>
+        <a href="department.html?d=parking-traffic">Parking &amp; garages</a>
+        <a href="community.html#transit">Getting around</a>
+      </div>
+      <div class="side-box">
+        <h4>At a glance</h4>
+        <p style="font-size:14px;color:var(--ink-dim);line-height:1.7;margin:0;"><strong style="color:var(--ink);">Heart of downtown:</strong> Mamaroneck Avenue<br><strong style="color:var(--ink);">From NYC:</strong> ~35 min on Metro-North<br><strong style="color:var(--ink);">Best nights out:</strong> 3rd Wednesdays, May–Aug</p>
+      </div>
+      <div class="side-box">
+        <h4>More community</h4>
+        <a href="community.html">Living in White Plains</a>
+        <a href="recreation.html">Recreation &amp; parks</a>
+        <a href="news.html">City news</a>
+      </div>
+    </aside>
+  </div></div></main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br><span data-i18n="foot.hours">Office hours: Monday–Friday, 9 a.m.–5 p.m.</span></p></div>
+      <div class="foot-col"><h5 data-i18n="nav.residents">Residents</h5><a href="pay.html" data-i18n="foot.paytaxes">Pay Taxes</a><a href="pay.html" data-i18n="foot.permits">Permits</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a><a href="pay.html#report" data-i18n="foot.report">Report an Issue</a></div>
+      <div class="foot-col"><h5 data-i18n="nav.gov">Government</h5><a href="government.html" data-i18n="foot.council">Common Council</a><a href="minutes.html" data-i18n="foot.meetings">Meetings</a><a href="government.html#budget" data-i18n="foot.budget">Budget</a><a href="government.html#code" data-i18n="foot.code">Municipal Code</a></div>
+      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html#contact" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="search.html" data-i18n="foot.sitemap">Site Map</a><a href="accessibility.html" data-i18n="foot.accessibility">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span data-i18n="foot.copyright">© 2026 City of White Plains, New York. All rights reserved.</span><span data-i18n="foot.concept">An independent redesign proposal — not affiliated with the City of White Plains.</span></div></div>
+  </footer>
+  <script src="i18n.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="nav.js" defer></script>
+  <script src="alerts.js" defer></script>
+  <script src="interactions.js" defer></script>
+</body>
+</html>

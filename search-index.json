@@ -3,6 +3,14 @@
   "note": "Static client-side search index for the City of White Plains concept site. 'weight' biases resident tasks above incidental matches.",
   "docs": [
     {
+      "title": "Downtown White Plains",
+      "url": "downtown.html",
+      "type": "page",
+      "weight": 90,
+      "summary": "Explore Downtown White Plains and Mamaroneck Avenue — dining, nightlife, shopping, arts, and the events that make the city's cultural scene.",
+      "keywords": "downtown mamaroneck avenue dining restaurants nightlife bars shopping arts artswestchester events festival rock the block soccer fest wing walk farmers market things to do nightlife"
+    },
+    {
       "title": "Pay property taxes",
       "url": "pay.html",
       "type": "task",
