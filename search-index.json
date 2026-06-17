@@ -473,6 +473,30 @@
       "weight": 60,
       "summary": "The City's commitment to an accessible website (WCAG 2.1 AA), how to request accommodations, and how to report a barrier.",
       "keywords": "accessibility ada wcag section 508 disability screen reader accommodation alternate format tty relay contrast keyboard"
+    },
+    {
+      "title": "Water & Sewer",
+      "url": "water-sewer.html",
+      "type": "task",
+      "weight": 95,
+      "summary": "Pay your water and sewer bill, look up your account balance and usage, see quarterly rates, and get help with a leak or high bill.",
+      "keywords": "water sewer bill pay account lookup balance meter reading usage rates leak high bill autopay quarterly utility ccf"
+    },
+    {
+      "title": "City Jobs & Civil Service",
+      "url": "jobs.html",
+      "type": "page",
+      "weight": 88,
+      "summary": "Work for the City of White Plains: how civil-service hiring works, the exam process, benefits, and where to find current openings.",
+      "keywords": "jobs employment careers civil service exam hiring openings personnel apply work benefits eligible list vacancy"
+    },
+    {
+      "title": "Records & FOIL requests",
+      "url": "foil.html",
+      "type": "task",
+      "weight": 86,
+      "summary": "Request public records under New York's Freedom of Information Law (FOIL): what you can request, fees, timelines, and an online request form.",
+      "keywords": "foil freedom of information records request public records city clerk records access officer documents appeal open government"
     }
   ]
 }

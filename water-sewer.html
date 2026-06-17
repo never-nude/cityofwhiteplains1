@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water &amp; Sewer · City of White Plains</title>
+<meta name="description" content="Pay your White Plains water and sewer bill, look up your account, see quarterly rates, and get help with leaks or a high bill.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .ws-lookup { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin: 6px 0 18px; }
+  .ws-lookup label { font-size: 13px; font-weight: 700; color: var(--ink); display: block; margin-bottom: 6px; }
+  .ws-lookup input { border: 2px solid var(--line); border-radius: 6px; padding: 11px 14px; font: inherit; font-size: 15px; min-width: 260px; }
+  .ws-lookup input:focus { outline: none; border-color: var(--focus); }
+  .acct { border: 1px solid var(--line); border-left: 5px solid var(--navy); border-radius: 10px; padding: 0; overflow: hidden; margin: 4px 0 8px; }
+  .acct-head { background: var(--paper-2); padding: 16px 20px; border-bottom: 1px solid var(--line); }
+  .acct-head .who { font-weight: 700; color: var(--navy); font-size: 16px; }
+  .acct-head .addr { font-size: 13.5px; color: var(--ink-dim); margin-top: 2px; }
+  .acct-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .acct-grid div { padding: 16px 20px; border-right: 1px solid var(--line); }
+  .acct-grid div:last-child { border-right: none; }
+  .acct-grid .lbl { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-dim); }
+  .acct-grid .val { font-size: 22px; font-weight: 700; color: var(--navy); font-family: 'Source Serif 4', serif; margin-top: 4px; }
+  .acct-grid .val.due { color: var(--gold-dark); }
+  .acct-foot { padding: 14px 20px; background: var(--paper-2); border-top: 1px solid var(--line); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .acct-foot .small { font-size: 12.5px; color: var(--ink-dim); }
+  @media (max-width: 560px) { .acct-grid { grid-template-columns: 1fr; } .acct-grid div { border-right: none; border-bottom: 1px solid var(--line); } .ws-lookup input { min-width: 0; width: 100%; } }
+</style>
+</head>
+<body data-translate-body="1">
+  <a href="#main" class="skip" data-i18n="skip">Skip to main content</a>
+  <header class="site-header">
+  <div class="gov-strip"><div class="wrap"><span aria-hidden="true">🏛️</span><span data-i18n="govstrip">An official website of the <strong>City of White Plains, New York</strong></span><button type="button" class="lang-toggle" data-lang-toggle aria-label="Cambiar el sitio al español" lang="es">Español</button></div></div>
+  <div class="masthead"><div class="wrap">
+    <div class="ident"><div class="seal" aria-hidden="true"><span>CITY<br>OF WP</span></div>
+      <div><h1><a href="index.html">City of White Plains</a></h1><div class="tag" data-i18n="tagline">Westchester County · Incorporated 1916</div></div></div>
+    <form class="search" role="search" action="search.html" method="get"><input type="search" name="q" placeholder="Search permits, taxes, services…" data-i18n-ph="searchph" aria-label="Search the city website" data-i18n-al="searcharia" autocomplete="off"><button type="submit" data-i18n="searchbtn">Search</button></form>
+  </div></div>
+  </header>
+  <nav class="mainnav" aria-label="Primary"><div class="wrap">
+    <a href="index.html" data-i18n="nav.residents">Residents</a><a href="government.html" data-i18n="nav.gov">Government</a><a href="departments.html" data-i18n="nav.depts">Departments</a><a href="pay.html" data-i18n="nav.services">Services</a><a href="community.html" data-i18n="nav.community">Community</a><a href="business.html" data-i18n="nav.business">Business</a><a href="how-do-i.html" data-i18n="nav.howdoi">How Do I…?</a>
+  </div><button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button></nav>
+
+  <div class="crumb"><div class="wrap"><a href="index.html" data-i18n="home">Home</a><span class="sep" aria-hidden="true">›</span><a href="department.html?d=public-works">Public Works</a><span class="sep" aria-hidden="true">›</span>Water &amp; Sewer</div></div>
+
+  <div class="page-hd"><div class="wrap">
+    <div class="kick">Public Works</div>
+    <h2>Water &amp; sewer</h2>
+    <p>Pay your bill, look up your account, see current rates, and get help with a leak or an unexpectedly high bill.</p>
+  </div></div>
+
+  <main id="main"><div class="wrap"><div class="layout">
+    <div class="prose">
+      <h3>Pay your water &amp; sewer bill</h3>
+      <p>Water and sewer service is billed quarterly. You can pay online by e-check (free) or by credit or debit card, by mail, or in person at City Hall.</p>
+      <a href="#" class="btn" data-demo="Water &amp; sewer payment">Pay online →</a>
+      <a href="#" class="btn ghost" style="margin-left:10px;" data-demo="Water &amp; sewer payment">Set up autopay →</a>
+
+      <h3>Look up your account</h3>
+      <p>Enter your account number to see your current balance, due date, and most recent meter reading. Your account number is printed at the top of your quarterly statement.</p>
+      <form class="ws-lookup" id="water-lookup">
+        <div>
+          <label for="ws-acct">Account number</label>
+          <input type="text" id="ws-acct" name="acct" inputmode="numeric" placeholder="e.g. 100482-03" autocomplete="off">
+        </div>
+        <button type="submit" class="btn">Look up account →</button>
+      </form>
+      <div id="water-result" data-dyn aria-live="polite"></div>
+
+      <h3>Current quarterly rates</h3>
+      <p>Charges combine a fixed service charge with metered usage billed per 100 cubic feet (CCF). One CCF is about 748 gallons.</p>
+      <table>
+        <caption>Quarterly water &amp; sewer rate schedule</caption>
+        <thead><tr><th scope="col">Charge</th><th scope="col">Rate</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Water — service charge (per quarter)</th><td>$24.00</td></tr>
+          <tr><th scope="row">Water — usage, first 30 CCF</th><td>$4.85 / CCF</td></tr>
+          <tr><th scope="row">Water — usage, over 30 CCF</th><td>$5.95 / CCF</td></tr>
+          <tr><th scope="row">Sewer — usage</th><td>$3.40 / CCF</td></tr>
+          <tr><th scope="row">Late penalty</th><td>10% of unpaid balance</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Reading your bill</h3>
+      <p>Your meter measures water in cubic feet. Each quarter the City reads the meter, subtracts the prior reading, and bills the difference. Sewer charges are based on the same metered water, since most water that comes in eventually goes down the drain.</p>
+      <ul>
+        <li><strong>Service charge:</strong> a flat quarterly fee that keeps your account active and the system maintained.</li>
+        <li><strong>Usage:</strong> what you actually used since the last reading, billed per CCF.</li>
+        <li><strong>Sewer:</strong> applied to metered water use to cover treatment and the sewer system.</li>
+      </ul>
+
+      <h3>High bill or a possible leak?</h3>
+      <p>A bill much higher than usual almost always means water is moving when you think it's off — most often a running toilet, which can waste thousands of gallons a quarter.</p>
+      <ul>
+        <li><strong>Check for silent leaks:</strong> note your meter reading at night, then again before using any water in the morning. If it moved, something is running.</li>
+        <li><strong>Toilets first:</strong> add a few drops of food coloring to the tank; if color appears in the bowl without flushing, the flapper is leaking.</li>
+        <li><strong>Request a re-read:</strong> if the reading looks wrong, Public Works can verify it.</li>
+        <li><strong>Leak adjustments:</strong> after a documented repair, you may qualify for a one-time adjustment on the excess.</li>
+      </ul>
+
+      <h3>Starting or stopping service</h3>
+      <p>Buying or selling a home, or moving in or out? Contact Public Works to transfer service and request a final reading. A final read at closing makes sure each owner pays only for the water they used.</p>
+
+      <a href="#" class="btn" data-demo="Water &amp; sewer payment">Pay your bill →</a>
+      <a href="pay.html#report" class="btn ghost" style="margin-left:10px;">Report a water issue →</a>
+    </div>
+
+    <aside class="side">
+      <div class="side-box contact">
+        <h4>Water &amp; Sewer Billing</h4>
+        <p><strong>Department of Public Works</strong><br>City Hall, Ground Floor<br>255 Main Street<br>White Plains, NY 10601<br><br><strong data-i18n="contact.phone">Phone:</strong> 914-422-1200<br><strong data-i18n="contact.hours">Hours:</strong> Mon–Fri, 9 a.m.–5 p.m.</p>
+      </div>
+      <div class="side-box">
+        <h4>At a glance</h4>
+        <p style="font-size:14px;color:var(--ink-dim);line-height:1.7;margin:0;"><strong style="color:var(--ink);">Billing:</strong> Quarterly<br><strong style="color:var(--ink);">Pay by:</strong> E-check (free), card, mail, in person<br><strong style="color:var(--ink);">Emergency:</strong> Water main breaks — call 914-422-1200</p>
+      </div>
+      <div class="side-box">
+        <h4>Quick links</h4>
+        <a href="#" data-demo="Water &amp; sewer payment">Pay your bill</a>
+        <a href="trash.html">Trash &amp; recycling</a>
+        <a href="department.html?d=public-works">Public Works department</a>
+        <a href="pay.html#report">Report a problem</a>
+        <a href="how-do-i.html">How Do I…?</a>
+      </div>
+    </aside>
+  </div></div></main>
+
+  <footer>
+    <div class="foot-main"><div class="wrap">
+      <div class="foot-id"><h4>City of White Plains</h4><p>City Hall · 255 Main Street<br>White Plains, NY 10601<br>Phone: 914-422-1200<br><br><span data-i18n="foot.hours">Office hours: Monday–Friday, 9 a.m.–5 p.m.</span></p></div>
+      <div class="foot-col"><h5 data-i18n="nav.residents">Residents</h5><a href="pay.html" data-i18n="foot.paytaxes">Pay Taxes</a><a href="pay.html" data-i18n="foot.permits">Permits</a><a href="recreation.html" data-i18n="nav.rec">Recreation</a><a href="pay.html#report" data-i18n="foot.report">Report an Issue</a></div>
+      <div class="foot-col"><h5 data-i18n="nav.gov">Government</h5><a href="government.html" data-i18n="foot.council">Common Council</a><a href="minutes.html" data-i18n="foot.meetings">Meetings</a><a href="government.html#budget" data-i18n="foot.budget">Budget</a><a href="government.html#code" data-i18n="foot.code">Municipal Code</a></div>
+      <div class="foot-col"><h5 data-i18n="foot.connect">Connect</h5><a href="index.html#contact" data-i18n="foot.contact">Contact Us</a><a href="news.html" data-i18n="foot.newsletter">Newsletter</a><a href="search.html" data-i18n="foot.sitemap">Site Map</a><a href="accessibility.html" data-i18n="foot.accessibility">Accessibility</a></div>
+    </div></div>
+    <div class="foot-bottom"><div class="wrap"><span data-i18n="foot.copyright">© 2026 City of White Plains, New York. All rights reserved.</span><span data-i18n="foot.concept">An independent redesign proposal — not affiliated with the City of White Plains.</span></div></div>
+  </footer>
+  <script src="i18n.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="nav.js" defer></script>
+  <script src="alerts.js" defer></script>
+  <script src="interactions.js" defer></script>
+</body>
+</html>

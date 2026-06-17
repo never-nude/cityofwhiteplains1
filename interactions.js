@@ -32,7 +32,7 @@
     "Apply for a marriage license": "https://www.cityofwhiteplains.com/318/Marriage-Licenses",
     "Vital record (birth, marriage, death)": "https://www.cityofwhiteplains.com/317/Vital-Records",
     "Request a vital record": "https://www.cityofwhiteplains.com/317/Vital-Records",
-    "File a FOIL records request": "https://www.cityofwhiteplains.com/88/City-Clerk",
+    "File a FOIL records request": "foil.html",
     "File a claim against the City": "https://www.cityofwhiteplains.com/88/City-Clerk",
     "Register to vote": "https://www.ny.gov/services/register-vote",
     // assessor / finance / budget
@@ -572,9 +572,55 @@
     renderAll(); setView("month");
   }
 
+  /* ---------- Water & sewer account lookup (demo) ---------- */
+  function initWaterLookup() {
+    var form = document.getElementById("water-lookup"), out = document.getElementById("water-result");
+    if (!form || !out) return;
+    var HOLDERS = ["M. Rivera", "J. O'Connor", "S. Patel", "D. Washington", "L. Nguyen", "A. Castellano", "R. Goldberg", "T. Almeida"];
+    var STREETS = ["Mamaroneck Ave", "Soundview Ave", "Ridgeway", "North Broadway", "Bryant Ave", "Gedney Way", "Battle Ave", "Westchester Ave"];
+    function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) >>> 0; } return h; }
+    function lang() { return (window.WP && WP.lang === "es") ? "es-US" : "en-US"; }
+    var lastAcct = null;
+    function render(acct) {
+      var h = hash(acct || "100482");
+      var holder = HOLDERS[h % HOLDERS.length];
+      var num = 100 + (h % 1800);
+      var street = STREETS[(h >> 4) % STREETS.length];
+      var ccf = 9 + (h % 28);                       // quarterly usage in CCF
+      var prev = 1000 + (h % 6000), cur = prev + ccf;
+      var water = 24 + ccf * 4.85, sewer = ccf * 3.40;
+      var balance = Math.round((water + sewer) * 100) / 100;
+      var gallons = Math.round(ccf * 748);
+      var due = new Date(2026, 6, 31).toLocaleDateString(lang(), { month: "long", day: "numeric", year: "numeric" });
+      function money(n) { return "$" + n.toFixed(2); }
+      out.innerHTML =
+        '<div class="acct">' +
+          '<div class="acct-head"><div class="who">' + t("Account") + " #" + esc(acct) + " · " + esc(holder) + '</div>' +
+            '<div class="addr">' + num + " " + esc(street) + ', White Plains, NY 10601</div></div>' +
+          '<div class="acct-grid">' +
+            '<div><div class="lbl">' + t("Current balance") + '</div><div class="val due">' + money(balance) + '</div></div>' +
+            '<div><div class="lbl">' + t("Due date") + '</div><div class="val">' + esc(due) + '</div></div>' +
+            '<div><div class="lbl">' + t("Usage this quarter") + '</div><div class="val">' + ccf + ' CCF</div></div>' +
+          '</div>' +
+          '<div class="acct-foot"><span class="small">' + t("Meter:") + " " + prev + " → " + cur + " · ≈ " + gallons.toLocaleString(lang()) + " " + t("gallons") + '</span>' +
+            '<a class="btn" href="#" data-demo="Water &amp; sewer payment" style="margin-left:auto;">' + t("Pay this balance →") + '</a></div>' +
+        '</div>' +
+        '<p style="font-size:12.5px;color:var(--ink-dim);margin-top:8px;">' + t("Sample account — figures are illustrative for this proposal.") + '</p>';
+      upgradeStubLinks(out);
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = (form.elements.acct.value || "").trim();
+      if (!v) { form.elements.acct.setAttribute("aria-invalid", "true"); form.elements.acct.focus(); return; }
+      form.elements.acct.removeAttribute("aria-invalid");
+      lastAcct = v; render(v);
+    });
+    document.addEventListener("wp:languagechange", function () { if (lastAcct) render(lastAcct); });
+  }
+
   function init() {
     initReportForm(); initStubForms(); initNewsFilter(); initDeptFilter();
-    renderDepartment(); initTrash(); initCalendar(); upgradeStubLinks();
+    renderDepartment(); initTrash(); initCalendar(); initWaterLookup(); upgradeStubLinks();
     // Re-render the department detail (and re-upgrade its links) when language changes.
     document.addEventListener("wp:languagechange", function () {
       if (document.getElementById("dept-detail")) { renderDepartment(); upgradeStubLinks(); }
